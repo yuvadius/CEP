@@ -1,8 +1,9 @@
-import re
-
 class Event:
     def __init__(self, event):
-        self.event = event
+        self.__event = event
+
+    def getEvent(self):
+        return self.__event
 
     @staticmethod
     def fileInput(filePath):
