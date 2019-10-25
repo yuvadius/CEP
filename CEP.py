@@ -10,7 +10,9 @@ class CEP:
 
     def findPattern(self, query, thread = False):
         if thread:
-            return threading.Thread(target = self.__findPattern, args = (query,))
+            thread = threading.Thread(target = self.__findPattern, args = (query,))
+            thread.start()
+            return thread
         else:
             return self.__findPattern(query)
 
