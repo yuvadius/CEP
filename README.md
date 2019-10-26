@@ -7,6 +7,18 @@ CEP executes a set of algorithms which, as said, can infer events, patterns and 
 
 The algorithms are exposed with an API, so you can add or remove algorithms freely.
 
+This short do will be updated regularly.
+
+Github doc examples:
+
+https://github.com/etingof/pysnmp
+
+https://github.com/segmentio/nightmare
+
+# Features
+
+# Download & Install
+
 # Examples
 
 # API
