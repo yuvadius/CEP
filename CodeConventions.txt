@@ -1,0 +1,7 @@
+Use "Camel Case" as the coding convention
+Don't use dynamic typing
+Don't use private variables unless necessary
+Don't over comment, all the tedious comments should be done in the github documentation
+You may have multiple classes in the same file if they are related
+
+I'm not lazy, this is just the python way
