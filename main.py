@@ -13,9 +13,7 @@ query = Query(
 EqFormula(IdentifierTerm("s", lambda x: x[0]), AtomicTerm("AAPL"))
 )
 
-tree = Tree()
-
 cep = CEP(events)
-result = cep.findPattern(query, tree, False)
+result = cep.findPattern(query, Tree, False)
 
 print(result)

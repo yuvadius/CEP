@@ -9,9 +9,11 @@ all of the patterns for a query and a set of events.
 from abc import ABC  # Abstract Base Class
 
 class Algorithm(ABC):
-    def eval(self, query, events):
+    @staticmethod
+    def eval(query, events):
         pass
 
 class Tree(Algorithm):
-    def eval(self, query, events):
+    @staticmethod
+    def eval(query, events):
         pass
