@@ -9,6 +9,7 @@ import threading
 from Event import *
 from Pattern import *
 from Algorithms import *
+from Query import *
 
 class CEP:
     def __init__(self, events):

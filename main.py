@@ -1,5 +1,7 @@
 from CEP import *
 
 p1 = CEP(Event.fileInput("NASDAQ_20080201_1_sorted.txt"))
-thread = p1.findPattern(0, 0, True)
-x = Tree()
+
+x = AndFormula(EqFormula(AtomicTerm(5), IdentifierTerm("Moti", lambda x: x["age"])), SmallerThanEqFormula(AtomicTerm(13), MulTerm(AtomicTerm(5), AtomicTerm(3))))
+print(x.eval({ "Moti" : { "age": 5 } }))  # True
+print(x.eval({ "Moti" : { "age": 31 } }))  # False
