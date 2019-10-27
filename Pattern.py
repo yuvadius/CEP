@@ -6,8 +6,5 @@ If the time is "-1" then it can be considered as undefined
 
 class Pattern:
     def __init__(self, events, time = -1):
-        self.__events = events
-        self.__time = time
-
-    def getPattern(self):
-        return self.__events
+        self.events = events
+        self.time = time

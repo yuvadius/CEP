@@ -8,10 +8,7 @@ Note: "__event" might me changed in the future to a dictionary"
 
 class Event:
     def __init__(self, event):
-        self.__event = event
-
-    def getEvent(self):
-        return self.__event
+        self.event = event
 
     '''
     Receives a file and returns an array of events.

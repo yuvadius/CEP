@@ -5,19 +5,7 @@ Negation and Kleene Plus are modifiers specified in SASE+.
 '''
 class QItem:
     def __init__(self, eventType, name, kleenePlus=False, negated=False):
-        self.__eventType = eventType
-        self.__name = name
-        self.__kleenePlus = kleenePlus
-        self.__negated = negated
-    
-    def getType(self):
-        return self.__eventType
-    
-    def getName(self):
-        return self.__name
-    
-    def isKleenePlus(self):
-        return self.__kleenePlus
-    
-    def isNegated(self):
-        return self.__negated
+        self.eventType = eventType
+        self.name = name
+        self.kleenePlus = kleenePlus
+        self.negated = negated
