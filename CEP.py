@@ -1,22 +1,31 @@
+'''
+This is the main file of the library.
+"events": 
+An array of "Event" class. 
+Can be set only once by the constructor
+'''
+
 import threading
 from Event import *
-from Query import *
 from Pattern import *
+from Algorithms import *
+from Query import *
 
 class CEP:
     def __init__(self, events):
         self.events = events
-
-    def __findPattern(self, query, algorithim):
-        return Pattern(Event([]))
-
-    def findPattern(self, query, algorithim, thread = False):
-        if thread:
-            thread = threading.Thread(target = self.__findPattern, args = (query, algorithim,))
+    
+    '''
+    This function receives a query and an algorithm and returns all of the found
+    patterns on the events using the query and algorithm
+    "query": A class "Query" that defines what patterns to look for
+    "algorithm": A class "Algorithm" that defines what algorithm to use for finding the pattern
+    "isThread": Boolean that decides whether to open the function in a new thread or not
+    '''
+    def findPattern(self, query, algorithm, isThread = False):
+        if isThread:
+            thread = threading.Thread(target = algorithm.eval, args = (query, algorithm,))
             thread.start()
             return thread
         else:
-            return self.__findPattern(query, algorithim)
-
-p1 = CEP(Event.fileInput("NASDAQ_20080201_1_sorted.txt"))
-thread = p1.findPattern(0, 0, True)
+            return algorithm.eval(query, algorithm)
