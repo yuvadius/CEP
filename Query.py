@@ -8,7 +8,7 @@ from Formula import *
 from QItem import *
 
 class Query:
-    def __init__(self, patternStructure, patternMatchingCondition, slidingWindow):
+    def __init__(self, patternStructure, patternMatchingCondition, slidingWindow = None):
         self.patternStructure = patternStructure
         self.patternMatchingCondition = patternMatchingCondition
         self.slidingWindow = slidingWindow

@@ -1,11 +1,21 @@
+'''
+Seq(A)
+WHERE A.name = 'AAPL'
+'''
+
 from CEP import *
 
-event = Event.fileInput("NASDAQ_20080201_1_sorted.txt")
-print(event[0].event)
+events = Event.fileInput("NASDAQ_20080201_1_sorted.txt")
+print(events[0].event)
 
-'''
-x = AndFormula(EqFormula(AtomicTerm(5), IdentifierTerm("Moti", lambda x: x["age"])), SmallerThanEqFormula(AtomicTerm(13), MulTerm(AtomicTerm(5), AtomicTerm(3))))
-print(x.eval({ "Moti" : { "age": 5 } }))  # True
-print(x.eval({ "Moti" : { "age": 31 } }))  # False
+query = Query(
+[QItem("Stock", "s")], 
+EqFormula(IdentifierTerm("s", lambda x: x[0]), AtomicTerm("AAPL"))
+)
 
-'''
+tree = Tree()
+
+cep = CEP(events)
+result = cep.findPattern(query, tree, False)
+
+print(result)

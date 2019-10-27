@@ -24,8 +24,8 @@ class CEP:
     '''
     def findPattern(self, query, algorithm, isThread = False):
         if isThread:
-            thread = threading.Thread(target = algorithm.eval, args = (query, algorithm,))
+            thread = threading.Thread(target = algorithm.eval, args = (query, self.events,))
             thread.start()
             return thread
         else:
-            return algorithm.eval(query, algorithm)
+            return algorithm.eval(query, self.events)
