@@ -4,7 +4,7 @@ Event and Type are properties specified in SASE+.
 Negation and Kleene Plus are modifiers specified in SASE+.
 '''
 class QItem:
-    def __init__(self, eventType, name, kleenePlus=False, negated=False):
+    def __init__(self, eventType: str, name: str, kleenePlus: bool = False, negated: bool = False):
         self.eventType = eventType
         self.name = name
         self.kleenePlus = kleenePlus

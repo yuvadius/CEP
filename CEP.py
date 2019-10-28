@@ -12,7 +12,7 @@ from Algorithms import *
 from Query import *
 
 class CEP:
-    def __init__(self, events):
+    def __init__(self, events: List[Event]):
         self.events = events
     
     '''
@@ -22,7 +22,7 @@ class CEP:
     "algorithm": A class "Algorithm" that defines what algorithm to use for finding the pattern
     "isThread": Boolean that decides whether to open the function in a new thread or not
     '''
-    def findPattern(self, query, algorithm, isThread = False):
+    def findPattern(self, query: Query, algorithm: Algorithm, isThread: bool = False) -> Pattern:
         if isThread:
             thread = threading.Thread(target = algorithm.eval, args = (query, self.events,))
             thread.start()

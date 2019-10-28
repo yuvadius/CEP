@@ -6,8 +6,11 @@ It is the users responsibility to know what the values in "__event" stand for.
 Note: "__event" might me changed in the future to a dictionary"
 '''
 
+from __future__ import annotations
+from typing import List
+
 class Event:
-    def __init__(self, event):
+    def __init__(self, event: List):
         self.event = event
 
     '''
@@ -18,7 +21,7 @@ class Event:
     * Each line will be split on "," and the resulting array will be stored in an "Event"
     '''
     @staticmethod
-    def fileInput(filePath):
+    def fileInput(filePath: str) -> List[Event]:
         with open(filePath, "r") as f:
             content = f.readlines()
         events = []
