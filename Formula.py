@@ -101,7 +101,10 @@ class AtomicFormula(Formula):
         self.relBinOp = relBinOp
     
     def eval(self, binding: dict = {}):
-        return self.relBinOp(self.leftTerm.eval(binding), self.rightTerm.eval(binding))
+        try:
+            return self.relBinOp(self.leftTerm.eval(binding), self.rightTerm.eval(binding))
+        except NameError:
+            return True  # Name wasn't found, then it is a partial evaluation
         
         
 class EqFormula(Formula):
@@ -156,6 +159,12 @@ class BinaryLogicOpFormula(Formula):
     
     def eval(self, binding: dict = {}):
         return self.binaryLogicOp(self.leftFormula.eval(binding), self.rightFormula.eval(binding))
+
+
+class TrueFormula(Formula):
+    def eval(self, binding : dict = {}):
+        return True
+
 
 class AndFormula(Formula):
     def __init__(self, leftFormula, rightFormula):
