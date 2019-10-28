@@ -1,15 +1,17 @@
 '''
-Pattern Structure is a list of qitems
+Pattern Structure is a PatternStructure object.
 Pattern Matching Condition is a formula
-Sliding Window's format is to be discussed.
+Sliding Window's format is a timedelta object.
 '''
 
 from Formula import *
 from PatternStructure import *
 from typing import List
+from datetime import timedelta
+
 
 class Query:
-    def __init__(self, patternStructure: PatternStructure, patternMatchingCondition: Formula = TrueFormula(), slidingWindow = None):
+    def __init__(self, patternStructure: PatternStructure, patternMatchingCondition: Formula = TrueFormula(), slidingWindow: timedelta = timedelta.max):
         self.patternStructure = patternStructure
         self.patternMatchingCondition = patternMatchingCondition
         self.slidingWindow = slidingWindow

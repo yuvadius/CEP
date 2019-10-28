@@ -2,8 +2,8 @@
 These classes are used to represent a "parameter" to the PATTERN clause.
 '''
 
-from abc import ABC  # Abstract Base Class
 from __future__ import annotations
+from abc import ABC  # Abstract Base Class
 from typing import List
 
 class QItem:
