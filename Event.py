@@ -10,8 +10,9 @@ from __future__ import annotations
 from typing import List
 
 class Event:
-    def __init__(self, event: List):
+    def __init__(self, event: List, eventType: str):
         self.event = event
+        self.eventType = eventType
 
     '''
     Receives a file and returns an array of events.
@@ -21,10 +22,11 @@ class Event:
     * Each line will be split on "," and the resulting array will be stored in an "Event"
     '''
     @staticmethod
-    def fileInput(filePath: str) -> List[Event]:
+    def fileInput(filePath: str, eventTypeIndex: int) -> List[Event]:
         with open(filePath, "r") as f:
             content = f.readlines()
         events = []
-        for i in range(len(content)): 
-            events.append(Event(content[i].replace("\n", "").split(",")))
+        for i in range(len(content)):
+            event = content[i].replace("\n", "").split(",")
+            events.append(Event(event, event[eventTypeIndex]))
         return events
