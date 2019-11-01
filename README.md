@@ -43,40 +43,108 @@ cep.findPattern(query, Tree, False)  # apply the query on the CEP object and get
 ```
 
 # API
-#### The API defines the following classes: ####
+#### The API defines the following interfaces: ####
 <details>
     <summary>CEP</summary>
-    <p></p>
+    <p>
+        This class is the main Complex Event Processing Unit.
+        A CEP object is constructed with an Event Stream, practically a list of events, 
+        and has the following function:
+        ```
+        findPattern(self, query: Query, algorithm: Algorithm, isThread: bool = False)
+        ```
+        Receives a Query object and an Algorithm class and performs a CEP according to the given query
+        using the given algorithm. The Algorithm and Query classes are described below.
+        It also has a configuration parameter which allows the user to run the calculation on a background
+        thread instead of blocking the main thread.
+    </p>
 </details>
 <details>
     <summary>Event</summary>
-    <p></p>
+    <p>
+        This class is used to represent a single Event. It is constructed with a list of fields and the Event
+        type. It has the following static function:
+        ```
+        fileInput(filePath: str, eventTypeIndex: int) -> List[Event]
+        ```
+        Receives a path to a file containing an Event Stream. It also receives the index of the field
+        which represents the event type, in order to match a type for each event. It returns a list of
+        event objects representing the event stream loaded from the file.
+    </p>
 </details>
 <details>
     <summary>Query</summary>
-    <p></p>
     <p>
-       <details>
-            <summary>Formula</summary>
-            <p></p>
-        </details>
+        This class is used to represent a query for a CEP object.
+        It is constructed with a PatternStructure object, an optional conditional Formula object (where clause),
+        and an optional sliding window timedelta object (within clause).
+        The PatternStructure, Formula and timedelta classes are described below.
+    </p>
+    <p style="margin-left:20px">
         <details>
             <summary>PatternStructure</summary>
-            <p></p>
             <p>
+                This class is an abstract class used to represent a pattern structure, i.e. a
+                PATTERN clause's argument. Every instantiable subclass of this class can be used as a
+                pattern structure. It shall be constructed with a list of QItem objects. QItem class is
+                a class used to represent a single "argument" in the PATTERN clause, i.e. a type-name binding
+                in the sequence specification. The QItem class is described below. The PatternStructure's
+                subclasses represent the type of pattern structure used, e.g. StrictSequencePatternStructure.
+            </p>
+            <p style="margin-left:20px">
                 <details>
                     <summary>QItem</summary>
-                    <p></p>
+                    <p>
+                    The QItem class is merely a set of fields representing a defined name in the pattern
+                    structure, and the name shall be defined with a certain type, can be specified as a
+                    negated pattern member, and can be defined as a "one or more" list of events of a certain
+                    type, formally called "kleene plus".
+                    </p>
                 </details>
+            </p>
+        </details>
+       <details>
+            <summary>Formula</summary>
+            <p>
+            This class is an abstract class which represents a logic formula with identifiers and values (a SASE+ formula) and can be implemented by many formula classes which all shall implement the following function:
+            ```
+            eval(self, binding: dict = {})
+            ```
+            This function receives a name-value binding as a dictionary and evaluates to the value of the formula (True/False) when the values of the names are as bound. If there is a missing binding,
+            it shall assume the optimistic case, in which the missing value shall not prevent the formula
+            from evaluating to True.
             </p>
         </details>
         <details>
             <summary>datetime.timedelta</summary>
-            <p></p>
+            <p>
+            This class is used to represent a sliding window of a query (a WITHIN clause's argument).
+            It is an object used to represent a peroid of time and is described extensively in Python's documentation.
+            </p>
         </details>
     </p>
 </details>
 <details>
+    <summary>Algorithm</summary>
+    <p>
+    This class is an abstract class used to represent a CEP algorithm. Every subclass of it which represents a concrete algorithm shall not be instantiated either, but to be sent to CEP objects as the algorithm parameter. It is practically a singleton class. The Algorithm abstract class provides the following static
+    method:
+    ```
+    fileOutput(patterns: List[Pattern])
+    ```
+    Which receives a list of patterns and prints them into a file named pattern.txt.
+    Every concrete algorithm subclass shall implement the following static function:
+    ```
+    eval(query: Query, events: List[Event])
+    ```
+    Receives a query and an event stream and performs the CEP with the algorithm it represents.
+    The Pattern class is described below.
+    </p>
+</details>
+</details>
+<details>
     <summary>Pattern</summary>
-    <p></p>
+    <p>
+    This class is used to represent a pattern found by a CEP. It is constructed with a list of events, which are the events that matched the pattern, and an optional time field to save the time it took to find this pattern since the start of the process.
+    </p>
 </details>
