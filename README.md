@@ -16,7 +16,7 @@ https://github.com/etingof/pysnmp
 https://github.com/segmentio/nightmare
 
 # Features
-* [~] A mechanism for CEP pattern evaluation based on the acyclic graph model
+* [ ] A mechanism for CEP pattern evaluation based on the acyclic graph model
 * [ ] AND/SEQ operators with arbitrary Boolean conditions of two operands each (event1.attr1 </>/==/!= event2.attr2)
 * [X] Instance-based memory model (i.e., all partial results are explicitly stored in memory)
 * [X] Trivial algorithm for graph construction (converting a list of events into a left-deep tree)
@@ -31,7 +31,7 @@ TBD
 The following example creates a strict sequence query for an Apple stock change event followed by an
 Amazon stock change event followed by an Avid stock change event, then query is applied on the event stream
 in a NASDAQ stock changes file. 
-`
+```
 events = Event.fileInput("NASDAQ_20080201_1_sorted.txt", 0)  # Create an event stream from a file
 
 query = Query(
@@ -40,7 +40,7 @@ StrictSequencePatternStructure([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("A
 
 cep = CEP(events)  # create a complex event processing object
 cep.findPattern(query, Tree, False)  # apply the query on the CEP object and get the results in file patterns.txt.
-`
+```
 
 # API
 #### The API defines the following classes: ####
@@ -55,22 +55,26 @@ cep.findPattern(query, Tree, False)  # apply the query on the CEP object and get
 <details>
     <summary>Query</summary>
     <p></p>
-    <details>
-        <summary>Formula</summary>
-        <p></p>
-    </details>
-    <details>
-        <summary>PatternStructure</summary>
-        <p></p>
-            <details>
-            <summary>QItem</summary>
+    <p>
+       <details>
+            <summary>Formula</summary>
             <p></p>
         </details>
-    </details>
-    <details>
-        <summary>datetime.timedelta</summary>
-        <p></p>
-    </details>
+        <details>
+            <summary>PatternStructure</summary>
+            <p></p>
+            <p>
+                <details>
+                    <summary>QItem</summary>
+                    <p></p>
+                </details>
+            </p>
+        </details>
+        <details>
+            <summary>datetime.timedelta</summary>
+            <p></p>
+        </details>
+    </p>
 </details>
 <details>
     <summary>Pattern</summary>
