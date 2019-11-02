@@ -1,5 +1,5 @@
 # CEP
-A generic CEP library in python.
+A generic CEP library in python(requires python version 3.7+).
 
 As Wikipedia states, Complex event processing, or CEP, is event processing that combines data from multiple sources to infer events or patterns that suggest more complicated circumstances.
 
