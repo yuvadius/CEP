@@ -53,36 +53,22 @@ class BinaryOperationTerm(Term):
         return self.binOp(self.lhs.eval(binding), self.rhs.eval(binding))
 
         
-class PlusTerm(Term):
+class PlusTerm(BinaryOperationTerm):
     def __init__(self, lhs, rhs):
-        self.term = BinaryOperationTerm(lhs, rhs, lambda x, y: x + y)
-    
-    def eval(self, binding: dict = {}):
-        return self.term.eval(binding)
+        super().__init__(lhs, rhs, lambda x, y: x + y)
+        
+class MinusTerm(BinaryOperationTerm):
+    def __init__(self, lhs, rhs):
+        super().__init__(lhs, rhs, lambda x, y: x - y)
+        
+class MulTerm(BinaryOperationTerm):
+    def __init__(self, lhs, rhs):
+        super().__init__(lhs, rhs, lambda x, y: x * y)
 
         
-class MinusTerm(Term):
+class DivTerm(BinaryOperationTerm):
     def __init__(self, lhs, rhs):
-        self.term = BinaryOperationTerm(lhs, rhs, lambda x, y: x - y)
-    
-    def eval(self, binding: dict = {}):
-        return self.term.eval(binding)
-
-        
-class MulTerm(Term):
-    def __init__(self, lhs, rhs):
-        self.term = BinaryOperationTerm(lhs, rhs, lambda x, y: x * y)
-    
-    def eval(self, binding: dict = {}):
-        return self.term.eval(binding)
-
-        
-class DivTerm(Term):
-    def __init__(self, lhs, rhs):
-        self.term = BinaryOperationTerm(lhs, rhs, lambda x, y: x / y)
-    
-    def eval(self, binding: dict = {}):
-        return self.term.eval(binding)
+        super().__init__(lhs, rhs, lambda x, y: x / y)
 
         
 class Formula(ABC):
@@ -107,49 +93,31 @@ class AtomicFormula(Formula):
             return True  # Name wasn't found, then it is a partial evaluation
         
         
-class EqFormula(Formula):
+class EqFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
-        self.formula = AtomicFormula(leftTerm, rightTerm, lambda x, y: x == y)
-    
-    def eval(self, binding: dict = {}):
-        return self.formula.eval(binding)
+        super().__init__(leftTerm, rightTerm, lambda x, y: x == y)
         
         
-class NotEqFormula(Formula):
+class NotEqFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
-        self.formula = AtomicFormula(leftTerm, rightTerm, lambda x, y: x != y)
-    
-    def eval(self, binding: dict = {}):
-        return self.formula.eval(binding)
+        super().__init__(leftTerm, rightTerm, lambda x, y: x != y)
         
         
-class GreaterThanFormula(Formula):
+class GreaterThanFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
-        self.formula = AtomicFormula(leftTerm, rightTerm, lambda x, y: x > y)
-    
-    def eval(self, binding: dict = {}):
-        return self.formula.eval(binding)        
+        super().__init__(leftTerm, rightTerm, lambda x, y: x > y)    
         
-class SmallerThanFormula(Formula):
+class SmallerThanFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
-        self.formula = AtomicFormula(leftTerm, rightTerm, lambda x, y: x < y)
-    
-    def eval(self, binding: dict = {}):
-        return self.formula.eval(binding)        
+        super().__init__(leftTerm, rightTerm, lambda x, y: x < y)        
         
-class GreaterThanEqFormula(Formula):
+class GreaterThanEqFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
-        self.formula = AtomicFormula(leftTerm, rightTerm, lambda x, y: x >= y)
-    
-    def eval(self, binding: dict = {}):
-        return self.formula.eval(binding)        
+        super().__init__(leftTerm, rightTerm, lambda x, y: x >= y)    
         
-class SmallerThanEqFormula(Formula):
+class SmallerThanEqFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
-        self.formula = AtomicFormula(leftTerm, rightTerm, lambda x, y: x <= y)
-    
-    def eval(self, binding: dict = {}):
-        return self.formula.eval(binding)
+        super().__init__(leftTerm, rightTerm, lambda x, y: x <= y)
 
 class BinaryLogicOpFormula(Formula):
     def __init__(self, leftFormula, rightFormula, binaryLogicOp):
@@ -166,9 +134,6 @@ class TrueFormula(Formula):
         return True
 
 
-class AndFormula(Formula):
+class AndFormula(BinaryLogicOpFormula):
     def __init__(self, leftFormula, rightFormula):
-        self.formula = BinaryLogicOpFormula(leftFormula, rightFormula, lambda x, y: x and y)
-    
-    def eval(self, binding: dict = {}):
-        return self.formula.eval(binding)
+        super().__init__(leftFormula, rightFormula, lambda x, y: x and y)

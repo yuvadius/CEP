@@ -13,20 +13,3 @@ class Event:
     def __init__(self, event: List, eventType: str):
         self.event = event
         self.eventType = eventType
-
-    '''
-    Receives a file and returns an array of events.
-    "filepath": the relative path to the file that is to be read.
-    The file will be parsed as so:
-    * Each line will be a different event
-    * Each line will be split on "," and the resulting array will be stored in an "Event"
-    '''
-    @staticmethod
-    def fileInput(filePath: str, eventTypeIndex: int) -> List[Event]:
-        with open(filePath, "r") as f:
-            content = f.readlines()
-        events = []
-        for i in range(len(content)):
-            event = content[i].replace("\n", "").split(",")
-            events.append(Event(event, event[eventTypeIndex]))
-        return events

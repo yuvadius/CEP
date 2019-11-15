@@ -1,12 +1,13 @@
 from CEP import *
+from IOUtils import *
 
-events = Event.fileInput("NASDAQ_20080201_1_sorted.txt", 0)
-print(events[0].event)
+events = fileInput("NASDAQ_20080201_1_sorted.txt", 0)
 
-query = Query(
+pattern = Pattern(
 StrictSequencePatternStructure([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("AVID", "c")]), 
 EqFormula(IdentifierTerm("s", lambda x: x[0]), AtomicTerm("AAPL"))
 )
 
-cep = CEP(events)
-cep.findPattern(query, Tree, False)
+cep = CEP(Tree, [pattern], events)
+
+fileOutput(cep.getPatternMatchStream())

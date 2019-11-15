@@ -1,13 +1,17 @@
 '''
-This class is the returned result of an Algorithms eval function
-"time": The amount of time it took to callculate the pattern in milliseconds.
-If the time is "-1" then it can be considered as undefined
+Pattern Structure is a PatternStructure object.
+Pattern Matching Condition is a formula
+Sliding Window's format is a timedelta object.
 '''
 
-from Event import *
+from Formula import *
+from PatternStructure import *
 from typing import List
+from datetime import timedelta
+
 
 class Pattern:
-    def __init__(self, events: List[Event], time: int = -1):
-        self.events = events
-        self.time = time
+    def __init__(self, patternStructure: PatternStructure, patternMatchingCondition: Formula = TrueFormula(), slidingWindow: timedelta = timedelta.max):
+        self.patternStructure = patternStructure
+        self.patternMatchingCondition = patternMatchingCondition
+        self.slidingWindow = slidingWindow

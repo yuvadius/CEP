@@ -1,31 +1,24 @@
 '''
-This file contains all the pattern detection algorithms.
+This file contains all the pattern match detection algorithms.
 The abstract base class is "Algorithm".
 All specific algorithm classes will inherit from the base class.
 All specific algorithm classes will implement the function eval that returns
-all of the patterns for a query and a set of events.
+all of the matches for a pattern and a set of events.
 '''
 
 from __future__ import annotations
 from abc import ABC  # Abstract Base Class
-from Query import *
-from Event import *
 from Pattern import *
+from Event import *
+from PatternMatch import *
 from PatternStructure import *
+from Stream import *
 from typing import List
 
 class Algorithm(ABC):
     @staticmethod
-    def eval(query: Query, events: List[Event]) -> Pattern:
+    def eval(pattern: Pattern, events: Stream, matches : Stream) -> PatternMatch:
         pass
-
-    @staticmethod
-    def fileOutput(patterns: List[Pattern]):
-        with open('patterns.txt', 'w') as f:
-            for pattern in patterns:
-                for event in pattern.events:
-                    f.write("%s\n" % event.event)
-                f.write("\n" % event.event)
 
 class TreeNode:
     def __init__(self, valueType: QItem, value: Event = None, left: TreeNode = None, right: TreeNode = None, parent: TreeNode = None):
@@ -51,37 +44,36 @@ class Tree(Algorithm):
             return True
         return False
 
-    def getPattern(self) -> Pattern:
+    def getPatternMatch(self) -> PatternMatch:
         if (self.leafIndex < len(self.leafList)):
             return None
         events = []
         for node in self.leafList:
             events.append(node.value)
-        return Pattern(events)
+        return PatternMatch(events)
 
     @staticmethod
-    def eval(query: Query, events: List[Event]):
-        patterns = [] # List of patterns that will be returned
-        treeList = [Tree.createTree(query)]
+    def eval(pattern: Pattern, events: Stream, matches: Stream):
+        treeList = [Tree.createTree(pattern)]
         #Strict Sequence Order
-        if (type(query.patternStructure) == StrictSequencePatternStructure):
+        if (type(pattern.patternStructure) == StrictSequencePatternStructure):
             for event in events:
                 # Iterate backwards(All but first) to enable element deletion while iterating
                 for i in range(len(treeList) - 1, -1, -1):
                     if (i != 0 and treeList[i].addEvent(event) == False):
                         del treeList[i]
                 if (treeList[0].addEvent(event) == True):
-                    treeList.insert(0, Tree.createTree(query)) # Empty tree never removed
+                    treeList.insert(0, Tree.createTree(pattern)) # Empty tree never removed
                 for i in range(len(treeList) - 1, -1, -1):
-                    pattern = treeList[i].getPattern()
-                    if (pattern != None):
-                        patterns.append(pattern)
+                    patternMatch = treeList[i].getPatternMatch()
+                    if (patternMatch != None):
+                        matches.addItem(patternMatch)
                         del treeList[i]
-        Algorithm.fileOutput(patterns)
+        matches.end()
 
     @staticmethod
-    def createTree(query: Query) -> Tree:
-        qitems = query.patternStructure.qitems
+    def createTree(pattern: Pattern) -> Tree:
+        qitems = pattern.patternStructure.qitems
         nodeList = []
         for qitem in qitems:
             nodeList.append(TreeNode(qitem))
