@@ -19,3 +19,8 @@ class Stream:
     
     def end(self):
         self.stream.put(None)
+    
+    def duplicate(self):
+        ret = Stream()
+        ret.stream.queue = self.stream.queue.copy()
+        return ret

@@ -18,17 +18,31 @@ class CEP:
     "pattern": A class "Pattern" that defines what patterns to look for
     "algorithm": A class "Algorithm" that defines what algorithm to use for finding the pattern
     '''
-    def __init__(self, algorithm: Algorithm, patterns: List[Pattern], events: Stream = None):
-        if events:
-            self.events = events
-        else:
-            self.events = Stream()
+    def __init__(self, algorithm: Algorithm, patterns: List[Pattern] = None, events: Stream = None):
+        self.eventStreams = []
         self.patternMatches = Stream()
-        self.worker = threading.Thread(target = algorithm.eval, args = (patterns[0], self.events, self.patternMatches))
-        self.worker.start()
-    
+        self.algorithm = algorithm
+        if events:
+            self.baseStream = events
+        else:
+            self.baseStream = Stream()
+        if patterns:
+            for pattern in patterns:
+                eventStream = self.baseStream.duplicate()
+                worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
+                worker.start()
+                self.eventStreams.append(eventStream)
+
     def addEvent(self, event: Event):
-        self.events.addItem(event)
+        for eventStream in self.eventStreams: 
+            eventStream.addItem(event)
+        self.baseStream.addItem(event)
+    
+    def addPattern(self, pattern: Pattern):
+        eventStream = self.baseStream.duplicate()
+        worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
+        worker.start()
+        self.eventStreams.append(eventStream)
     
     def getPatternMatch(self):
         try:
