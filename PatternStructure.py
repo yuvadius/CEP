@@ -6,18 +6,32 @@ from __future__ import annotations
 from abc import ABC  # Abstract Base Class
 from typing import List
 
-class QItem:
-    def __init__(self, eventType: str, name: str, kleenePlus: bool = False, negated: bool = False):
-        self.eventType = eventType
-        self.name = name # Don't think that this is necessary
-        self.kleenePlus = kleenePlus
-        self.negated = negated
 
 class PatternStructure(ABC):
-    def __init__(self, qitems: List[QItem]):
-        self.qitems = qitems
+    def __init__(self):
+        pass
 
-# Strict Order
-class StrictSequencePatternStructure(PatternStructure):
-    def __init__(self, qitems: List[QItem]):
-        super(StrictSequencePatternStructure, self).__init__(qitems)
+class QItem(PatternStructure):
+    def __init__(self, eventType: str, name: str):
+        self.eventType = eventType
+        self.name = name
+
+class AndPatternStructure(PatternStructure):
+    def __init__(self, args: List[PatternStructure]):
+        self.args = args
+
+class OrPatternStructure(PatternStructure):
+    def __init__(self, args: List[PatternStructure]):
+        self.args = args
+
+class SeqPatternStructure(PatternStructure):
+    def __init__(self, args: List[PatternStructure]):
+        self.args = args
+
+class KleenePlusPatternStructure(PatternStructure):
+    def __init__(self, arg: PatternStructure):
+        self.arg = arg
+
+class NegationPatternStructure(PatternStructure):
+    def __init__(self, arg: PatternStructure):
+        self.arg = arg

@@ -56,7 +56,7 @@ class Tree(Algorithm):
     def eval(pattern: Pattern, events: Stream, matches: Stream):
         treeList = [Tree.createTree(pattern)]
         #Strict Sequence Order
-        if (type(pattern.patternStructure) == StrictSequencePatternStructure):
+        if (type(pattern.patternStructure) == SeqPatternStructure):
             for event in events:
                 # Iterate backwards(All but first) to enable element deletion while iterating
                 for i in range(len(treeList) - 1, -1, -1):
@@ -73,10 +73,10 @@ class Tree(Algorithm):
 
     @staticmethod
     def createTree(pattern: Pattern) -> Tree:
-        qitems = pattern.patternStructure.qitems
+        args = pattern.patternStructure.args
         nodeList = []
-        for qitem in qitems:
-            nodeList.append(TreeNode(qitem))
+        for arg in args:
+            nodeList.append(TreeNode(arg))
         root = nodeList[0]
         if len(nodeList) > 1:
             root = TreeNode(None, None, nodeList[0], nodeList[1])
