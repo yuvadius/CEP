@@ -11,7 +11,7 @@ from datetime import timedelta
 
 
 class Pattern:
-    def __init__(self, patternStructure: PatternStructure, patternMatchingCondition: Formula = TrueFormula(), slidingWindow: timedelta = timedelta.max):
+    def __init__(self, patternStructure: PatternStructure, patternMatchingCondition: Formula = None, slidingWindow: timedelta = timedelta.max):
         self.patternStructure = patternStructure
         self.patternMatchingCondition = patternMatchingCondition
         self.slidingWindow = slidingWindow

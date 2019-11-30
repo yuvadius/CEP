@@ -28,6 +28,10 @@ class SeqPatternStructure(PatternStructure):
     def __init__(self, args: List[PatternStructure]):
         self.args = args
 
+class StrictSeqPatternStructure(PatternStructure):
+    def __init__(self, args: List[PatternStructure]):
+        self.args = args
+
 class KleenePlusPatternStructure(PatternStructure):
     def __init__(self, arg: PatternStructure):
         self.arg = arg

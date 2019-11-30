@@ -79,7 +79,22 @@ class Formula(ABC):
     def eval(self, binding: dict = {}):
         pass
 
-        
+    @staticmethod
+    def getIdentifiers(formulaOrTerm):
+        identifiers = []
+        for attribute in dir(formulaOrTerm):
+            if (type(getattr(formulaOrTerm,attribute)) == IdentifierTerm):
+                identifiers.append(getattr(formulaOrTerm,attribute).name)
+            elif (issubclass(type(getattr(formulaOrTerm,attribute)), Formula) or issubclass(type(getattr(formulaOrTerm,attribute)), Term)):
+                identifiers = identifiers + Formula.getIdentifiers(getattr(formulaOrTerm,attribute))
+        return list(dict.fromkeys(identifiers)) # Remove duplicates
+
+    @staticmethod
+    def splitAndFormulas(formula):
+        if (type(formula) == AndFormula):
+            return Formula.splitAndFormulas(formula.leftFormula) + Formula.splitAndFormulas(formula.rightFormula)
+        return [formula]
+
 class AtomicFormula(Formula):
     def __init__(self, leftTerm, rightTerm, relBinOp):
         self.leftTerm = leftTerm
@@ -127,12 +142,6 @@ class BinaryLogicOpFormula(Formula):
     
     def eval(self, binding: dict = {}):
         return self.binaryLogicOp(self.leftFormula.eval(binding), self.rightFormula.eval(binding))
-
-
-class TrueFormula(Formula):
-    def eval(self, binding : dict = {}):
-        return True
-
 
 class AndFormula(BinaryLogicOpFormula):
     def __init__(self, leftFormula, rightFormula):

@@ -8,8 +8,10 @@ Note: "__event" might me changed in the future to a dictionary"
 
 from __future__ import annotations
 from typing import List
+from datetime import datetime
 
 class Event:
-    def __init__(self, event: List, eventType: str):
+    def __init__(self, event: List, eventType: str, date: datetime):
         self.event = event
         self.eventType = eventType
+        self.date = date
