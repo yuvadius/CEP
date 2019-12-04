@@ -13,9 +13,9 @@ from Event import *
 from PatternMatch import *
 from PatternStructure import *
 from Stream import *
-from typing import List
-from typing import Dict
+from typing import List, Dict
 from datetime import date, datetime, timedelta
+from copy import deepcopy
 
 class Algorithm(ABC):
     @staticmethod
@@ -35,6 +35,31 @@ class TreeNode:
     def isLeaf(self):
         return (self.left == None and self.right == None)
 
+    def addLeftNode(self, left):
+        self.left = left
+        if left != None:
+            left.parent = self
+
+    def addRightNode(self, right):
+        self.right = right
+        if right != None:
+            right.parent = self
+
+    def addNodes(self, left, right):
+        self.addLeftNode(left)
+        self.addRightNode(right)
+
+    def copyNodes(self, parentNode: TreeNode, leafList: List[TreeNode]) -> TreeNode:
+        if (self.evaluation):
+            return self
+        left = None if self.left == None else self.left.copyNodes(self, leafList)
+        right = None if self.right == None else self.right.copyNodes(self, leafList)
+        node = TreeNode(self.valueType, self.value, None, None, None, self.formula)
+        node.addNodes(left, right)
+        if (left == None and right == None):
+            leafList.append(node)
+        return node
+
     #Evalute node from bottom to top recursively
     def recursiveEvaluation(self, evalDictionary: Dict):
         if self.evaluation == True:
@@ -51,14 +76,14 @@ class TreeNode:
             return True
 
 class Tree(Algorithm):
-    def __init__(self, root: TreeNode, leafList: List[TreeNode], maxTimeDelta: timedelta = timedelta.max):
+    def __init__(self, root: TreeNode, leafList: List[TreeNode], maxTimeDelta: timedelta = timedelta.max, minTime: datetime = None, maxTime: datetime = None, evaluationDictionary: Dict = {}, leafIndex: int = 0):
         self.root = root
         self.leafList = leafList
-        self.leafIndex = 0
+        self.leafIndex = leafIndex
         self.maxTimeDelta = maxTimeDelta
-        self.minTime = None
-        self.maxTime = None
-        self.evaluationDictionary = {}
+        self.minTime = minTime
+        self.maxTime = maxTime
+        self.evaluationDictionary = evaluationDictionary
 
     def addEvent(self, event: Event) -> bool:
         currentLeaf = self.leafList[self.leafIndex]
@@ -79,30 +104,40 @@ class Tree(Algorithm):
         return True
 
     def getPatternMatch(self) -> PatternMatch:
-        if (self.leafIndex < len(self.leafList)):
+        if (self.root.evaluation == False):
             return None
         events = []
         for node in self.leafList:
             events.append(node.value)
         return PatternMatch(events)
 
+    def copy(self) -> Tree:
+        leafList = self.leafList[:self.leafIndex]
+        root = self.root.copyNodes(None, leafList)
+        return Tree(root, leafList, self.maxTimeDelta, self.minTime, self.maxTime, deepcopy(self.evaluationDictionary), self.leafIndex)
+
     @staticmethod
     def eval(pattern: Pattern, events: Stream, matches: Stream):
         #Strict Sequence Order
         if (type(pattern.patternStructure) == StrictSeqPatternStructure):
-            treeList = [Tree.createLeftDeepTree(pattern)]
+            emptyTree = Tree.createLeftDeepTree(pattern)
+            treeList = [emptyTree.copy()]
             for event in events:
                 # Iterate backwards to enable element deletion while iterating
-                for i in range(len(treeList) - 1, -1, -1):
-                    if (i != 0 and treeList[i].addEvent(event) == False):
+                for i in range(len(treeList) - 1, 0, -1):
+                    if (treeList[i].addEvent(event) == False):
                         del treeList[i]
                     else:
                         patternMatch = treeList[i].getPatternMatch()
                         if (patternMatch != None):
                             matches.addItem(patternMatch)
                             del treeList[i]
-                        if (i == 0):
-                            treeList.insert(0, Tree.createLeftDeepTree(pattern)) # Empty tree never removed
+                if (treeList[0].addEvent(event)):
+                    patternMatch = treeList[0].getPatternMatch()
+                    if (patternMatch != None):
+                        matches.addItem(patternMatch)
+                        del treeList[0]
+                    treeList.insert(0, emptyTree.copy()) # Empty tree never removed
         matches.end()
 
     @staticmethod
@@ -113,15 +148,13 @@ class Tree(Algorithm):
             nodeList.append(TreeNode(arg))
         root = nodeList[0]
         if len(nodeList) > 1:
-            root = TreeNode(None, None, nodeList[0], nodeList[1])
-            nodeList[0].parent = root
-            nodeList[1].parent = root
+            root = TreeNode(None, None)
+            root.addNodes(nodeList[0], nodeList[1])
             if len(nodeList) > 2:
                 for node in nodeList[2:]:
                     prevRoot = root
-                    root = TreeNode(None, None, prevRoot, node)
-                    prevRoot.parent = root
-                    node.parent = root
+                    root = TreeNode(None, None)
+                    root.addNodes(prevRoot, node)
         #Adding the formulas to the tree
         if len(nodeList) == 1:
             nodeList[0].formula = pattern.patternMatchingCondition

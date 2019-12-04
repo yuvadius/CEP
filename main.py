@@ -14,9 +14,9 @@ events = fileInput("NASDAQ_20080201_1_sorted.txt",
     "Date")
 
 pattern = Pattern(
-    StrictSeqPatternStructure([QItem("YHOO", "a"), QItem("AAPL", "b"), QItem("AKAM", "c")]), 
+    StrictSeqPatternStructure([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("AVID", "c")]), 
     AndFormula(
-        SmallerThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
+        GreaterThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
         GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
     timedelta(seconds=60)
 )
