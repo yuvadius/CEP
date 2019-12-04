@@ -30,14 +30,25 @@ class TreeNode:
         self.right = right
         self.parent = parent
         self.formula = formula
+        self.evaluation = False
 
     def isLeaf(self):
         return (self.left == None and self.right == None)
 
-    def evaluate(self, evalDictionary: Dict):
-        if self.formula == None:
+    #Evalute node from bottom to top recursively
+    def recursiveEvaluation(self, evalDictionary: Dict):
+        if self.evaluation == True:
+            return True if self.parent == None else self.parent.recursiveEvaluation(evalDictionary)
+        #If sons evaluated to true
+        elif (self.left == None or self.left.evaluation) and (self.right == None or self.right.evaluation):
+            self.evaluation = True if (self.formula == None) else self.formula.eval(evalDictionary)
+            if (self.evaluation == False):
+                return False
+            if (self.parent == None):#At top
+                return True
+            return self.parent.recursiveEvaluation(evalDictionary)
+        else:
             return True
-        return self.formula.eval(evalDictionary)
 
 class Tree(Algorithm):
     def __init__(self, root: TreeNode, leafList: List[TreeNode], maxTimeDelta: timedelta = timedelta.max):
@@ -47,11 +58,7 @@ class Tree(Algorithm):
         self.maxTimeDelta = maxTimeDelta
         self.minTime = None
         self.maxTime = None
-
-    def getEvaluationDictionary(self, evaluationDictionary = {}):
-        for i in range(0, self.leafIndex):
-            evaluationDictionary[self.leafList[i].valueType.name] = self.leafList[i].value.event
-        return evaluationDictionary
+        self.evaluationDictionary = {}
 
     def addEvent(self, event: Event) -> bool:
         currentLeaf = self.leafList[self.leafIndex]
@@ -59,11 +66,11 @@ class Tree(Algorithm):
         maxTime = event.date if (self.maxTime == None) else max(self.maxTime, event.date)
         if(currentLeaf.valueType.eventType != event.eventType):
             return False
-        if(currentLeaf.evaluate(event) == False):
-            return False
-        if(self.leafIndex > 0 and currentLeaf.parent.formula != None and currentLeaf.parent.evaluate(self.getEvaluationDictionary({currentLeaf.valueType.name: event.event})) == False):
-            return False
         if(self.maxTimeDelta != timedelta.max and minTime + self.maxTimeDelta < maxTime):
+            return False
+        self.evaluationDictionary[currentLeaf.valueType.name] = event.event
+        if(currentLeaf.recursiveEvaluation(self.evaluationDictionary) == False):
+            del self.evaluationDictionary[currentLeaf.valueType.name]
             return False
         self.minTime = minTime
         self.maxTime = maxTime
@@ -81,25 +88,25 @@ class Tree(Algorithm):
 
     @staticmethod
     def eval(pattern: Pattern, events: Stream, matches: Stream):
-        treeList = [Tree.createTree(pattern)]
         #Strict Sequence Order
         if (type(pattern.patternStructure) == StrictSeqPatternStructure):
+            treeList = [Tree.createLeftDeepTree(pattern)]
             for event in events:
-                # Iterate backwards(All but first) to enable element deletion while iterating
+                # Iterate backwards to enable element deletion while iterating
                 for i in range(len(treeList) - 1, -1, -1):
                     if (i != 0 and treeList[i].addEvent(event) == False):
                         del treeList[i]
-                if (treeList[0].addEvent(event) == True):
-                    treeList.insert(0, Tree.createTree(pattern)) # Empty tree never removed
-                for i in range(len(treeList) - 1, -1, -1):
-                    patternMatch = treeList[i].getPatternMatch()
-                    if (patternMatch != None):
-                        matches.addItem(patternMatch)
-                        del treeList[i]
+                    else:
+                        patternMatch = treeList[i].getPatternMatch()
+                        if (patternMatch != None):
+                            matches.addItem(patternMatch)
+                            del treeList[i]
+                        if (i == 0):
+                            treeList.insert(0, Tree.createLeftDeepTree(pattern)) # Empty tree never removed
         matches.end()
 
     @staticmethod
-    def createTree(pattern: Pattern) -> Tree:
+    def createLeftDeepTree(pattern: Pattern) -> Tree:
         #Adding the sequences to the tree
         nodeList = []
         for arg in pattern.patternStructure.args:
