@@ -1,4 +1,5 @@
 from __future__ import annotations
+from enum import Enum
 
 def isfloat(x: str):
     try:
@@ -24,3 +25,9 @@ def stringToNumber(x: str):
         return float(x)
     else:
         return x
+
+class addEventErrors(Enum):
+    SUCCESS = 0
+    WRONG_EVENT_TYPE_ERROR = 1
+    NOT_WITHIN_TIMESCALE_ERROR = 2
+    EVALUATION_ERROR = 3
