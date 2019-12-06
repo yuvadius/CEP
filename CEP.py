@@ -38,7 +38,7 @@ class CEP:
             eventStream.addItem(event)
         self.baseStream.addItem(event)
     
-    def addPattern(self, pattern: Pattern):
+    def addPattern(self, pattern: Pattern, priorityFactor: float = 0.5):
         eventStream = self.baseStream.duplicate()
         worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
         worker.start()

@@ -119,7 +119,7 @@ class Tree(Algorithm):
     @staticmethod
     def eval(pattern: Pattern, events: Stream, matches: Stream):
         #Strict Sequence Order
-        if (type(pattern.patternStructure) == StrictSeqPatternStructure):
+        if (pattern.patternStructure.getTopOperator() == StrictSeqOperator):
             emptyTree = Tree.createLeftDeepTree(pattern)
             treeList = [emptyTree.copy()]
             for event in events:

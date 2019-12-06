@@ -11,31 +11,34 @@ class PatternStructure(ABC):
     def __init__(self):
         pass
 
+    def getTopOperator(self):
+        return type(self)
+
 class QItem(PatternStructure):
     def __init__(self, eventType: str, name: str):
         self.eventType = eventType
         self.name = name
 
-class AndPatternStructure(PatternStructure):
+class AndOperator(PatternStructure):
     def __init__(self, args: List[PatternStructure]):
         self.args = args
 
-class OrPatternStructure(PatternStructure):
+class OrOperator(PatternStructure):
     def __init__(self, args: List[PatternStructure]):
         self.args = args
 
-class SeqPatternStructure(PatternStructure):
+class SeqOperator(PatternStructure):
     def __init__(self, args: List[PatternStructure]):
         self.args = args
 
-class StrictSeqPatternStructure(PatternStructure):
+class StrictSeqOperator(PatternStructure):
     def __init__(self, args: List[PatternStructure]):
         self.args = args
 
-class KleenePlusPatternStructure(PatternStructure):
+class KleenePlusOperator(PatternStructure):
     def __init__(self, arg: PatternStructure):
         self.arg = arg
 
-class NegationPatternStructure(PatternStructure):
+class NegationOperator(PatternStructure):
     def __init__(self, arg: PatternStructure):
         self.arg = arg
