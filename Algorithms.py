@@ -62,19 +62,19 @@ class TreeNode:
         return node
 
     #Evalute node from bottom to top recursively
-    def recursiveEvaluation(self, evalDictionary: Dict, nodesEvaluated: List[TreeNode]):
+    def recursiveEvaluation(self, evalDictionary: Dict, nodesToEvaluate: List[TreeNode], previousEvaluatedNode: TreeNode = None):
         if self.evaluation == True:
-            return True if self.parent == None else self.parent.recursiveEvaluation(evalDictionary, nodesEvaluated)
+            return True if self.parent == None else self.parent.recursiveEvaluation(evalDictionary, nodesToEvaluate)
         #If sons evaluated to true
-        elif (self.left == None or self.left.evaluation) and (self.right == None or self.right.evaluation):
-            self.evaluation = True if (self.formula == None) else self.formula.eval(evalDictionary)
-            if (self.evaluation == False):
+        elif (self.left == None or self.left.evaluation or self.left is previousEvaluatedNode) and (self.right == None or self.right.evaluation or self.right is previousEvaluatedNode):
+            evaluation = True if (self.formula == None) else self.formula.eval(evalDictionary)
+            if (evaluation == False):
                 return False
             else:
-                nodesEvaluated.append(self)
+                nodesToEvaluate.append(self)
             if (self.parent == None):#At top
                 return True
-            return self.parent.recursiveEvaluation(evalDictionary, nodesEvaluated)
+            return self.parent.recursiveEvaluation(evalDictionary, nodesToEvaluate, self)
         else:
             return True
 
@@ -98,20 +98,18 @@ class Tree(Algorithm):
         if(currentLeaf.valueType.eventType != event.eventType):
             return addEventErrors.WRONG_EVENT_TYPE_ERROR
         self.evaluationDictionary[currentLeaf.valueType.name] = event.event
-        nodesEvaluated = []
-        if(currentLeaf.recursiveEvaluation(self.evaluationDictionary, nodesEvaluated) == False):
+        nodesToEvaluate = []
+        if(currentLeaf.recursiveEvaluation(self.evaluationDictionary, nodesToEvaluate) == False):
             del self.evaluationDictionary[currentLeaf.valueType.name]
             return addEventErrors.EVALUATION_ERROR
         if (treeCopy != None):
             # Undo tree changes for the copy
-            for node in nodesEvaluated:
-                node.evaluation = False
             del self.evaluationDictionary[currentLeaf.valueType.name]
             treeCopy.append(self.copy())
             # Redo tree changes after the copy
-            for node in nodesEvaluated:
-                node.evaluation = True
             self.evaluationDictionary[currentLeaf.valueType.name] = event.event
+        for node in nodesToEvaluate:
+            node.evaluation = True
         self.minTime = minTime
         self.maxTime = maxTime
         currentLeaf.value = event
