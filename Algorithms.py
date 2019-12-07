@@ -79,25 +79,36 @@ class TreeNode:
             return True
 
 class Tree(Algorithm):
-    def __init__(self, root: TreeNode, leafList: List[TreeNode], maxTimeDelta: timedelta = timedelta.max, minTime: datetime = None, maxTime: datetime = None, evaluationDictionary: Dict = {}, leafIndex: int = 0, isEmpty: bool = True):
+    def __init__(self, root: TreeNode, order: orderType, leafList: List[TreeNode], eventTypeToLeafDict: Dict = None, maxTimeDelta: timedelta = timedelta.max, minTime: datetime = None, maxTime: datetime = None, evaluationDictionary: Dict = {}, leafIndex: int = 0, isEmpty: bool = True, evaluatedLeaves: List[TreeNode] = []):
         self.root = root
+        self.order = order
         self.leafList = leafList
-        self.leafIndex = leafIndex
         self.maxTimeDelta = maxTimeDelta
         self.minTime = minTime
         self.maxTime = maxTime
         self.evaluationDictionary = evaluationDictionary
+        self.leafIndex = leafIndex
         self.isEmpty = isEmpty
+        self.eventTypeToLeafDict = eventTypeToLeafDict
+        self.evaluatedLeaves = evaluatedLeaves
+
+    def getCurrentLeaf(self, event: Event) -> TreeNode:
+        if(self.order == orderType.ORDERED):
+            return self.leafList[self.leafIndex]
+        elif(self.order == orderType.NOT_ORDERED):
+            return self.leafList[self.eventTypeToLeafDict[event.eventType][0]]
+        else:
+            return None
 
     def addEvent(self, event: Event, treeCopy: List[Tree] = None) -> bool:
-        currentLeaf = self.leafList[self.leafIndex]
+        currentLeaf = self.getCurrentLeaf(event)
         minTime = event.date if (self.minTime == None) else min(self.minTime, event.date)
         maxTime = event.date if (self.maxTime == None) else max(self.maxTime, event.date)
         if(self.maxTimeDelta != timedelta.max and minTime + self.maxTimeDelta < maxTime):
             return addEventErrors.NOT_WITHIN_TIMESCALE_ERROR
         if(currentLeaf.valueType.eventType != event.eventType):
             return addEventErrors.WRONG_EVENT_TYPE_ERROR
-        self.evaluationDictionary[currentLeaf.valueType.name] = event.event
+        self.evaluationDictionary[currentLeaf.valueType.name] = event.event # Tree change, make sure to delete before copy or failure
         nodesToEvaluate = []
         if(currentLeaf.recursiveEvaluation(self.evaluationDictionary, nodesToEvaluate) == False):
             del self.evaluationDictionary[currentLeaf.valueType.name]
@@ -114,7 +125,9 @@ class Tree(Algorithm):
         self.maxTime = maxTime
         currentLeaf.value = event
         self.leafIndex += 1
+        self.evaluatedLeaves.append(currentLeaf)
         self.isEmpty = False
+        del self.eventTypeToLeafDict[event.eventType][0]
         return addEventErrors.SUCCESS
 
     def getPatternMatch(self) -> PatternMatch:
@@ -129,9 +142,9 @@ class Tree(Algorithm):
         return self.leafList[self.leafIndex].valueType.eventType
 
     def copy(self) -> Tree:
-        leafList = self.leafList[:self.leafIndex]
+        leafList = list(self.evaluatedLeaves) # Do a shallow copy
         root = self.root.copyNodes(None, leafList)
-        return Tree(root, leafList, self.maxTimeDelta, self.minTime, self.maxTime, deepcopy(self.evaluationDictionary), self.leafIndex, self.isEmpty)
+        return Tree(root, self.order, leafList, deepcopy(self.eventTypeToLeafDict), self.maxTimeDelta, self.minTime, self.maxTime, deepcopy(self.evaluationDictionary), self.leafIndex, self.isEmpty, list(self.evaluatedLeaves))
 
     @staticmethod
     def eval(pattern: Pattern, events: Stream, matches: Stream):
@@ -172,7 +185,6 @@ class Tree(Algorithm):
                         if (addEventStatus == addEventErrors.NOT_WITHIN_TIMESCALE_ERROR):
                             del treeDict[currentEventType][i] # Will not be the empty tree
                         elif (addEventStatus == addEventErrors.SUCCESS):
-                            treeDict[currentEventType].append(copiedTree[0]) # Add copy to end
                             patternMatch = currentTree.getPatternMatch()
                             if (patternMatch != None):
                                 matches.addItem(patternMatch)
@@ -180,14 +192,51 @@ class Tree(Algorithm):
                                 nextEventType = currentTree.getCurrentEventType()
                                 treeDict[nextEventType].append(currentTree)
                             del treeDict[currentEventType][i]
+                            treeDict[currentEventType].append(copiedTree[0]) # Add copy to end
+        # Conjunction
+        elif (pattern.patternStructure.getTopOperator() == AndOperator):
+            emptyTree = Tree.createLeftDeepTree(pattern)
+            # Sort trees in dict based on their available event types
+            treeDict = {}
+            for qItem in pattern.patternStructure.args:
+                if qItem.eventType not in treeDict:
+                    treeDict[qItem.eventType] = [emptyTree]
+            for event in events:
+                currentEventType = event.eventType
+                if currentEventType in treeDict: # Ignore events that or not in Conjunction
+                    # Iterate backwards to enable element deletion while iterating
+                    for i in range(len(treeDict[currentEventType]) - 1, -1, -1):
+                        copiedTree = []
+                        currentTree = treeDict[currentEventType][i]
+                        addEventStatus = currentTree.addEvent(event, copiedTree)
+                        if (addEventStatus == addEventErrors.NOT_WITHIN_TIMESCALE_ERROR):
+                            del treeDict[currentEventType][i] # Will not be the empty tree
+                        elif (addEventStatus == addEventErrors.SUCCESS):
+                            patternMatch = currentTree.getPatternMatch()
+                            if (patternMatch != None):
+                                matches.addItem(patternMatch)
+                            if (len(currentTree.eventTypeToLeafDict[currentEventType]) == 0):
+                                del treeDict[currentEventType][i]
+                            # Add the copy tree to treeDict
+                            eventTypeToLeafDict = copiedTree[0].eventTypeToLeafDict
+                            for eventType in eventTypeToLeafDict:
+                                if (len(eventTypeToLeafDict[eventType]) > 0):
+                                    treeDict[eventType].append(copiedTree[0])
         matches.end()
 
     @staticmethod
     def createLeftDeepTree(pattern: Pattern) -> Tree:
+        order = orderType.NOT_ORDERED if pattern.patternStructure.getTopOperator() == AndOperator else orderType.ORDERED
         #Adding the sequences to the tree
         nodeList = []
+        nodeCounter = 0
+        eventTypeToLeafDict = {}
         for qItem in pattern.patternStructure.args:
             nodeList.append(TreeNode(qItem))
+            if qItem.eventType not in eventTypeToLeafDict:
+                eventTypeToLeafDict[qItem.eventType] = []
+            eventTypeToLeafDict[qItem.eventType].append(nodeCounter)
+            nodeCounter += 1
         root = nodeList[0]
         if len(nodeList) > 1:
             root = TreeNode(None, None)
@@ -217,4 +266,4 @@ class Tree(Algorithm):
                             if len(identifiers) == len(nodeIdentifiers):
                                 node.parent.formula = formula
                                 break
-        return Tree(root, nodeList, pattern.slidingWindow)
+        return Tree(root, order, nodeList, eventTypeToLeafDict, pattern.slidingWindow) #TODO

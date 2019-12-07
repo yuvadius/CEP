@@ -31,3 +31,7 @@ class addEventErrors(Enum):
     WRONG_EVENT_TYPE_ERROR = 1
     NOT_WITHIN_TIMESCALE_ERROR = 2
     EVALUATION_ERROR = 3
+
+class orderType(Enum):
+    ORDERED = 0
+    NOT_ORDERED = 1
