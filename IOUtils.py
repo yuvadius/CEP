@@ -11,7 +11,7 @@ from helperFunctions import *
 from datetime import datetime
 
 '''
-Receives a file and returns an array of events.
+Receives a file and returns a stream of events.
 "filepath": the relative path to the file that is to be read.
 The file will be parsed as so:
 * Each line will be a different event

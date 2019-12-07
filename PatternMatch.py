@@ -8,6 +8,5 @@ from Event import *
 from typing import List
 
 class PatternMatch:
-    def __init__(self, events: List[Event], time: int = -1):
+    def __init__(self, events: List[Event]):
         self.events = events
-        self.time = time
