@@ -33,8 +33,8 @@ def fileInput(filePath: str, keyMap: List, eventTypeKey: str, eventTimeKey: str)
     return events
 
 
-def fileOutput(matches: Stream):
-    with open('matches.txt', 'w') as f:
+def fileOutput(matches: Stream, fileOutputPath: str = 'matches.txt'):
+    with open(fileOutputPath, 'w') as f:
         for match in matches:
             for event in match.events:
                 f.write("%s\n" % event.event)
