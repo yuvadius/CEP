@@ -42,13 +42,14 @@ events = fileInput("NASDAQ_20080201_1_sorted.txt",
     "Stock Ticker",
     "Date")
 
-# Searching for pattern matches in the created input file
+# Searching for pattern matches in the created input stream
 """
 PATTERN SEQ(AppleStockPriceUpdate a, AmazonStockPriceUpdate b, AvidStockPriceUpdate c)
 WHERE   a.OpeningPrice > b.OpeningPrice
     AND b.OpeningPrice > c.OpeningPrice
 WITHIN 5 minutes
 """
+# Create the pattern
 pattern = Pattern(
     SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("AVID", "c")]), 
     AndFormula(
@@ -56,7 +57,9 @@ pattern = Pattern(
         GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
     timedelta(minutes=5) # Including
 )
+# Construct a CEP object
 cep = CEP(Tree, [pattern], events)
+# write matches stream to a file.
 fileOutput(cep.getPatternMatchStream(), 'matches.txt')
 
 """
