@@ -11,7 +11,7 @@ from helperFunctions import *
 from datetime import datetime
 
 '''
-Receives a file and returns an array of events.
+Receives a file and returns a stream of events.
 "filepath": the relative path to the file that is to be read.
 The file will be parsed as so:
 * Each line will be a different event
@@ -33,8 +33,8 @@ def fileInput(filePath: str, keyMap: List, eventTypeKey: str, eventTimeKey: str)
     return events
 
 
-def fileOutput(matches: Stream):
-    with open('matches.txt', 'w') as f:
+def fileOutput(matches: Stream, fileOutputPath: str = 'matches.txt'):
+    with open(fileOutputPath, 'w') as f:
         for match in matches:
             for event in match.events:
                 f.write("%s\n" % event.event)
