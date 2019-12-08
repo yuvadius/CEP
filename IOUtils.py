@@ -38,4 +38,4 @@ def fileOutput(matches: Stream, fileOutputPath: str = 'matches.txt'):
         for match in matches:
             for event in match.events:
                 f.write("%s\n" % event.event)
-            f.write("\n" % event.event)
+            f.write("\n")
