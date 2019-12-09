@@ -148,26 +148,8 @@ class Tree(Algorithm):
 
     @staticmethod
     def eval(pattern: Pattern, events: Stream, matches: Stream):
-        # Strict Sequence Order
-        if (pattern.patternStructure.getTopOperator() == StrictSeqOperator):
-            emptyTree = Tree.createLeftDeepTree(pattern)
-            treeList = [emptyTree.copy()]
-            for event in events:
-                # Iterate backwards to enable element deletion while iterating
-                for i in range(len(treeList) - 1, -1, -1):
-                    isEmpty = treeList[i].isEmpty
-                    addEventStatus = treeList[i].addEvent(event)
-                    if (isEmpty == False and addEventStatus != addEventErrors.SUCCESS):
-                        del treeList[i]
-                    elif (addEventStatus == addEventErrors.SUCCESS):
-                        patternMatch = treeList[i].getPatternMatch()
-                        if (patternMatch != None):
-                            matches.addItem(patternMatch)
-                            del treeList[i]
-                        if (isEmpty == True):
-                            treeList.append(emptyTree.copy()) # Empty tree never removed
         # Sequence Order
-        elif (pattern.patternStructure.getTopOperator() == SeqOperator):
+        if (pattern.patternStructure.getTopOperator() == SeqOperator):
             # Sort trees in dict based on their next incoming eventType
             treeDict = {}
             for qItem in pattern.patternStructure.args:
