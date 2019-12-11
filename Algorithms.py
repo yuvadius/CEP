@@ -79,18 +79,18 @@ class TreeNode:
             return True
 
 class Tree(Algorithm):
-    def __init__(self, root: TreeNode, order: OrderType, leafList: List[TreeNode], eventTypeToLeafDict: Dict = None, maxTimeDelta: timedelta = timedelta.max, minTime: datetime = None, maxTime: datetime = None, evaluationDictionary: Dict = {}, leafIndex: int = 0, isEmpty: bool = True, evaluatedLeaves: List[TreeNode] = []):
+    def __init__(self, root: TreeNode, order: orderType, leafList: List[TreeNode], eventTypeToLeafDict: Dict = None, maxTimeDelta: timedelta = None, minTime: datetime = None, maxTime: datetime = None, evaluationDictionary: Dict = None, leafIndex: int = 0, isEmpty: bool = True, evaluatedLeaves: List[TreeNode] = None):
         self.root = root
         self.order = order
         self.leafList = leafList
-        self.maxTimeDelta = maxTimeDelta
+        self.maxTimeDelta = maxTimeDelta if maxTimeDelta != None else timedelta.max
         self.minTime = minTime
         self.maxTime = maxTime
-        self.evaluationDictionary = evaluationDictionary
+        self.evaluationDictionary = evaluationDictionary if evaluationDictionary != None else {}
         self.leafIndex = leafIndex
         self.isEmpty = isEmpty
         self.eventTypeToLeafDict = eventTypeToLeafDict
-        self.evaluatedLeaves = evaluatedLeaves
+        self.evaluatedLeaves = evaluatedLeaves if evaluatedLeaves != None else []
 
     def getCurrentLeaf(self, event: Event) -> TreeNode:
         if(self.order == OrderType.ORDERED):
@@ -148,26 +148,8 @@ class Tree(Algorithm):
 
     @staticmethod
     def eval(pattern: Pattern, events: Stream, matches: Stream):
-        # Strict Sequence Order
-        if (pattern.patternStructure.getTopOperator() == StrictSeqOperator):
-            emptyTree = Tree.createLeftDeepTree(pattern)
-            treeList = [emptyTree.copy()]
-            for event in events:
-                # Iterate backwards to enable element deletion while iterating
-                for i in range(len(treeList) - 1, -1, -1):
-                    isEmpty = treeList[i].isEmpty
-                    addEventStatus = treeList[i].addEvent(event)
-                    if (isEmpty == False and addEventStatus != AddEventErrors.SUCCESS):
-                        del treeList[i]
-                    elif (addEventStatus == AddEventErrors.SUCCESS):
-                        patternMatch = treeList[i].getPatternMatch()
-                        if (patternMatch != None):
-                            matches.addItem(patternMatch)
-                            del treeList[i]
-                        if (isEmpty == True):
-                            treeList.append(emptyTree.copy()) # Empty tree never removed
         # Sequence Order
-        elif (pattern.patternStructure.getTopOperator() == SeqOperator):
+        if (pattern.patternStructure.getTopOperator() == SeqOperator):
             # Sort trees in dict based on their next incoming eventType
             treeDict = {}
             for qItem in pattern.patternStructure.args:
@@ -266,4 +248,4 @@ class Tree(Algorithm):
                             if len(identifiers) == len(nodeIdentifiers):
                                 node.parent.formula = formula
                                 break
-        return Tree(root, order, nodeList, eventTypeToLeafDict, pattern.slidingWindow) #TODO
+        return Tree(root, order, nodeList, eventTypeToLeafDict, pattern.slidingWindow) 
