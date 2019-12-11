@@ -1,13 +1,15 @@
 from CEP import *
 from IOUtils import *
 
-def simplePatternSearch():
-    """
-    PATTERN SEQ(AppleStockPriceUpdate a, AmazonStockPriceUpdate b, AvidStockPriceUpdate c)
-    WHERE   a.OpeningPrice > b.OpeningPrice
-        AND b.OpeningPrice > c.OpeningPrice
-    WITHIN 5 minutes
-    """
+def fileCompare(pathA, pathB):
+    f = open(pathA)
+    g = open(pathB)
+    ret = (f.read() == g.read())
+    f.close()
+    g.close()
+    return ret
+
+def createTest(testName, patterns):
     events = fileInput("NASDAQ_20080201_1_sorted.txt", 
         [
             "Stock Ticker", 
@@ -19,6 +21,35 @@ def simplePatternSearch():
             "Volume"],
         "Stock Ticker",
         "Date")
+    cep = CEP(Tree, patterns, events)
+    fileOutput(cep.getPatternMatchStream(), '../TestsExpected/%sMatches.txt' % testName)
+    print("Finished creating test %s" % testName)
+
+def runTest(testName, patterns):
+    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
+        [
+        "Stock Ticker", 
+        "Date", 
+        "Opening Price", 
+        "Peak Price", 
+        "Lowest Price", 
+        "Close Price", 
+        "Volume"],
+    "Stock Ticker",
+    "Date")
+    cep = CEP(Tree, patterns, events)
+    fileOutput(cep.getPatternMatchStream(), '%sMatches.txt' % testName)
+    print("Test %s result: %s" % (testName, 
+        "Succeeded" if fileCompare("Matches/%sMatches.txt" % testName, "TestsExpected/%sMatches.txt" % testName) else "Failed"))
+
+
+def simplePatternSearch():
+    """
+    PATTERN SEQ(AppleStockPriceUpdate a, AmazonStockPriceUpdate b, AvidStockPriceUpdate c)
+    WHERE   a.OpeningPrice > b.OpeningPrice
+        AND b.OpeningPrice > c.OpeningPrice
+    WITHIN 5 minutes
+    """
     pattern = Pattern(
         SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("AVID", "c")]), 
         AndFormula(
@@ -26,9 +57,7 @@ def simplePatternSearch():
             GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
         timedelta(minutes=5) # Including
     )
-    cep = CEP(Tree, [pattern], events)
-    fileOutput(cep.getPatternMatchStream(), 'matches.txt')
-    print("Finished processing simple pattern")
+    runTest("simple", [pattern])
 
 def googleAscendPatternSearch():
     """
@@ -37,17 +66,6 @@ def googleAscendPatternSearch():
     WHERE a.PeakPrice < b.PeakPrice AND b.PeakPrice < c.PeakPrice
     WITHIN 3 minutes
     """
-    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
-        [
-            "Stock Ticker", 
-            "Date", 
-            "Opening Price", 
-            "Peak Price", 
-            "Lowest Price", 
-            "Close Price", 
-            "Volume"],
-        "Stock Ticker",
-        "Date")
     googleAscendPattern = Pattern(
         SeqOperator([QItem("GOOG", "a"), QItem("GOOG", "b"), QItem("GOOG", "c")]),
         AndFormula(
@@ -56,9 +74,7 @@ def googleAscendPatternSearch():
         ),
         timedelta(minutes=3)
     )
-    cep = CEP(Tree, [googleAscendPattern], events)
-    fileOutput(cep.getPatternMatchStream(), 'googleAscendMatches.txt')
-    print("Finished processing google ascend pattern")
+    runTest('googleAscend', [googleAscendPattern])
 
 def amazonInstablePatternSearch():
     """
@@ -67,17 +83,6 @@ def amazonInstablePatternSearch():
     WHERE x1.LowestPrice <= 75 AND x2.PeakPrice >= 78 AND x3.LowestPrice <= x1.LowestPrice
     WITHIN 1 day
     """
-    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
-        [
-            "Stock Ticker", 
-            "Date", 
-            "Opening Price", 
-            "Peak Price", 
-            "Lowest Price", 
-            "Close Price", 
-            "Volume"],
-        "Stock Ticker",
-        "Date")
     amazonInstablePattern = Pattern(
         SeqOperator([QItem("AMZN", "x1"), QItem("AMZN", "x2"), QItem("AMZN", "x3")]),
         AndFormula(
@@ -89,9 +94,7 @@ def amazonInstablePatternSearch():
         ),
         timedelta(days=1)
     )
-    cep = CEP(Tree, [amazonInstablePattern], events)
-    fileOutput(cep.getPatternMatchStream(), 'amazonInstableMatches.txt')
-    print("Finished processing amazon instable pattern")
+    runTest('amazonInstable', [amazonInstablePattern])
 
 def msftDrivRacePatternSearch():
     """
@@ -100,17 +103,6 @@ def msftDrivRacePatternSearch():
     WHERE a.PeakPrice < b.PeakPrice AND b.PeakPrice < c.PeakPrice AND c.PeakPrice < d.PeakPrice AND d.PeakPrice < e.PeakPrice
     WITHIN 10 minutes
     """
-    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
-        [
-            "Stock Ticker", 
-            "Date", 
-            "Opening Price", 
-            "Peak Price", 
-            "Lowest Price", 
-            "Close Price", 
-            "Volume"],
-        "Stock Ticker",
-        "Date")
     msftDrivRacePattern = Pattern(
         SeqOperator([QItem("MSFT", "a"), QItem("DRIV", "b"), QItem("MSFT", "c"), QItem("DRIV", "d"), QItem("MSFT", "e")]),
         AndFormula(
@@ -125,9 +117,7 @@ def msftDrivRacePatternSearch():
         ),
         timedelta(minutes=10)
     )
-    cep = CEP(Tree, [msftDrivRacePattern], events)
-    fileOutput(cep.getPatternMatchStream(), 'msftDrivRaceMatches.txt')
-    print("Finished processing msft-driv race pattern")
+    runTest('msftDrivRace', msftDrivRacePattern)
 
 def googleIncreasePatternSearch():
     """
@@ -136,48 +126,22 @@ def googleIncreasePatternSearch():
     WHERE b.PeakPrice >= 1.01 * a.PeakPrice
     WITHIN 30 minutes
     """
-    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
-        [
-            "Stock Ticker", 
-            "Date", 
-            "Opening Price", 
-            "Peak Price", 
-            "Lowest Price", 
-            "Close Price", 
-            "Volume"],
-        "Stock Ticker",
-        "Date")
     googleIncreasePattern = Pattern(
         SeqOperator([QItem("GOOG", "a"), QItem("GOOG", "b")]),
         GreaterThanEqFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), MulTerm(AtomicTerm(1.01), IdentifierTerm("a", lambda x: x["Peak Price"]))),
         timedelta(minutes=30)
     )
-    cep = CEP(Tree, [googleIncreasePattern], events)
-    fileOutput(cep.getPatternMatchStream(), 'googleIncreaseMatches.txt')
-    print("Finished processing google increase pattern")
+    runTest('googleIncrease', [googleIncreasePattern])
 
 def amazonSpecificPatternSearch():
     """
     This pattern is looking for an amazon stock in peak price of 73.
     """
-    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
-        [
-            "Stock Ticker", 
-            "Date", 
-            "Opening Price", 
-            "Peak Price", 
-            "Lowest Price", 
-            "Close Price", 
-            "Volume"],
-        "Stock Ticker",
-        "Date")
     amazonSpecificPattern = Pattern(
         SeqOperator([QItem("AMZN", "a")]),
         EqFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), AtomicTerm(73))
     )
-    cep = CEP(Tree, [amazonSpecificPattern], events)
-    fileOutput(cep.getPatternMatchStream(), 'amazonSpecificMatches.txt')
-    print("Finished processing amazon specific pattern")
+    runTest('amazonSpecific', [amazonSpecificPattern])
 
 def googleAmazonLowPatternSearch():
     """
@@ -186,17 +150,6 @@ def googleAmazonLowPatternSearch():
     WHERE a.PeakPrice <= 73 AND g.PeakPrice <= 525
     WITHIN 1 minute
     """
-    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
-        [
-            "Stock Ticker", 
-            "Date", 
-            "Opening Price", 
-            "Peak Price", 
-            "Lowest Price", 
-            "Close Price", 
-            "Volume"],
-        "Stock Ticker",
-        "Date")
     googleAmazonLowPattern = Pattern(
         AndOperator([QItem("AMZN", "a"), QItem("GOOG", "g")]),
         AndFormula(
@@ -205,9 +158,7 @@ def googleAmazonLowPatternSearch():
         ),
         timedelta(minutes=1)
     )
-    cep = CEP(Tree, [googleAmazonLowPattern], events)
-    fileOutput(cep.getPatternMatchStream(), 'googleAmazonLowMatches.txt')
-    print("Finished processing google & amazon low price pattern")
+    runTest('googleAmazonLow', [googleAmazonLowPattern])
 
 def nonsensePatternSearch():
     """
@@ -215,17 +166,6 @@ def nonsensePatternSearch():
     PATTERN AND(AmazonStockPriceUpdate a, AvidStockPriceUpdate b, AppleStockPriceUpdate c)
     WHERE a.PeakPrice < b.PeakPrice AND b.PeakPrice < c.PeakPrice AND c.PeakPrice < a.PeakPrice
     """
-    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
-        [
-            "Stock Ticker", 
-            "Date", 
-            "Opening Price", 
-            "Peak Price", 
-            "Lowest Price", 
-            "Close Price", 
-            "Volume"],
-        "Stock Ticker",
-        "Date")
     nonsensePattern = Pattern(
         AndOperator([QItem("AMZN", "a"), QItem("AVID", "b"), QItem("AAPL", "c")]),
         AndFormula(
@@ -237,9 +177,7 @@ def nonsensePatternSearch():
         ),
         timedelta(minutes=1)
     )
-    cep = CEP(Tree, [nonsensePattern], events)
-    fileOutput(cep.getPatternMatchStream(), 'emptyNonsenseMatches.txt')
-    print("Finished processing non-sense pattern")
+    runTest('nonsense', nonsensePattern)
 
 def hierarchyPatternSearch():
     """
@@ -248,17 +186,6 @@ def hierarchyPatternSearch():
     WHERE a.PeakPrice < b.PeakPrice AND b.PeakPrice < c.PeakPrice
     WITHIN 1 minute
     """
-    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
-        [
-            "Stock Ticker", 
-            "Date", 
-            "Opening Price", 
-            "Peak Price", 
-            "Lowest Price", 
-            "Close Price", 
-            "Volume"],
-        "Stock Ticker",
-        "Date")
     hierarchyPattern = Pattern(
         AndOperator([QItem("AMZN", "a"), QItem("AAPL", "b"), QItem("GOOG", "c")]),
         AndFormula(
@@ -267,6 +194,14 @@ def hierarchyPatternSearch():
         ),
         timedelta(minutes=1)
     )
-    cep = CEP(Tree, [hierarchyPattern], events)
-    fileOutput(cep.getPatternMatchStream(), 'hierarchyMatches.txt')
-    print("Finished processing hierarchy pattern")
+    runTest('hierarchy', [hierarchyPattern])
+
+simplePatternSearch()
+googleAscendPatternSearch()
+amazonInstablePatternSearch()
+msftDrivRacePatternSearch()
+googleIncreasePatternSearch()
+amazonSpecificPatternSearch()
+googleAmazonLowPatternSearch()
+nonsensePatternSearch()
+hierarchyPatternSearch()

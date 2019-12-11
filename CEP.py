@@ -10,6 +10,7 @@ from Event import *
 from PatternMatch import *
 from Algorithms import *
 from Pattern import *
+from Utils import *
 
 class CEP:
     '''
@@ -38,7 +39,7 @@ class CEP:
             eventStream.addItem(event)
         self.baseStream.addItem(event)
     
-    def addPattern(self, pattern: Pattern, priorityFactor: float = 0.5):
+    def addPattern(self, pattern: Pattern, priority: int = 0, policy : PolicyType = PolicyType.FIND_ALL):
         eventStream = self.baseStream.duplicate()
         worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
         worker.start()
@@ -52,3 +53,8 @@ class CEP:
     
     def getPatternMatchStream(self):
         return self.patternMatches
+
+    def close(self):
+        for eventStream in self.eventStreams:
+            eventStream.end()
+        self.baseStream.end()

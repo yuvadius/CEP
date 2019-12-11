@@ -26,12 +26,16 @@ def stringToNumber(x: str):
     else:
         return x
 
-class addEventErrors(Enum):
+class AddEventErrors(Enum):
     SUCCESS = 0
     WRONG_EVENT_TYPE_ERROR = 1
     NOT_WITHIN_TIMESCALE_ERROR = 2
     EVALUATION_ERROR = 3
 
-class orderType(Enum):
+class OrderType(Enum):
     ORDERED = 0
     NOT_ORDERED = 1
+
+class PolicyType(Enum):
+    FIND_ALL = 0
+    FIND_FAST = 1

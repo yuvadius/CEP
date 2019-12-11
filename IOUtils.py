@@ -7,7 +7,7 @@ from __future__ import annotations
 from typing import List
 from Event import *
 from Stream import *
-from helperFunctions import *
+from Utils import *
 from datetime import datetime
 
 '''
@@ -33,8 +33,8 @@ def fileInput(filePath: str, keyMap: List, eventTypeKey: str, eventTimeKey: str)
     return events
 
 
-def fileOutput(matches: Stream, fileOutputPath: str = 'matches.txt'):
-    with open(fileOutputPath, 'w') as f:
+def fileOutput(matches: Stream, fileOutputName: str = 'matches.txt'):
+    with open("Matches/" + fileOutputName, 'w') as f:
         for match in matches:
             for event in match.events:
                 f.write("%s\n" % event.event)
