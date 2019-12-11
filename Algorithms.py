@@ -252,7 +252,7 @@ class Tree(Algorithm):
 
     @staticmethod
     def eval(pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc = None):
-        treeConstructionFunc = Tree.createLeftDeepTree(pattern) if treeConstructionFunc is None else treeConstructionFunc
+        treeConstructionFunc = Tree.createLeftDeepTree if treeConstructionFunc is None else treeConstructionFunc
         # Sequence Order
         if (pattern.patternStructure.getTopOperator() == SeqOperator):
             Tree.__sequenceEval(pattern, events, matches, treeConstructionFunc)    
