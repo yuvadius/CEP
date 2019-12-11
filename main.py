@@ -1,16 +1,7 @@
 from CEP import *
 from IOUtils import *
 
-def fileCompare(pathA, pathB):
-    f = open(pathA)
-    g = open(pathB)
-    ret = (f.read() == g.read())
-    f.close()
-    g.close()
-    return ret
-
-def createTest(testName, patterns):
-    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
+nasdaqEventStream = fileInput("NASDAQ_20080201_1_sorted.txt", 
         [
             "Stock Ticker", 
             "Date", 
@@ -21,24 +12,25 @@ def createTest(testName, patterns):
             "Volume"],
         "Stock Ticker",
         "Date")
+
+def fileCompare(pathA, pathB):
+    f = open(pathA)
+    g = open(pathB)
+    ret = (f.read() == g.read())
+    f.close()
+    g.close()
+    return ret
+
+def createTest(testName, patterns):
+    events = nasdaqEventStream.duplicate()
     cep = CEP(Tree, patterns, events)
-    fileOutput(cep.getPatternMatchStream(), '../TestsExpected/%sMatches.txt' % testName)
+    fileOutput(cep.getPatternMatchContainer(), '../TestsExpected/%sMatches.txt' % testName)
     print("Finished creating test %s" % testName)
 
 def runTest(testName, patterns):
-    events = fileInput("NASDAQ_20080201_1_sorted.txt", 
-        [
-        "Stock Ticker", 
-        "Date", 
-        "Opening Price", 
-        "Peak Price", 
-        "Lowest Price", 
-        "Close Price", 
-        "Volume"],
-    "Stock Ticker",
-    "Date")
+    events = nasdaqEventStream.duplicate()
     cep = CEP(Tree, patterns, events)
-    fileOutput(cep.getPatternMatchStream(), '%sMatches.txt' % testName)
+    fileOutput(cep.getPatternMatchContainer(), '%sMatches.txt' % testName)
     print("Test %s result: %s" % (testName, 
         "Succeeded" if fileCompare("Matches/%sMatches.txt" % testName, "TestsExpected/%sMatches.txt" % testName) else "Failed"))
 
@@ -55,7 +47,7 @@ def simplePatternSearch():
         AndFormula(
             GreaterThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
             GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
-        timedelta(minutes=5) # Including
+        timedelta(minutes=5)
     )
     runTest("simple", [pattern])
 
@@ -117,7 +109,7 @@ def msftDrivRacePatternSearch():
         ),
         timedelta(minutes=10)
     )
-    runTest('msftDrivRace', msftDrivRacePattern)
+    runTest('msftDrivRace', [msftDrivRacePattern])
 
 def googleIncreasePatternSearch():
     """
@@ -177,7 +169,7 @@ def nonsensePatternSearch():
         ),
         timedelta(minutes=1)
     )
-    runTest('nonsense', nonsensePattern)
+    runTest('nonsense', [nonsensePattern])
 
 def hierarchyPatternSearch():
     """
@@ -195,6 +187,30 @@ def hierarchyPatternSearch():
         timedelta(minutes=1)
     )
     runTest('hierarchy', [hierarchyPattern])
+
+def multiplePatternSearch():
+    amazonInstablePattern = Pattern(
+        SeqOperator([QItem("AMZN", "x1"), QItem("AMZN", "x2"), QItem("AMZN", "x3")]),
+        AndFormula(
+            SmallerThanEqFormula(IdentifierTerm("x1", lambda x: x["Lowest Price"]), AtomicTerm(75)),
+            AndFormula(
+                GreaterThanEqFormula(IdentifierTerm("x2", lambda x: x["Peak Price"]), AtomicTerm(78)),
+                SmallerThanEqFormula(IdentifierTerm("x3", lambda x: x["Lowest Price"]), IdentifierTerm("x1", lambda x: x["Lowest Price"]))
+            )
+        ),
+        timedelta(days=1)
+    )
+    googleAscendPattern = Pattern(
+        SeqOperator([QItem("GOOG", "a"), QItem("GOOG", "b"), QItem("GOOG", "c")]),
+        AndFormula(
+            SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
+            SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
+        ),
+        timedelta(minutes=3)
+    )
+    createTest('multiplePatterns', [amazonInstablePattern, googleAscendPattern])
+    print("Created the output as test, because output is non-deterministic. Should check manually.")
+
 
 simplePatternSearch()
 googleAscendPatternSearch()

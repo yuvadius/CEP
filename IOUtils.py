@@ -6,7 +6,7 @@ such as creating an event stream for a file, writing pattern stream to a file, e
 from __future__ import annotations
 from typing import List
 from Event import *
-from Stream import *
+from IODataStructures import *
 from Utils import *
 from datetime import datetime
 
@@ -29,7 +29,7 @@ def fileInput(filePath: str, keyMap: List, eventTypeKey: str, eventTimeKey: str)
         eventType = event[eventTypeKey]
         eventTime = datetime(year=int(str(event[eventTimeKey])[0:4]), month=int(str(event[eventTimeKey])[4:6]), day=int(str(event[eventTimeKey])[6:8]), hour=int(str(event[eventTimeKey])[8:10]), minute=int(str(event[eventTimeKey])[10:12]))
         events.addItem(Event(event, eventType, eventTime))
-    events.end()
+    events.close()
     return events
 
 

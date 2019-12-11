@@ -19,17 +19,20 @@ class CEP:
     "pattern": A class "Pattern" that defines what patterns to look for
     "algorithm": A class "Algorithm" that defines what algorithm to use for finding the pattern
     '''
-    def __init__(self, algorithm: Algorithm, patterns: List[Pattern] = None, events: Stream = None):
+    def __init__(self, algorithm: Algorithm, patterns: List[Pattern] = None, events: Stream = None, output: Container = None, saveReplica: bool = True):
         self.eventStreams = []
-        self.patternMatches = Stream()
+        self.patternMatches = output if output else Stream()
         self.algorithm = algorithm
-        if events:
+        if saveReplica and events:
             self.baseStream = events
-        else:
+        elif saveReplica:
             self.baseStream = Stream()
+        else:
+            self.baseStream = None
+        
         if patterns:
             for pattern in patterns:
-                eventStream = self.baseStream.duplicate()
+                eventStream = self.baseStream.duplicate() if self.baseStream else Stream()
                 worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
                 worker.start()
                 self.eventStreams.append(eventStream)
@@ -37,24 +40,26 @@ class CEP:
     def addEvent(self, event: Event):
         for eventStream in self.eventStreams: 
             eventStream.addItem(event)
-        self.baseStream.addItem(event)
+        if self.baseStream:
+            self.baseStream.addItem(event)
     
     def addPattern(self, pattern: Pattern, priority: int = 0, policy : PolicyType = PolicyType.FIND_ALL):
-        eventStream = self.baseStream.duplicate()
+        eventStream = self.baseStream.duplicate() if self.baseStream else Stream()
         worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
         worker.start()
         self.eventStreams.append(eventStream)
     
     def getPatternMatch(self):
         try:
-            return next(self.patternMatches)
+            return self.patternMatches.getItem()
         except StopIteration:
             return None
     
-    def getPatternMatchStream(self):
+    def getPatternMatchContainer(self):
         return self.patternMatches
 
     def close(self):
         for eventStream in self.eventStreams:
-            eventStream.end()
-        self.baseStream.end()
+            eventStream.close()
+        if self.baseStream:
+            self.baseStream.close()

@@ -196,7 +196,7 @@ addItem(self, item)
 Adds the given item to the data stream.
 
 ```
-end(self)
+close(self)
 ```
 Closes the data stream.
 
