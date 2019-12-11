@@ -9,12 +9,6 @@ The algorithms are accessible for use with our API.
 
 This short documentation will be updated regularly.
 
-Github doc examples:
-
-https://github.com/etingof/pysnmp
-
-https://github.com/segmentio/nightmare
-
 # Features
 * [X] A mechanism for CEP pattern evaluation based on the acyclic graph model
 * [X] Instance-based memory model (i.e., all partial results are explicitly stored in memory)
@@ -23,8 +17,24 @@ https://github.com/segmentio/nightmare
 * [X] Built-in dataset scheme
 * [X] File-based input/output
 
-# Download & Install
-TBD
+# How to Use
+* The root of this library is the CEP object. The CEP object is used to perform complex event processing on an event stream.
+* The CEP object consists of a processing algorithm, event stream, patterns, and matches container. It runs its algorithm on separate threads to find matches for the given patterns. The matches are found in the event stream. The event stream can be given on construction, and you may add events on the fly - either through the given event stream or with the CEP object.
+* To create an event stream you can manually create an empty stream and add events to it, and you can also provide a csv file to the fileInput function.
+* To handle the CEP output you can manually read the events from the CEP object or from the matches container, or use the fileOutput function to print the matches into a file.
+* To create a pattern, you shall construct a pattern structure - SEQ(A, B, C) or AND(X, Y).
+    * You can attach a formula that the atomic items in the pattern structure shall suffice.
+    * You can attach a time delta in which the atomic items in the pattern structure should appear in the stream.
+
+# Program Flow
+* Every pattern of a CEP thread runs on a different thread.
+* Every thread runs an algorithm's evaluation function.
+* The CEP algorithms implemented in this library are based on the acyclic graph model. They will create the acyclic graph for the pattern and start looking for matches in the event stream.
+* Upon a partial match, it shall be stored in memory.
+* Upon a match, the algorithm will add that match to a given container.
+
+# Optimization Notes
+* Formulas can affect memory usage. The algorithm splits the formula to parts which are relevant to partial results. When partial results are stored in memory, they may be irrelevant according to the formula, but the algorithm can't know that yet. For instance, SEQ(A, B, C) where A > B + C. When storing a partial result of A, B - if B >= A then the partial result can be deleted, but the algorithm can only know that when a C appears. If the formula was A > B and A > B + C, the algorithm would have split the "and" and would have known that it can dump the partial result.
 
 # Examples
 
@@ -44,25 +54,6 @@ events = fileInput("NASDAQ_20080201_1_sorted.txt",
 
 # Searching for pattern matches in the created input stream
 """
-PATTERN SEQ(AppleStockPriceUpdate a, AmazonStockPriceUpdate b, AvidStockPriceUpdate c)
-WHERE   a.OpeningPrice > b.OpeningPrice
-    AND b.OpeningPrice > c.OpeningPrice
-WITHIN 5 minutes
-"""
-# Create the pattern
-pattern = Pattern(
-    SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("AVID", "c")]), 
-    AndFormula(
-        GreaterThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
-        GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
-    timedelta(minutes=5) # Including
-)
-# Construct a CEP object
-cep = CEP(Tree, [pattern], events)
-# write matches stream to a file.
-fileOutput(cep.getPatternMatchStream(), 'matches.txt')
-
-"""
 This pattern is looking for a short ascend in the Google peak prices.
 PATTERN SEQ(GoogleStockPriceUpdate a, GoogleStockPriceUpdate b, GoogleStockPriceUpdate c)
 WHERE a.PeakPrice < b.PeakPrice AND b.PeakPrice < c.PeakPrice
@@ -79,12 +70,7 @@ googleAscendPattern = Pattern(
 cep = CEP(Tree, [googleAscendPattern], events)
 fileOutput(cep.getPatternMatchStream(), 'googleAscendMatches.txt')
 
-"""
-This pattern is looking for an in-stable day for Amazon.
-PATTERN SEQ(AmazonStockPriceUpdate x1, AmazonStockPriceUpdate x2, AmazonStockPriceUpdate x3)
-WHERE x1.LowestPrice <= 75 AND x2.PeakPrice >= 78 AND x3.LowestPrice <= x1.LowestPrice
-WITHIN 1 day
-"""
+# now let's search for multiple patterns
 amazonInstablePattern = Pattern(
     SeqOperator([QItem("AMZN", "x1"), QItem("AMZN", "x2"), QItem("AMZN", "x3")]),
     AndFormula(
@@ -96,56 +82,8 @@ amazonInstablePattern = Pattern(
     ),
     timedelta(days=1)
 )
-cep = CEP(Tree, [amazonInstablePattern], events)
-fileOutput(cep.getPatternMatchStream(), 'amazonInstableMatches.txt')
-print("Finished processing amazon instable pattern")
-
-"""
-This pattern is looking for a race between driv and microsoft in ten minutes
-PATTERN SEQ(MicrosoftStockPriceUpdate a, DrivStockPriceUpdate b, MicrosoftStockPriceUpdate c, DrivStockPriceUpdate d, MicrosoftStockPriceUpdate e)
-WHERE a.PeakPrice < b.PeakPrice AND b.PeakPrice < c.PeakPrice AND c.PeakPrice < d.PeakPrice AND d.PeakPrice < e.PeakPrice
-WITHIN 10 minutes
-"""
-msftDrivRacePattern = Pattern(
-    SeqOperator([QItem("MSFT", "a"), QItem("DRIV", "b"), QItem("MSFT", "c"), QItem("DRIV", "d"), QItem("MSFT", "e")]),
-    AndFormula(
-        AndFormula(
-            SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
-            SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
-        ),
-        AndFormula(
-            SmallerThanFormula(IdentifierTerm("c", lambda x: x["Peak Price"]), IdentifierTerm("d", lambda x: x["Peak Price"])),
-            SmallerThanFormula(IdentifierTerm("d", lambda x: x["Peak Price"]), IdentifierTerm("e", lambda x: x["Peak Price"]))
-        )
-    ),
-    timedelta(minutes=10)
-)
-cep = CEP(Tree, [msftDrivRacePattern], events)
-fileOutput(cep.getPatternMatchStream(), 'msftDrivRaceMatches.txt')
-
-"""
-This Pattern is looking for a 1% increase in the google stock in a half-hour.
-PATTERN SEQ(GoogleStockPriceUpdate a, GoogleStockPriceUpdate b)
-WHERE b.PeakPrice >= 1.01 * a.PeakPrice
-WITHIN 30 minutes
-"""
-googleIncreasePattern = Pattern(
-    SeqOperator([QItem("GOOG", "a"), QItem("GOOG", "b")]),
-    GreaterThanEqFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), MulTerm(AtomicTerm(1.01), IdentifierTerm("a", lambda x: x["Peak Price"]))),
-    timedelta(minutes=30)
-)
-cep = CEP(Tree, [googleIncreasePattern], events)
-fileOutput(cep.getPatternMatchStream(), 'googleIncreaseMatches.txt')
-
-"""
-This pattern is looking for an amazon stock in peak price of 73.
-"""
-amazonSpecificPattern = Pattern(
-    SeqOperator([QItem("AMZN", "a")]),
-    EqFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), AtomicTerm(73))
-)
-cep = CEP(Tree, [amazonSpecificPattern], events)
-fileOutput(cep.getPatternMatchStream(), 'amazonSpecificMatches.txt')
+cep = CEP(Tree, [googleAscendPattern, amazonInstablePattern], events)
+fileOutput(cep.getPatternMatchStream(), 'multiplePatternsMatches.txt')
 ```
 
 # API
@@ -153,17 +91,17 @@ fileOutput(cep.getPatternMatchStream(), 'amazonSpecificMatches.txt')
 * #### CEP ####
 This class is the main Complex Event Processing Unit.
 
-A CEP object is constructed with an algorithm, optional patterns and an optional event stream.
+A CEP object is constructed with an algorithm, optional patterns an optional event stream, optional output container, and a config parameter to whether save a copy with the history of the event stream and replay it on new patterns - saveReplica.
 ```
-__init__(self, algorithm: Algorithm, patterns: List[Pattern] = None, events: Stream = None)
+__init__(self, algorithm: Algorithm, patterns: List[Pattern] = None, events: Stream = None, output: Container = None, saveReplica: bool = True)
 ```
 
 The CEP Object has the following functions:
 
 ```
-addPattern(self, pattern: Pattern, priorityFactor: float = 0.5)
+addPattern(self, pattern: Pattern, priority: int = 0, policy : PolicyType = PolicyType.FIND_ALL)
 ```
-Adds a pattern to search matches for in the event stream. You can attach to the pattern an optional priority factor to prioritize that pattern when processing is heavy.
+Adds a pattern to search matches for in the event stream. You can attach to the pattern an optional priority value to the pattern to prioritize that pattern when processing is heavy, and a policy of how to search for matches.
 
 ```
 addEvent(self, event: Event)
@@ -176,10 +114,21 @@ getPatternMatch(self)
 Returns the next pattern match found by the algorithm.
 
 ```
-getPatternMatchStream(self)
+getPatternMatchContainer(self)
 ```
-Returns the output stream object of the CEP unit.
+Returns the output container object of the CEP unit.
 
+```
+close(self)
+```
+Closes the input event stream.
+
+* #### Container ####
+A class describing a container of objects.
+Has the following abstract functions:
+    * ```addItem(self, item)```
+    * ```getItem(self)```
+    * ```close(self)```
 
 * #### Stream ####
 A class describing stream objects which its functionality is similar to a queue. It is used to represent an event stream and a match stream. It is thread-safe.
@@ -194,6 +143,11 @@ A constructor with no parameters.
 addItem(self, item)
 ```
 Adds the given item to the data stream.
+
+```
+getItem(self)
+```
+Returns the next item in the stream.
 
 ```
 close(self)
@@ -211,13 +165,12 @@ It provides the following functions:
 ```
 fileInput(filePath: str, keyMap: List, eventTypeKey: str, eventTimeKey: str) -> Stream
 ```
-This function receives a path to a file containing an Event Stream, and the column key names, as well as the key representing the event type. It returns a stream of event objects loaded from the file.
+This function receives a path to a file containing an Event Stream, and the column key names, as well as the key representing the event type and the key representing the event timestamp. It returns a stream of event objects loaded from the file.
 
 ```
-fileOutput(matches: Stream, fileOutputPath: str = 'matches.txt')
+fileOutput(matches: Container, fileOutputPath: str = 'matches.txt')
 ```
-This function receives a stream of pattern matches and a file output path (default is 'matches.txt'), and writes the matches stream
-to the file in the given file path.
+This function receives a container of pattern matches and a file output path (default is 'matches.txt'), and writes the matches container to the file in the given file path.
 
 * #### Event ####
 This class is used to represent a single Event. It is constructed with a list of fields, the Event type and a timestamp as following:
@@ -356,10 +309,10 @@ Every subclass of it which represents a concrete algorithm shall not be instanti
 
 Every concrete algorithm subclass shall implement the following static function:
 ```
-eval(pattern: Pattern, events: Stream, matches : Stream)
+eval(pattern: Pattern, events: Stream, matches : Container)
 ```
-Receives a pattern and an event stream and performs the CEP with the algorithm it represents. It also receives a pattern matches stream
-to write the output to.
+Receives a pattern and an event stream and performs the CEP with the algorithm it represents. It also receives a pattern matches container to write the output to.
 
 The algorithms given in this API are:
 * Tree - the acyclic graph model.
+    * Its evaluation function receives a tree construction function (Pattern -> Tree). Default is left depth tree.
