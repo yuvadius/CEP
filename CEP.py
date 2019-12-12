@@ -19,7 +19,7 @@ class CEP:
     "pattern": A class "Pattern" that defines what patterns to look for
     "algorithm": A class "Algorithm" that defines what algorithm to use for finding the pattern
     '''
-    def __init__(self, algorithm: Algorithm, patterns: List[Pattern] = None, events: Stream = None, output: Container = None, saveReplica: bool = True):
+    def __init__(self, algorithm: type, patterns: List[Pattern] = None, events: Stream = None, output: Container = None, saveReplica: bool = True):
         self.eventStreams = []
         self.patternMatches = output if output else Stream()
         self.algorithm = algorithm

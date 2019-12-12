@@ -78,7 +78,7 @@ class TreeNode:
         else:
             return True
 
-class Tree(Algorithm):
+class Tree:
     def __init__(self, root: TreeNode, order: OrderType, leafList: List[TreeNode], eventTypeToLeafDict: Dict = None, maxTimeDelta: timedelta = None, minTime: datetime = None, maxTime: datetime = None, evaluationDictionary: Dict = None, leafIndex: int = 0, isEmpty: bool = True, evaluatedLeaves: List[TreeNode] = None):
         self.root = root
         self.order = order
@@ -189,74 +189,76 @@ class Tree(Algorithm):
                                 node.parent.formula = formula
                                 break
         return Tree(root, order, nodeList, eventTypeToLeafDict, pattern.slidingWindow)
-    
-    @staticmethod
-    def __sequenceEval(pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc):
+
+class TreeAlgorithm(Algorithm):
+    def __init__(self):
+        self.treeDict = None
+
+    def __sequenceEval(self, pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc):
         # Sort trees in dict based on their next incoming eventType
-        treeDict = {}
+        self.treeDict = {}
         for qItem in pattern.patternStructure.args:
-            treeDict[qItem.eventType] = []
+            self.treeDict[qItem.eventType] = []
         firstEventType = pattern.patternStructure.args[0].eventType
-        treeDict[firstEventType].append(treeConstructionFunc(pattern))
+        self.treeDict[firstEventType].append(treeConstructionFunc(pattern))
         for event in events:
             currentEventType = event.eventType
-            if currentEventType in treeDict: # Ignore events that or not in Sequence
+            if currentEventType in self.treeDict: # Ignore events that are not in Sequence
                 # Iterate backwards to enable element deletion while iterating
-                for i in range(len(treeDict[currentEventType]) - 1, -1, -1):
-                    copiedTree = []
-                    currentTree = treeDict[currentEventType][i]
-                    addEventStatus = currentTree.addEvent(event, copiedTree)
+                for i in range(len(self.treeDict[currentEventType]) - 1, -1, -1):
+                    copiedTree = [] # Will be used to return a tree by reference
+                    currentTree = self.treeDict[currentEventType][i]
+                    addEventStatus = currentTree.addEvent(event, copiedTree) # Here it is returned
                     if (addEventStatus == AddEventErrors.NOT_WITHIN_TIMESCALE_ERROR):
-                        del treeDict[currentEventType][i] # Will not be the empty tree
+                        del self.treeDict[currentEventType][i] # Will not be the empty tree
                     elif (addEventStatus == AddEventErrors.SUCCESS):
                         patternMatch = currentTree.getPatternMatch()
                         if (patternMatch != None):
                             matches.addItem(patternMatch)
                         else:
                             nextEventType = currentTree.getCurrentEventType()
-                            treeDict[nextEventType].append(currentTree)
-                        del treeDict[currentEventType][i]
-                        treeDict[currentEventType].append(copiedTree[0]) # Add copy to end
+                            self.treeDict[nextEventType].append(currentTree) # We add current tree to search for next event type
+                        del self.treeDict[currentEventType][i] # In any case we would want to delete this:
+                        # because we add back both original and copied tree.
+                        self.treeDict[currentEventType].append(copiedTree[0]) # Add copy to end
         matches.close()
     
-    @staticmethod
-    def __conjunctionEval(pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc):
+    def __conjunctionEval(self, pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc):
         emptyTree = treeConstructionFunc(pattern)
         # Sort trees in dict based on their available event types
-        treeDict = {}
+        self.treeDict = {}
         for qItem in pattern.patternStructure.args:
-            if qItem.eventType not in treeDict:
-                treeDict[qItem.eventType] = [emptyTree]
+            if qItem.eventType not in self.treeDict:
+                self.treeDict[qItem.eventType] = [emptyTree]
         for event in events:
             currentEventType = event.eventType
-            if currentEventType in treeDict: # Ignore events that or not in Conjunction
+            if currentEventType in self.treeDict: # Ignore events that or not in Conjunction
                 # Iterate backwards to enable element deletion while iterating
-                for i in range(len(treeDict[currentEventType]) - 1, -1, -1):
+                for i in range(len(self.treeDict[currentEventType]) - 1, -1, -1):
                     copiedTree = []
-                    currentTree = treeDict[currentEventType][i]
+                    currentTree = self.treeDict[currentEventType][i]
                     addEventStatus = currentTree.addEvent(event, copiedTree)
                     if (addEventStatus == AddEventErrors.NOT_WITHIN_TIMESCALE_ERROR):
-                        del treeDict[currentEventType][i] # Will not be the empty tree
+                        del self.treeDict[currentEventType][i] # Will not be the empty tree, because we can always add to it.
                     elif (addEventStatus == AddEventErrors.SUCCESS):
                         patternMatch = currentTree.getPatternMatch()
                         if (patternMatch != None):
                             matches.addItem(patternMatch)
                         if (len(currentTree.eventTypeToLeafDict[currentEventType]) == 0):
-                            del treeDict[currentEventType][i]
+                            del self.treeDict[currentEventType][i]
                         # Add the copy tree to treeDict
                         eventTypeToLeafDict = copiedTree[0].eventTypeToLeafDict
                         for eventType in eventTypeToLeafDict:
                             if (len(eventTypeToLeafDict[eventType]) > 0):
-                                treeDict[eventType].append(copiedTree[0])
+                                self.treeDict[eventType].append(copiedTree[0])
         matches.close()
 
-    @staticmethod
-    def eval(pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc = lambda pattern: Tree.createLeftDeepTree(pattern)):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc = lambda pattern: Tree.createLeftDeepTree(pattern)):
         # Sequence Order
         if (pattern.patternStructure.getTopOperator() == SeqOperator):
-            Tree.__sequenceEval(pattern, events, matches, treeConstructionFunc)    
+            self.__sequenceEval(pattern, events, matches, treeConstructionFunc)    
         # Conjunction
         elif (pattern.patternStructure.getTopOperator() == AndOperator):
-            Tree.__conjunctionEval(pattern, events, matches, treeConstructionFunc)
+            self.__conjunctionEval(pattern, events, matches, treeConstructionFunc)
 
    

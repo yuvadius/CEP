@@ -23,13 +23,13 @@ def fileCompare(pathA, pathB):
 
 def createTest(testName, patterns):
     events = nasdaqEventStream.duplicate()
-    cep = CEP(Tree, patterns, events)
+    cep = CEP(TreeAlgorithm(), patterns, events)
     fileOutput(cep.getPatternMatchContainer(), '../TestsExpected/%sMatches.txt' % testName)
     print("Finished creating test %s" % testName)
 
 def runTest(testName, patterns):
     events = nasdaqEventStream.duplicate()
-    cep = CEP(Tree, patterns, events)
+    cep = CEP(TreeAlgorithm(), patterns, events)
     fileOutput(cep.getPatternMatchContainer(), '%sMatches.txt' % testName)
     print("Test %s result: %s" % (testName, 
         "Succeeded" if fileCompare("Matches/%sMatches.txt" % testName, "TestsExpected/%sMatches.txt" % testName) else "Failed"))
