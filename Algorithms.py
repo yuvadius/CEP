@@ -50,6 +50,7 @@ class TreeNode:
         self.addLeftNode(left)
         self.addRightNode(right)
 
+    #Copy all nodes that are not yet evaluated from top to bottom
     def copyNodes(self, parentNode: TreeNode, leafList: List[TreeNode]) -> TreeNode:
         if (self.evaluation):
             return self
@@ -100,6 +101,8 @@ class Tree:
         else:
             return None
 
+    #Add event to the tree, will return AddEventErrors.SUCCESS on success
+    #and a copy of the tree(before the change) in treeCopy
     def addEvent(self, event: Event, treeCopy: List[Tree] = None) -> bool:
         currentLeaf = self.getCurrentLeaf(event)
         minTime = event.date if (self.minTime == None) else min(self.minTime, event.date)
