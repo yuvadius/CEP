@@ -24,7 +24,7 @@ class Algorithm(ABC):
         pass
 
 class TreeNode:
-    def __init__(self, valueType: QItem, value: Event = None, left: TreeNode = None, right: TreeNode = None, parent: TreeNode = None, formula: Formula = None):
+    def __init__(self, valueType: QItem, value: Event = None, left: TreeNode = None, right: TreeNode = None, parent: TreeNode = None, formula: Formula = None, inputBufferIndexes: Dict = None, nodeBufferStorerIndex: int = None, nodeBeforeIndex: int = None, nodeAfterIndex: int = None):
         self.valueType = valueType
         self.value = value
         self.left = left
@@ -32,6 +32,11 @@ class TreeNode:
         self.parent = parent
         self.formula = formula
         self.evaluation = False
+        # Extra Information for input buffers
+        self.inputBufferIndexes = inputBufferIndexes
+        self.nodeBufferStorerIndex = nodeBufferStorerIndex
+        self.nodeBeforeIndex = nodeBeforeIndex
+        self.nodeAfterIndex = nodeAfterIndex
 
     def isLeaf(self):
         return (self.left == None and self.right == None)
@@ -56,16 +61,16 @@ class TreeNode:
             return self
         left = None if self.left == None else self.left.copyNodes(self, leafList)
         right = None if self.right == None else self.right.copyNodes(self, leafList)
-        node = TreeNode(self.valueType, self.value, None, None, None, self.formula)
+        node = TreeNode(self.valueType, self.value, None, None, None, self.formula, deepcopy(self.inputBufferIndexes), self.nodeBufferStorerIndex, self.nodeBeforeIndex, self.nodeAfterIndex)
         node.addNodes(left, right)
         if (left == None and right == None):
             leafList.append(node)
         return node
 
     #Evalute node from bottom to top recursively
-    def recursiveEvaluation(self, evalDictionary: Dict, nodesToEvaluate: List[TreeNode], previousEvaluatedNode: TreeNode = None):
+    def __recursiveEvaluation(self, evalDictionary: Dict, nodesToEvaluate: List[TreeNode], previousEvaluatedNode: TreeNode = None):
         if self.evaluation == True:
-            return True if self.parent == None else self.parent.recursiveEvaluation(evalDictionary, nodesToEvaluate)
+            return True if self.parent == None else self.parent.__recursiveEvaluation(evalDictionary, nodesToEvaluate)
         #If sons evaluated to true
         elif (self.left == None or self.left.evaluation or self.left is previousEvaluatedNode) and (self.right == None or self.right.evaluation or self.right is previousEvaluatedNode):
             evaluation = True if (self.formula == None) else self.formula.eval(evalDictionary)
@@ -75,9 +80,16 @@ class TreeNode:
                 nodesToEvaluate.append(self)
             if (self.parent == None):#At top
                 return True
-            return self.parent.recursiveEvaluation(evalDictionary, nodesToEvaluate, self)
+            return self.parent.__recursiveEvaluation(evalDictionary, nodesToEvaluate, self)
         else:
             return True
+
+    #Evalute node from bottom to top recursively
+    def recursiveEvaluation(self, evalDictionary: Dict, nodesToEvaluate: List[TreeNode], currentLeaf: TreeNode, event: Event):
+        evalDictionary[currentLeaf.valueType.name] = event.event # Tree change, make sure to delete before copy or failure(More efficient than a deep copy)
+        returnValue = self.__recursiveEvaluation(evalDictionary, nodesToEvaluate)
+        del evalDictionary[currentLeaf.valueType.name] # Undo tree change
+        return returnValue
 
 class Tree:
     def __init__(self, root: TreeNode, order: OrderType, leafList: List[TreeNode], eventTypeToLeafDict: Dict = None, maxTimeDelta: timedelta = None, minTime: datetime = None, maxTime: datetime = None, evaluationDictionary: Dict = None, leafIndex: int = 0, isEmpty: bool = True, evaluatedLeaves: List[TreeNode] = None):
@@ -93,8 +105,8 @@ class Tree:
         self.eventTypeToLeafDict = eventTypeToLeafDict
         self.evaluatedLeaves = evaluatedLeaves if evaluatedLeaves != None else []
 
-    def getCurrentLeaf(self, event: Event) -> TreeNode:
-        if(self.order == OrderType.ORDERED):
+    def getCurrentLeaf(self, event: Event = None) -> TreeNode:
+        if(self.order == OrderType.ORDERED or self.order == OrderType.LAZY_ORDERED):
             return self.leafList[self.leafIndex]
         elif(self.order == OrderType.NOT_ORDERED):
             return self.leafList[self.eventTypeToLeafDict[event.eventType][0]]
@@ -102,44 +114,100 @@ class Tree:
             return None
 
     #Add event to the tree, will return AddEventErrors.SUCCESS on success
-    #and a copy of the tree(before the change) in treeCopy
-    def addEvent(self, event: Event, treeCopy: List[Tree] = None) -> bool:
+    #and a copy of all the trees that should be sent back for evaluation
+    def addEvent(self, event: Event, inputBuffer: Dict = None):
+        treeCopies = []
+        nodesToEvaluate = []
         currentLeaf = self.getCurrentLeaf(event)
+        minTime, maxTime = self.getMinMaxTime(event)
+        # Check with multiple tests that we can add the event
+        addEventStatus = self.checkTests(event, minTime, maxTime, currentLeaf, nodesToEvaluate)
+        if addEventStatus == AddEventErrors.SUCCESS: # Passed all tests!!! Now we can update the tree
+            self.updateTree(event, minTime, maxTime, currentLeaf, nodesToEvaluate, treeCopies, inputBuffer)
+        return addEventStatus, treeCopies
+
+    def getMinMaxTime(self, event: Event):
         minTime = event.date if (self.minTime == None) else min(self.minTime, event.date)
         maxTime = event.date if (self.maxTime == None) else max(self.maxTime, event.date)
+        return minTime, maxTime
+
+    def checkTests(self, event: Event, minTime: datetime, maxTime: datetime, currentLeaf: TreeNode, nodesToEvaluate: List[TreeNode]):
         if(self.maxTimeDelta != timedelta.max and minTime + self.maxTimeDelta < maxTime):
             return AddEventErrors.NOT_WITHIN_TIMESCALE_ERROR
+        if(currentLeaf.nodeBufferStorerIndex != None and currentLeaf.nodeBeforeIndex != None and self.leafList[currentLeaf.nodeBeforeIndex].value and self.leafList[currentLeaf.nodeBeforeIndex].value.date > event.date):
+            return AddEventErrors.LAZY_BEFORE_LEFT_NODE
+        if(currentLeaf.nodeBufferStorerIndex != None and currentLeaf.nodeAfterIndex != None and self.leafList[currentLeaf.nodeAfterIndex].value and self.leafList[currentLeaf.nodeAfterIndex].value.date < event.date):
+            return AddEventErrors.LAZY_AFTER_RIGHT_NODE
         if(currentLeaf.valueType.eventType != event.eventType):
             return AddEventErrors.WRONG_EVENT_TYPE_ERROR
-        self.evaluationDictionary[currentLeaf.valueType.name] = event.event # Tree change, make sure to delete before copy or failure
-        nodesToEvaluate = []
-        if(currentLeaf.recursiveEvaluation(self.evaluationDictionary, nodesToEvaluate) == False):
-            del self.evaluationDictionary[currentLeaf.valueType.name]
+        if(currentLeaf.recursiveEvaluation(self.evaluationDictionary, nodesToEvaluate, currentLeaf, event) == False):
             return AddEventErrors.EVALUATION_ERROR
-        if (treeCopy != None):
-            # Undo tree changes for the copy
-            del self.evaluationDictionary[currentLeaf.valueType.name]
-            treeCopy.append(self.copy())
-            # Redo tree changes after the copy
-            self.evaluationDictionary[currentLeaf.valueType.name] = event.event
+        return AddEventErrors.SUCCESS
+
+    def updateTree(self, event: Event, minTime: datetime, maxTime: datetime, currentLeaf: TreeNode, nodesToEvaluate: List[TreeNode], treeCopies: List[Tree], inputBuffer: Dict):
+        treeCopies.append(self.copy()) # Append original of the tree before any changes
         for node in nodesToEvaluate:
             node.evaluation = True
+        self.evaluationDictionary[currentLeaf.valueType.name] = event.event
         self.minTime = minTime
         self.maxTime = maxTime
-        currentLeaf.value = event
         self.leafIndex += 1
         self.evaluatedLeaves.append(currentLeaf)
         self.isEmpty = False
+        currentLeaf.value = event
         del self.eventTypeToLeafDict[event.eventType][0]
-        return AddEventErrors.SUCCESS
+        if(self.isTreeFull() == False):
+            self.updateInputBufferIndexes(event, inputBuffer)
+            Tree.updateBufferNodes(self, inputBuffer, treeCopies)
+
+    @staticmethod
+    def updateBufferNodes(baseTree, inputBuffer: Dict, treeCopies: List[Tree]):
+        if(baseTree.order == OrderType.LAZY_ORDERED):
+            currentLeaf = baseTree.getCurrentLeaf()
+            if(currentLeaf.nodeBufferStorerIndex != None):
+                inputBufferIndexes = baseTree.leafList[currentLeaf.nodeBufferStorerIndex].inputBufferIndexes
+                eventTypeBuffer = inputBuffer[currentLeaf.valueType.eventType]
+                index = inputBufferIndexes[currentLeaf.valueType.eventType]
+                buffer = eventTypeBuffer[index:]
+                baseTreeIndex = len(treeCopies) # Where will the base tree be
+                for event in buffer:
+                    nodesToEvaluate = []
+                    minTime, maxTime = baseTree.getMinMaxTime(event)
+                    addEventStatus = baseTree.checkTests(event, minTime, maxTime, currentLeaf, nodesToEvaluate)
+                    if addEventStatus == AddEventErrors.SUCCESS: # Passed all tests!!! Now we can update the tree
+                        baseTree.updateTree(event, minTime, maxTime, currentLeaf, nodesToEvaluate, treeCopies, inputBuffer)
+                        baseTree = treeCopies[baseTreeIndex]
+                        baseTreeIndex = len(treeCopies)
+                        currentLeaf = baseTree.getCurrentLeaf()
+                    elif addEventStatus == AddEventErrors.LAZY_AFTER_RIGHT_NODE:
+                        break
+
+    def isTreeFull(self) -> bool:
+        return self.root.evaluation
+
+    def updateInputBufferIndexes(self, event: Event, inputBuffer: Dict):
+        if(self.order == OrderType.LAZY_ORDERED):
+            if(self.getCurrentLeaf(event).inputBufferIndexes != None):
+                for eventType in self.getCurrentLeaf(event).inputBufferIndexes:
+                    self.getCurrentLeaf(event).inputBufferIndexes[eventType] = len(inputBuffer[eventType])
 
     def getPatternMatch(self) -> PatternMatch:
         if (self.root.evaluation == False):
             return None
         events = []
-        for node in self.leafList:
-            events.append(node.value)
-        return PatternMatch(events)
+        if (self.order != OrderType.LAZY_ORDERED):
+            for node in self.leafList:
+                events.append(node.value)
+            return PatternMatch(events)
+        else:
+            for node in self.leafList:
+                if node.nodeBeforeIndex == None:
+                    for _ in self.leafList:
+                        events.append(node.value)
+                        if node.nodeAfterIndex != None:
+                            node = self.leafList[node.nodeAfterIndex]
+                        else:
+                           return PatternMatch(events)
 
     def getCurrentEventType(self) -> str:
         return self.leafList[self.leafIndex].valueType.eventType
@@ -148,10 +216,65 @@ class Tree:
         leafList = list(self.evaluatedLeaves) # Do a shallow copy
         root = self.root.copyNodes(None, leafList)
         return Tree(root, self.order, leafList, deepcopy(self.eventTypeToLeafDict), self.maxTimeDelta, self.minTime, self.maxTime, deepcopy(self.evaluationDictionary), self.leafIndex, self.isEmpty, list(self.evaluatedLeaves))
-    
+
+    @staticmethod
+    def createInputBuffer(tree: Tree) -> Dict:
+        inputBuffer = {}
+        for node in tree.leafList:
+            if node.nodeBufferStorerIndex != None:
+                inputBuffer[node.valueType.eventType] = []
+        return inputBuffer
+
+    # Update the nodes so that they will support input buffers
+    @staticmethod
+    def sortNodesByFrequency(pattern: Pattern, nodeList: List[TreeNode]):
+        if pattern.frequency:
+            # Save neighbors(Will update to indexes at end)
+            for i in range(len(nodeList)):
+                if i != 0: # If not first
+                    nodeList[i].nodeBeforeIndex = nodeList[i - 1]
+                if i != (len(nodeList) - 1): # If not last
+                    nodeList[i].nodeAfterIndex = nodeList[i + 1]
+            # Rearange nodes and add buffers to nodes
+            for _ in nodeList:
+                for i in range(len(nodeList) - 1):
+                    if pattern.frequency[nodeList[i].valueType.eventType] > pattern.frequency[nodeList[i + 1].valueType.eventType]:
+                        swap(nodeList, i, i + 1)
+                        # Update buffers
+                        if nodeList[i + 1].nodeBufferStorerIndex == None:
+                            nodeList[i + 1].nodeBufferStorerIndex = i
+            # Update redundant nodeBufferStorerIndex
+            for _ in nodeList:
+                for i in range(len(nodeList)):
+                    if nodeList[i].nodeBufferStorerIndex != None:
+                        if nodeList[nodeList[i].nodeBufferStorerIndex].nodeBufferStorerIndex != None:
+                            nodeList[i].nodeBufferStorerIndex = nodeList[nodeList[i].nodeBufferStorerIndex].nodeBufferStorerIndex
+            # Update inputBufferIndexes
+            for _ in nodeList:
+                for i in range(len(nodeList)):
+                    if nodeList[i].nodeBufferStorerIndex != None:
+                        if nodeList[nodeList[i].nodeBufferStorerIndex].inputBufferIndexes == None:
+                            nodeList[nodeList[i].nodeBufferStorerIndex].inputBufferIndexes = {}
+                        nodeList[nodeList[i].nodeBufferStorerIndex].inputBufferIndexes[nodeList[i].valueType.eventType] = None
+            # If node storer is at the first node then set beffer indexes to 0
+            if nodeList[0].inputBufferIndexes != None:
+                for eventType in nodeList[0].inputBufferIndexes:
+                    nodeList[0].inputBufferIndexes[eventType] = 0
+            # Update to indexes
+            for node in nodeList:
+                for i in range(len(nodeList)):
+                    if node.nodeBeforeIndex is nodeList[i]:
+                        node.nodeBeforeIndex = i
+                    elif node.nodeAfterIndex is nodeList[i]:
+                        node.nodeAfterIndex = i
+
     @staticmethod
     def createLeftDeepTree(pattern: Pattern) -> Tree:
-        order = OrderType.NOT_ORDERED if pattern.patternStructure.getTopOperator() == AndOperator else OrderType.ORDERED
+        order = OrderType.ORDERED 
+        if pattern.patternStructure.getTopOperator() == AndOperator:
+            order = OrderType.NOT_ORDERED
+        elif pattern.frequency:
+            order = OrderType.LAZY_ORDERED
         #Adding the sequences to the tree
         nodeList = []
         nodeCounter = 0
@@ -162,6 +285,8 @@ class Tree:
                 eventTypeToLeafDict[qItem.eventType] = []
             eventTypeToLeafDict[qItem.eventType].append(nodeCounter)
             nodeCounter += 1
+        if pattern.frequency:
+            Tree.sortNodesByFrequency(pattern, nodeList)
         root = nodeList[0]
         if len(nodeList) > 1:
             root = TreeNode(None, None)
@@ -200,30 +325,34 @@ class TreeAlgorithm(Algorithm):
     def __sequenceEval(self, pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc):
         # Sort trees in dict based on their next incoming eventType
         self.treeDict = {}
-        for qItem in pattern.patternStructure.args:
-            self.treeDict[qItem.eventType] = []
-        firstEventType = pattern.patternStructure.args[0].eventType
+        emptyTree = treeConstructionFunc(pattern)
+        inputBuffer = Tree.createInputBuffer(emptyTree)
+        for node in emptyTree.leafList:
+            if node.nodeBufferStorerIndex == None: # If node doesn't use the buffer
+                self.treeDict[node.valueType.eventType] = []
+        firstEventType = emptyTree.leafList[0].valueType.eventType
         self.treeDict[firstEventType].append(treeConstructionFunc(pattern))
         for event in events:
             currentEventType = event.eventType
+            if currentEventType in inputBuffer: # Insert event into input buffer
+                inputBuffer[currentEventType].append(event)
             if currentEventType in self.treeDict: # Ignore events that are not in Sequence
                 # Iterate backwards to enable element deletion while iterating
                 for i in range(len(self.treeDict[currentEventType]) - 1, -1, -1):
-                    copiedTree = [] # Will be used to return a tree by reference
                     currentTree = self.treeDict[currentEventType][i]
-                    addEventStatus = currentTree.addEvent(event, copiedTree) # Here it is returned
+                    addEventStatus, copiedTrees = currentTree.addEvent(event, inputBuffer)
+                    copiedTrees.append(currentTree)
                     if (addEventStatus == AddEventErrors.NOT_WITHIN_TIMESCALE_ERROR):
                         del self.treeDict[currentEventType][i] # Will not be the empty tree
                     elif (addEventStatus == AddEventErrors.SUCCESS):
-                        patternMatch = currentTree.getPatternMatch()
-                        if (patternMatch != None):
-                            matches.addItem(patternMatch)
-                        else:
-                            nextEventType = currentTree.getCurrentEventType()
-                            self.treeDict[nextEventType].append(currentTree) # We add current tree to search for next event type
-                        del self.treeDict[currentEventType][i] # In any case we would want to delete this:
-                        # because we add back both original and copied tree.
-                        self.treeDict[currentEventType].append(copiedTree[0]) # Add copy to end
+                        del self.treeDict[currentEventType][i] # Delete current tree location
+                        for tree in copiedTrees:
+                            patternMatch = tree.getPatternMatch()
+                            if (patternMatch != None):
+                                matches.addItem(patternMatch)
+                            elif tree.getCurrentLeaf().nodeBufferStorerIndex == None: # Make sure it's not a buffer node
+                                nextEventType = tree.getCurrentEventType()
+                                self.treeDict[nextEventType].append(tree) # We add current tree to search for next event type
         matches.close()
     
     def __conjunctionEval(self, pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc):
@@ -238,9 +367,9 @@ class TreeAlgorithm(Algorithm):
             if currentEventType in self.treeDict: # Ignore events that or not in Conjunction
                 # Iterate backwards to enable element deletion while iterating
                 for i in range(len(self.treeDict[currentEventType]) - 1, -1, -1):
-                    copiedTree = []
                     currentTree = self.treeDict[currentEventType][i]
-                    addEventStatus = currentTree.addEvent(event, copiedTree)
+                    addEventStatus, copiedTrees = currentTree.addEvent(event)
+                    copiedTrees.append(currentTree)
                     if (addEventStatus == AddEventErrors.NOT_WITHIN_TIMESCALE_ERROR):
                         del self.treeDict[currentEventType][i] # Will not be the empty tree, because we can always add to it.
                     elif (addEventStatus == AddEventErrors.SUCCESS):
@@ -250,10 +379,12 @@ class TreeAlgorithm(Algorithm):
                         if (len(currentTree.eventTypeToLeafDict[currentEventType]) == 0):
                             del self.treeDict[currentEventType][i]
                         # Add the copy tree to treeDict
-                        eventTypeToLeafDict = copiedTree[0].eventTypeToLeafDict
-                        for eventType in eventTypeToLeafDict:
-                            if (len(eventTypeToLeafDict[eventType]) > 0):
-                                self.treeDict[eventType].append(copiedTree[0])
+                        for tree in copiedTrees:
+                            if not (tree is currentTree):
+                                eventTypeToLeafDict = copiedTrees[0].eventTypeToLeafDict
+                                for eventType in eventTypeToLeafDict:
+                                    if (len(eventTypeToLeafDict[eventType]) > 0):
+                                        self.treeDict[eventType].append(copiedTrees[0])
         matches.close()
 
     def eval(self, pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc = lambda pattern: Tree.createLeftDeepTree(pattern)):

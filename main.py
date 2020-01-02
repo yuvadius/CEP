@@ -1,5 +1,7 @@
 from CEP import *
 from IOUtils import *
+from time import time
+from datetime import timedelta
 
 nasdaqEventStream = fileInput("NASDAQ_20080201_1_sorted.txt", 
         [
@@ -13,13 +15,44 @@ nasdaqEventStream = fileInput("NASDAQ_20080201_1_sorted.txt",
         "Stock Ticker",
         "Date")
 
+def closeFiles(file1, file2):
+    file1.close()
+    file2.close()
+
 def fileCompare(pathA, pathB):
-    f = open(pathA)
-    g = open(pathB)
-    ret = (f.read() == g.read())
-    f.close()
-    g.close()
-    return ret
+    file1 = open(pathA)
+    file2 = open(pathB)
+    if (file1.read() == file2.read()): # Fast check
+        return True
+    file1List = [] # List of unique patterns
+    file2List = [] # List of unique patterns
+    lineStack = ""
+    for line in file1:
+        if not line.strip():
+            lineStack += line
+        elif not (lineStack in file1List):
+            file1List.append(lineStack)
+            lineStack = ""
+    lineStack = ""
+    for line in file2:
+        if not line.strip():
+            lineStack += line
+        elif not (lineStack in file2List):
+            file2List.append(lineStack)
+            lineStack = ""
+    if len(file1List) != len(file2List): # Fast check
+        closeFiles(file1, file2)
+        return False
+    for line in file1List:
+        if not (line in file2List):
+            closeFiles(file1, file2)
+            return False
+    for line in file2List:
+        if not (line in file1List):
+            closeFiles(file1, file2)
+            return False
+    closeFiles(file1, file2)
+    return True
 
 def createTest(testName, patterns):
     events = nasdaqEventStream.duplicate()
@@ -29,10 +62,13 @@ def createTest(testName, patterns):
 
 def runTest(testName, patterns):
     events = nasdaqEventStream.duplicate()
+    startTime = time()
     cep = CEP(TreeAlgorithm(), patterns, events)
-    fileOutput(cep.getPatternMatchContainer(), '%sMatches.txt' % testName)
-    print("Test %s result: %s" % (testName, 
-        "Succeeded" if fileCompare("Matches/%sMatches.txt" % testName, "TestsExpected/%sMatches.txt" % testName) else "Failed"))
+    match = cep.getPatternMatchContainer()
+    timeTaken = str(timedelta(seconds=(time() - startTime)))
+    fileOutput(match, '%sMatches.txt' % testName)
+    print("Test %s result: %s, Time Passed: %s" % (testName, 
+        "Succeeded" if fileCompare("Matches/%sMatches.txt" % testName, "TestsExpected/%sMatches.txt" % testName) else "Failed", timeTaken))
 
 
 def simplePatternSearch():
@@ -211,6 +247,38 @@ def multiplePatternSearch():
     createTest('multiplePatterns', [amazonInstablePattern, googleAscendPattern])
     print("Created the output as test, because output is non-deterministic. Should check manually.")
 
+def nonFrequencyPatternSearch():
+    """
+    PATTERN SEQ(AppleStockPriceUpdate a, AmazonStockPriceUpdate b, AvidStockPriceUpdate c)
+    WHERE   a.OpeningPrice > b.OpeningPrice
+        AND b.OpeningPrice > c.OpeningPrice
+    WITHIN 5 minutes
+    """
+    pattern = Pattern(
+        SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("LOCM", "c")]), 
+        AndFormula(
+            GreaterThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
+            GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
+        timedelta(minutes=5)
+    )
+    runTest("nonFrequency", [pattern])
+
+def frequencyPatternSearch():
+    """
+    PATTERN SEQ(AppleStockPriceUpdate a, AmazonStockPriceUpdate b, AvidStockPriceUpdate c)
+    WHERE   a.OpeningPrice > b.OpeningPrice
+        AND b.OpeningPrice > c.OpeningPrice
+    WITHIN 5 minutes
+    """
+    pattern = Pattern(
+        SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("LOCM", "c")]), 
+        AndFormula(
+            GreaterThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
+            GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
+        timedelta(minutes=5),
+        {"AAPL": 460, "AMZN": 442, "LOCM": 219}
+    )
+    runTest("frequency", [pattern])
 
 simplePatternSearch()
 googleAscendPatternSearch()
@@ -221,3 +289,5 @@ amazonSpecificPatternSearch()
 googleAmazonLowPatternSearch()
 nonsensePatternSearch()
 hierarchyPatternSearch()
+nonFrequencyPatternSearch()
+frequencyPatternSearch()
