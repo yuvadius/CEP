@@ -1,6 +1,22 @@
 from __future__ import annotations
+from Event import *
+from datetime import date, datetime, timedelta
 from enum import Enum
 from typing import List, Dict
+
+# Return index of the closest event
+def binarySearchClosestEvent(lst: List[Event], dateSearch: datetime):
+    min = 0
+    max = len(lst)-1
+    avg = int((min+max)/2)
+    while (min < max):
+        if (lst[avg].date == dateSearch):
+            return avg
+        elif (lst[avg].date < dateSearch):
+            return avg + 1 + binarySearchClosestEvent(lst[avg+1:], dateSearch)
+        else:
+            return binarySearchClosestEvent(lst[:avg], dateSearch)
+    return avg
 
 def isfloat(x: str):
     try:

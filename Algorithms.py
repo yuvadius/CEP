@@ -24,7 +24,7 @@ class Algorithm(ABC):
         pass
 
 class TreeNode:
-    def __init__(self, valueType: QItem, value: Event = None, left: TreeNode = None, right: TreeNode = None, parent: TreeNode = None, formula: Formula = None, inputBufferIndexes: Dict = None, nodeBufferStorerIndex: int = None, nodeBeforeIndex: int = None, nodeAfterIndex: int = None):
+    def __init__(self, valueType: QItem, value: Event = None, left: TreeNode = None, right: TreeNode = None, parent: TreeNode = None, formula: Formula = None, nodeBufferStorerIndex: int = None, nodeBeforeIndex: int = None, nodeAfterIndex: int = None):
         self.valueType = valueType
         self.value = value
         self.left = left
@@ -33,7 +33,6 @@ class TreeNode:
         self.formula = formula
         self.evaluation = False
         # Extra Information for input buffers
-        self.inputBufferIndexes = inputBufferIndexes
         self.nodeBufferStorerIndex = nodeBufferStorerIndex
         self.nodeBeforeIndex = nodeBeforeIndex
         self.nodeAfterIndex = nodeAfterIndex
@@ -61,7 +60,7 @@ class TreeNode:
             return self
         left = None if self.left == None else self.left.copyNodes(self, leafList)
         right = None if self.right == None else self.right.copyNodes(self, leafList)
-        node = TreeNode(self.valueType, self.value, None, None, None, self.formula, deepcopy(self.inputBufferIndexes), self.nodeBufferStorerIndex, self.nodeBeforeIndex, self.nodeAfterIndex)
+        node = TreeNode(self.valueType, self.value, None, None, None, self.formula, self.nodeBufferStorerIndex, self.nodeBeforeIndex, self.nodeAfterIndex)
         node.addNodes(left, right)
         if (left == None and right == None):
             leafList.append(node)
@@ -131,13 +130,30 @@ class Tree:
         maxTime = event.date if (self.maxTime == None) else max(self.maxTime, event.date)
         return minTime, maxTime
 
+    # Check if node is before the "before node" or equal in time
+    def checkIfNodeBefore(self, event: Event, currentLeaf: TreeNode):
+        if currentLeaf.nodeBufferStorerIndex != None and currentLeaf.nodeBeforeIndex != None:
+            beforeNodeEvent = self.leafList[currentLeaf.nodeBeforeIndex].value
+            if beforeNodeEvent != None and (event.date < beforeNodeEvent.date or (event.date == beforeNodeEvent.date and event.counter <= beforeNodeEvent.counter)):
+                return True
+        return False
+
+    # Check if node is after the "after node" or equal in time
+    def checkIfNodeAfter(self, event: Event, currentLeaf: TreeNode):
+        if currentLeaf.nodeBufferStorerIndex != None and currentLeaf.nodeAfterIndex != None:
+            afterNodeEvent = self.leafList[currentLeaf.nodeAfterIndex].value
+            if afterNodeEvent != None and (event.date > afterNodeEvent.date or (event.date == afterNodeEvent.date and event.counter >= afterNodeEvent.counter)):
+                return True
+        return False
+
     def checkTests(self, event: Event, minTime: datetime, maxTime: datetime, currentLeaf: TreeNode, nodesToEvaluate: List[TreeNode]):
+        # First to checks are input buffer checks
+        if(self.checkIfNodeAfter(event, currentLeaf)):
+            return AddEventErrors.LAZY_AFTER_RIGHT_NODE
+        if(self.checkIfNodeBefore(event, currentLeaf)):
+            return AddEventErrors.LAZY_BEFORE_LEFT_NODE
         if(self.maxTimeDelta != timedelta.max and minTime + self.maxTimeDelta < maxTime):
             return AddEventErrors.NOT_WITHIN_TIMESCALE_ERROR
-        if(currentLeaf.nodeBufferStorerIndex != None and currentLeaf.nodeBeforeIndex != None and self.leafList[currentLeaf.nodeBeforeIndex].value and self.leafList[currentLeaf.nodeBeforeIndex].value.date > event.date):
-            return AddEventErrors.LAZY_BEFORE_LEFT_NODE
-        if(currentLeaf.nodeBufferStorerIndex != None and currentLeaf.nodeAfterIndex != None and self.leafList[currentLeaf.nodeAfterIndex].value and self.leafList[currentLeaf.nodeAfterIndex].value.date < event.date):
-            return AddEventErrors.LAZY_AFTER_RIGHT_NODE
         if(currentLeaf.valueType.eventType != event.eventType):
             return AddEventErrors.WRONG_EVENT_TYPE_ERROR
         if(currentLeaf.recursiveEvaluation(self.evaluationDictionary, nodesToEvaluate, currentLeaf, event) == False):
@@ -157,18 +173,22 @@ class Tree:
         currentLeaf.value = event
         del self.eventTypeToLeafDict[event.eventType][0]
         if(self.isTreeFull() == False):
-            self.updateInputBufferIndexes(event, inputBuffer)
-            Tree.updateBufferNodes(self, inputBuffer, treeCopies)
+            self.updateBufferNodes(inputBuffer, treeCopies)
 
-    @staticmethod
-    def updateBufferNodes(baseTree, inputBuffer: Dict, treeCopies: List[Tree]):
+    def updateBufferNodes(self, inputBuffer: Dict, treeCopies: List[Tree]):
+        baseTree = self
         if(baseTree.order == OrderType.LAZY_ORDERED):
             currentLeaf = baseTree.getCurrentLeaf()
             if(currentLeaf.nodeBufferStorerIndex != None):
-                inputBufferIndexes = baseTree.leafList[currentLeaf.nodeBufferStorerIndex].inputBufferIndexes
-                eventTypeBuffer = inputBuffer[currentLeaf.valueType.eventType]
-                index = inputBufferIndexes[currentLeaf.valueType.eventType]
-                buffer = eventTypeBuffer[index:]
+                buffer = inputBuffer[currentLeaf.valueType.eventType]
+                if self.maxTimeDelta != timedelta.max:
+                    minDate = None
+                    if currentLeaf.nodeBeforeIndex != None and self.leafIndex > currentLeaf.nodeBeforeIndex:
+                        minDate = baseTree.leafList[currentLeaf.nodeBeforeIndex].value.date
+                    else:
+                        minDate = baseTree.leafList[currentLeaf.nodeBufferStorerIndex].value.date - self.maxTimeDelta
+                    dateSearch = binarySearchClosestEvent(inputBuffer[currentLeaf.valueType.eventType], minDate)
+                    buffer = buffer[dateSearch:]
                 baseTreeIndex = len(treeCopies) # Where will the base tree be
                 for event in buffer:
                     nodesToEvaluate = []
@@ -184,12 +204,6 @@ class Tree:
 
     def isTreeFull(self) -> bool:
         return self.root.evaluation
-
-    def updateInputBufferIndexes(self, event: Event, inputBuffer: Dict):
-        if(self.order == OrderType.LAZY_ORDERED):
-            if(self.getCurrentLeaf(event).inputBufferIndexes != None):
-                for eventType in self.getCurrentLeaf(event).inputBufferIndexes:
-                    self.getCurrentLeaf(event).inputBufferIndexes[eventType] = len(inputBuffer[eventType])
 
     def getPatternMatch(self) -> PatternMatch:
         if (self.root.evaluation == False):
@@ -249,17 +263,6 @@ class Tree:
                     if nodeList[i].nodeBufferStorerIndex != None:
                         if nodeList[nodeList[i].nodeBufferStorerIndex].nodeBufferStorerIndex != None:
                             nodeList[i].nodeBufferStorerIndex = nodeList[nodeList[i].nodeBufferStorerIndex].nodeBufferStorerIndex
-            # Update inputBufferIndexes
-            for _ in nodeList:
-                for i in range(len(nodeList)):
-                    if nodeList[i].nodeBufferStorerIndex != None:
-                        if nodeList[nodeList[i].nodeBufferStorerIndex].inputBufferIndexes == None:
-                            nodeList[nodeList[i].nodeBufferStorerIndex].inputBufferIndexes = {}
-                        nodeList[nodeList[i].nodeBufferStorerIndex].inputBufferIndexes[nodeList[i].valueType.eventType] = None
-            # If node storer is at the first node then set beffer indexes to 0
-            if nodeList[0].inputBufferIndexes != None:
-                for eventType in nodeList[0].inputBufferIndexes:
-                    nodeList[0].inputBufferIndexes[eventType] = 0
             # Update to indexes
             for node in nodeList:
                 for i in range(len(nodeList)):

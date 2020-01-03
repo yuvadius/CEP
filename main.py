@@ -1,5 +1,6 @@
 from CEP import *
 from IOUtils import *
+from Utils import *
 from time import time
 from datetime import timedelta
 
@@ -22,8 +23,6 @@ def closeFiles(file1, file2):
 def fileCompare(pathA, pathB):
     file1 = open(pathA)
     file2 = open(pathB)
-    if (file1.read() == file2.read()): # Fast check
-        return True
     file1List = [] # List of unique patterns
     file2List = [] # List of unique patterns
     lineStack = ""
@@ -248,12 +247,6 @@ def multiplePatternSearch():
     print("Created the output as test, because output is non-deterministic. Should check manually.")
 
 def nonFrequencyPatternSearch():
-    """
-    PATTERN SEQ(AppleStockPriceUpdate a, AmazonStockPriceUpdate b, AvidStockPriceUpdate c)
-    WHERE   a.OpeningPrice > b.OpeningPrice
-        AND b.OpeningPrice > c.OpeningPrice
-    WITHIN 5 minutes
-    """
     pattern = Pattern(
         SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("LOCM", "c")]), 
         AndFormula(
@@ -264,12 +257,6 @@ def nonFrequencyPatternSearch():
     runTest("nonFrequency", [pattern])
 
 def frequencyPatternSearch():
-    """
-    PATTERN SEQ(AppleStockPriceUpdate a, AmazonStockPriceUpdate b, AvidStockPriceUpdate c)
-    WHERE   a.OpeningPrice > b.OpeningPrice
-        AND b.OpeningPrice > c.OpeningPrice
-    WITHIN 5 minutes
-    """
     pattern = Pattern(
         SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("LOCM", "c")]), 
         AndFormula(
@@ -279,6 +266,68 @@ def frequencyPatternSearch():
         {"AAPL": 460, "AMZN": 442, "LOCM": 219}
     )
     runTest("frequency", [pattern])
+
+def nonFrequencyPatternSearch2():
+    pattern = Pattern(
+        SeqOperator([QItem("LOCM", "a"), QItem("AMZN", "b"), QItem("AAPL", "c")]), 
+        AndFormula(
+            SmallerThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
+            SmallerThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
+        timedelta(minutes=5)
+    )
+    runTest("nonFrequency2", [pattern])
+
+def frequencyPatternSearch2():
+    pattern = Pattern(
+        SeqOperator([QItem("LOCM", "a"), QItem("AMZN", "b"), QItem("AAPL", "c")]), 
+        AndFormula(
+            SmallerThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
+            SmallerThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
+        timedelta(minutes=5),
+        {"AAPL": 2, "AMZN": 3, "LOCM": 1}
+    )
+    runTest("frequency2", [pattern])
+
+def nonFrequencyPatternSearch3():
+    pattern = Pattern(
+        SeqOperator([QItem("AAPL", "a"), QItem("AAPL", "b"), QItem("AAPL", "c"), QItem("LOCM", "d")]), 
+        None,
+        timedelta(minutes=5)
+    )
+    runTest("nonFrequency3", [pattern])
+
+def frequencyPatternSearch3():
+    pattern = Pattern(
+        SeqOperator([QItem("AAPL", "a"), QItem("AAPL", "b"), QItem("AAPL", "c"), QItem("LOCM", "d")]), 
+        None,
+        timedelta(minutes=5),
+        {"AAPL": 460, "LOCM": 219}
+    )
+    runTest("frequency3", [pattern])
+
+def nonFrequencyPatternSearch4():
+    pattern = Pattern(
+        SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
+        None,
+        timedelta(minutes=7)
+    )
+    runTest("nonFrequency4", [pattern])
+
+def frequencyPatternSearch4():
+    pattern = Pattern(
+        SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
+        None,
+        timedelta(minutes=7),
+        {"LOCM": 1, "AAPL": 2} # {"AAPL": 460, "LOCM": 219}
+    )
+    runTest("frequency4", [pattern])
+    pattern = Pattern(
+        SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
+        None,
+        timedelta(minutes=7),
+        {"AAPL": 1, "LOCM": 2} # {"AAPL": 460, "LOCM": 219}
+    )
+    runTest("frequency4", [pattern])
 
 simplePatternSearch()
 googleAscendPatternSearch()
@@ -291,3 +340,9 @@ nonsensePatternSearch()
 hierarchyPatternSearch()
 nonFrequencyPatternSearch()
 frequencyPatternSearch()
+nonFrequencyPatternSearch2()
+frequencyPatternSearch2()
+nonFrequencyPatternSearch3()
+frequencyPatternSearch3()
+nonFrequencyPatternSearch4()
+frequencyPatternSearch4()
