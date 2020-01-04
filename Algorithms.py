@@ -181,14 +181,12 @@ class Tree:
             currentLeaf = baseTree.getCurrentLeaf()
             if(currentLeaf.nodeBufferStorerIndex != None):
                 buffer = inputBuffer[currentLeaf.valueType.eventType]
-                if self.maxTimeDelta != timedelta.max:
-                    minDate = None
-                    if currentLeaf.nodeBeforeIndex != None and self.leafIndex > currentLeaf.nodeBeforeIndex:
-                        minDate = baseTree.leafList[currentLeaf.nodeBeforeIndex].value.date
-                    else:
-                        minDate = baseTree.leafList[currentLeaf.nodeBufferStorerIndex].value.date - self.maxTimeDelta
-                    dateSearch = binarySearchClosestEvent(inputBuffer[currentLeaf.valueType.eventType], minDate)
-                    buffer = buffer[dateSearch:]
+                if currentLeaf.nodeBeforeIndex != None and self.leafIndex > currentLeaf.nodeBeforeIndex:
+                    minDate = baseTree.leafList[currentLeaf.nodeBeforeIndex].value.date
+                    buffer = buffer[binarySearchClosestEvent(buffer, minDate):]
+                elif baseTree.maxTimeDelta != timedelta.max:
+                    minDate = baseTree.maxTime - baseTree.maxTimeDelta
+                    buffer = buffer[binarySearchClosestEvent(buffer, minDate):]
                 baseTreeIndex = len(treeCopies) # Where will the base tree be
                 for event in buffer:
                     nodesToEvaluate = []

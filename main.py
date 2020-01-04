@@ -307,7 +307,7 @@ def frequencyPatternSearch3():
 
 def nonFrequencyPatternSearch4():
     pattern = Pattern(
-        SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
+        SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("AVID", "c"), QItem("LOCM", "d")]), 
         None,
         timedelta(minutes=7)
     )
@@ -315,19 +315,36 @@ def nonFrequencyPatternSearch4():
 
 def frequencyPatternSearch4():
     pattern = Pattern(
+        SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("AVID", "c"), QItem("LOCM", "d")]), 
+        None,
+        timedelta(minutes=7),
+        {"AVID": 1, "LOCM": 2, "AAPL": 3, "AMZN": 4}
+    )
+    runTest("frequency4", [pattern])
+
+def nonFrequencyPatternSearch5():
+    pattern = Pattern(
+        SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
+        None,
+        timedelta(minutes=7)
+    )
+    runTest("nonFrequency5", [pattern])
+
+def frequencyPatternSearch5():
+    pattern = Pattern(
         SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
         None,
         timedelta(minutes=7),
         {"LOCM": 1, "AAPL": 2} # {"AAPL": 460, "LOCM": 219}
     )
-    runTest("frequency4", [pattern])
+    runTest("frequency5", [pattern])
     pattern = Pattern(
         SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
         None,
         timedelta(minutes=7),
         {"AAPL": 1, "LOCM": 2} # {"AAPL": 460, "LOCM": 219}
     )
-    runTest("frequency4", [pattern])
+    runTest("frequency5", [pattern])
 
 simplePatternSearch()
 googleAscendPatternSearch()
@@ -346,3 +363,5 @@ nonFrequencyPatternSearch3()
 frequencyPatternSearch3()
 nonFrequencyPatternSearch4()
 frequencyPatternSearch4()
+nonFrequencyPatternSearch5()
+frequencyPatternSearch5()
