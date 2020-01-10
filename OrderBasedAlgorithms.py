@@ -1,10 +1,8 @@
 from Algorithms import TreeAlgorithm
 from IODataStructures import Stream, Container
 from Pattern import *
-from Utils import StatisticsTypes, getOrderByOccurences
-from Statistics import getSelectivityMatrix, getArrivalRates, getOccurencesDict
-from IOUtils import fileInput
-
+from Utils import *
+from Statistics import *
 
 class TrivialAlgorithm(TreeAlgorithm):
     pass
@@ -65,3 +63,63 @@ class GreedyAlgorithm(TreeAlgorithm):
                 leftToAdd.add(toAddStart)
         
         return newOrder
+
+class IterativeImprovement:
+    def __init__(self, iiType : IterativeImprovementType = IterativeImprovementType.SWAP_BASED):
+        self.iiType = iiType
+    
+    def iterativeImprovement(self, order, selectivityMatrix, arrivalRates, windowInSecs):
+        if self.iiType == IterativeImprovementType.SWAP_BASED:
+            movementGenerator = swapGenerator
+            movementFunction = swapper
+            reverseMove = lambda x: x
+        else:
+            movementGenerator = circleGenerator
+            movementFunction = circler
+            reverseMove = reverseCircle
+        
+        newOrder = order.copy()
+        currCost = calculateCostFunction(newOrder, selectivityMatrix, arrivalRates, windowInSecs)
+        didSwap = True
+        while didSwap:
+            didSwap = False  # speculative
+            for move in movementGenerator(len(newOrder)):
+                movementFunction(newOrder, move)
+                speculativeCost = calculateCostFunction(newOrder, selectivityMatrix, arrivalRates, windowInSecs)
+                if speculativeCost < currCost:
+                    currCost = speculativeCost
+                    didSwap = True
+                    break
+                else:
+                    movementFunction(newOrder, reverseMove(move))
+        return newOrder
+
+class IIGreedyAlgorithm(IterativeImprovement, GreedyAlgorithm):
+    def __init__(self, iiType : IterativeImprovementType = IterativeImprovementType.SWAP_BASED):
+        super().__init__(iiType)
+    
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+        selectivityMatrix = None
+        if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
+            (selectivityMatrix, arrivalRates) = pattern.statistics
+        else:
+            selectivityMatrix = getSelectivityMatrix(pattern, events)
+            arrivalRates = getArrivalRates(pattern, events)
+        pattern.newOrder = IIGreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
+        pattern.newOrder = self.iterativeImprovement(pattern.newOrder, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
+        super().eval(pattern, events, matches, elapsed)
+
+class IIRandomAlgorithm(IterativeImprovement, TreeAlgorithm):
+    def __init__(self, iiType : IterativeImprovementType = IterativeImprovementType.SWAP_BASED):
+        super().__init__(iiType)
+
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+        selectivityMatrix = None
+        if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
+            (selectivityMatrix, arrivalRates) = pattern.statistics
+        else:
+            selectivityMatrix = getSelectivityMatrix(pattern, events)
+            arrivalRates = getArrivalRates(pattern, events)
+        pattern.newOrder = getRandomOrder(len(arrivalRates))
+        pattern.newOrder = self.iterativeImprovement(pattern.newOrder, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
+        super().eval(pattern, events, matches, elapsed)

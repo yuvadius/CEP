@@ -359,7 +359,81 @@ def greedyPatternSearch():
         ),
         timedelta(minutes=3)
     )
+    selectivtyMatrix = [[1.0, 0.9458241432977189, 1.0, 1.0], [0.9458241432977189, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9990885787524921], [1.0, 1.0, 0.9990885787524921, 1.0]]
+    arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivtyMatrix, arrivalRates))
     runTest('greedy1', [pattern], GreedyAlgorithm())
+
+
+def iiRandomPatternSearch():
+    pattern = Pattern(
+        SeqOperator([QItem("MSFT", "a"), QItem("DRIV", "b"), QItem("ORLY", "c"), QItem("CBRL", "d")]),
+        AndFormula(
+            AndFormula(
+                SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
+                SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
+            ),
+            SmallerThanFormula(IdentifierTerm("c", lambda x: x["Peak Price"]), IdentifierTerm("d", lambda x: x["Peak Price"]))
+        ),
+        timedelta(minutes=3)
+    )
+    selectivtyMatrix = [[1.0, 0.9458241432977189, 1.0, 1.0], [0.9458241432977189, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9990885787524921], [1.0, 1.0, 0.9990885787524921, 1.0]]
+    arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivtyMatrix, arrivalRates))
+    print("Might fail: order is non-deterministic")
+    runTest('iiRandom1', [pattern], IIRandomAlgorithm(IterativeImprovementType.SWAP_BASED))
+
+def iiRandom2PatternSearch():
+    pattern = Pattern(
+        SeqOperator([QItem("MSFT", "a"), QItem("DRIV", "b"), QItem("ORLY", "c"), QItem("CBRL", "d")]),
+        AndFormula(
+            AndFormula(
+                SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
+                SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
+            ),
+            SmallerThanFormula(IdentifierTerm("c", lambda x: x["Peak Price"]), IdentifierTerm("d", lambda x: x["Peak Price"]))
+        ),
+        timedelta(minutes=3)
+    )
+    selectivtyMatrix = [[1.0, 0.9458241432977189, 1.0, 1.0], [0.9458241432977189, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9990885787524921], [1.0, 1.0, 0.9990885787524921, 1.0]]
+    arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivtyMatrix, arrivalRates))
+    print("Might fail: order is non-deterministic")
+    runTest('iiRandom2', [pattern], IIRandomAlgorithm(IterativeImprovementType.CIRCLE_BASED))
+
+def iiGreedyPatternSearch():
+    pattern = Pattern(
+        SeqOperator([QItem("MSFT", "a"), QItem("DRIV", "b"), QItem("ORLY", "c"), QItem("CBRL", "d")]),
+        AndFormula(
+            AndFormula(
+                SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
+                SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
+            ),
+            SmallerThanFormula(IdentifierTerm("c", lambda x: x["Peak Price"]), IdentifierTerm("d", lambda x: x["Peak Price"]))
+        ),
+        timedelta(minutes=3)
+    )
+    selectivtyMatrix = [[1.0, 0.9458241432977189, 1.0, 1.0], [0.9458241432977189, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9990885787524921], [1.0, 1.0, 0.9990885787524921, 1.0]]
+    arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivtyMatrix, arrivalRates))
+    runTest('iiGreedy1', [pattern], IIGreedyAlgorithm(IterativeImprovementType.SWAP_BASED))
+
+def iiGreedy2PatternSearch():
+    pattern = Pattern(
+        SeqOperator([QItem("MSFT", "a"), QItem("DRIV", "b"), QItem("ORLY", "c"), QItem("CBRL", "d")]),
+        AndFormula(
+            AndFormula(
+                SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
+                SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
+            ),
+            SmallerThanFormula(IdentifierTerm("c", lambda x: x["Peak Price"]), IdentifierTerm("d", lambda x: x["Peak Price"]))
+        ),
+        timedelta(minutes=3)
+    )
+    selectivtyMatrix = [[1.0, 0.9458241432977189, 1.0, 1.0], [0.9458241432977189, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9990885787524921], [1.0, 1.0, 0.9990885787524921, 1.0]]
+    arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivtyMatrix, arrivalRates))
+    runTest('iiGreedy2', [pattern], IIGreedyAlgorithm(IterativeImprovementType.CIRCLE_BASED))
 
 '''
 simplePatternSearch()
@@ -381,6 +455,10 @@ nonFrequencyPatternSearch4()
 frequencyPatternSearch4()
 nonFrequencyPatternSearch5()
 frequencyPatternSearch5()
+greedyPatternSearch()
+iiRandomPatternSearch()
+iiRandom2PatternSearch()
 '''
 
-greedyPatternSearch()
+iiGreedyPatternSearch()
+iiGreedy2PatternSearch()

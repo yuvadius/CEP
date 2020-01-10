@@ -4,6 +4,7 @@ from datetime import date, datetime, timedelta
 from enum import Enum
 from typing import List, Dict
 from PatternStructure import QItem
+from random import randint
 
 # Return index of the closest event
 def binarySearchClosestEvent(lst: List[Event], dateSearch: datetime):
@@ -78,3 +79,45 @@ class OrderType(Enum):
 class PolicyType(Enum):
     FIND_ALL = 0
     FIND_FAST = 1
+
+class IterativeImprovementType(Enum):
+    SWAP_BASED = 0
+    CIRCLE_BASED = 1
+
+def swapGenerator(n : int):
+    for i in range(n - 1):
+        for j in range(i + 1, n):
+            yield (i, j)
+
+def circleGenerator(n : int):
+    for i in range(n - 2):
+        for j in range(i + 1, n - 1):
+            for k in range(j + 1, n):
+                yield (i,j,k)
+                yield (i,k,j)
+
+def getRandomOrder(n : int):
+    order = []
+    left = list(range(n))
+
+    while len(left) > 0:
+        index = randint(0, len(left) - 1)
+        order.append(left[index])
+        del left[index]
+    
+    return order
+
+def swapper(order, move):
+    i, j = move
+    swap(order, i, j)
+
+def circler(order, move):
+    i,j,k = move
+    tmp = order[i]
+    order[i] = order[j]
+    order[j] = order[k]
+    order[k] = tmp
+
+def reverseCircle(move):
+    i, j, k = move
+    return (k, j, i)

@@ -67,3 +67,39 @@ def getArrivalRates(pattern : Pattern, stream : Stream):
     typesCount = getOccurencesDict(pattern, stream.duplicate())
     args = pattern.patternStructure.args
     return [typesCount[i.eventType] / timeIval for i in args]
+
+
+def calculateCostFunction(order, selectivityMatrix, arrivalRates, windowInSecs):
+    cost = 0
+    toAdd = 1
+    for i in range(len(order)):
+        toAdd *= selectivityMatrix[order[i]][order[i]] * arrivalRates[order[i]] * windowInSecs
+        for j in range(i):
+            toAdd *= selectivityMatrix[order[i]][order[j]]
+        
+        cost += toAdd
+    return cost
+
+events = fileInput("NASDAQ_20080201_1_sorted.txt", 
+    [
+        "Stock Ticker", 
+        "Date", 
+        "Opening Price", 
+        "Peak Price", 
+        "Lowest Price", 
+        "Close Price", 
+        "Volume"],
+    "Stock Ticker",
+    "Date")
+
+pattern = Pattern(
+    SeqOperator([QItem("MSFT", "a"), QItem("DRIV", "b"), QItem("ORLY", "c"), QItem("CBRL", "d")]),
+    AndFormula(
+        AndFormula(
+            SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
+            SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
+        ),
+        SmallerThanFormula(IdentifierTerm("c", lambda x: x["Peak Price"]), IdentifierTerm("d", lambda x: x["Peak Price"]))
+    ),
+    timedelta(minutes=3)
+)
