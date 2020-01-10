@@ -3,6 +3,7 @@ from Event import *
 from datetime import date, datetime, timedelta
 from enum import Enum
 from typing import List, Dict
+from PatternStructure import QItem
 
 # Return index of the closest event
 def binarySearchClosestEvent(lst: List[Event], dateSearch: datetime):
@@ -48,6 +49,19 @@ def swap(list: List, index1: int, index2: int):
     list[index1] = list[index2]
     list[index2] = temp
 
+def getOrderByOccurences(qitems: List[QItem], occurences):
+    ret = list(range(len(qitems)))
+    for j in range(len(qitems) - 1, -1, -1):
+        for i in range(j):
+            if occurences[qitems[i].eventType] > occurences[qitems[i + 1].eventType]:
+                swap(ret, i, i + 1)
+    return ret
+
+class StatisticsTypes(Enum):
+    NO_STATISTICS = 0
+    FREQUENCY_DICT = 1
+    SELECTIVITY_MATRIX_AND_ARRIVAL_RATES = 2
+
 class AddEventErrors(Enum):
     SUCCESS = 0
     WRONG_EVENT_TYPE_ERROR = 1
@@ -57,9 +71,9 @@ class AddEventErrors(Enum):
     EVALUATION_ERROR = 5
 
 class OrderType(Enum):
-    ORDERED = 0
+    TRIVIAL_ORDERED = 0
     NOT_ORDERED = 1
-    LAZY_ORDERED = 2
+    NONTRIVIAL_ORDERED = 2
 
 class PolicyType(Enum):
     FIND_ALL = 0

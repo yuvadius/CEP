@@ -105,7 +105,7 @@ class Tree:
         self.evaluatedLeaves = evaluatedLeaves if evaluatedLeaves != None else []
 
     def getCurrentLeaf(self, event: Event = None) -> TreeNode:
-        if(self.order == OrderType.ORDERED or self.order == OrderType.LAZY_ORDERED):
+        if(self.order == OrderType.TRIVIAL_ORDERED or self.order == OrderType.NONTRIVIAL_ORDERED):
             return self.leafList[self.leafIndex]
         elif(self.order == OrderType.NOT_ORDERED):
             return self.leafList[self.eventTypeToLeafDict[event.eventType][0]]
@@ -177,7 +177,7 @@ class Tree:
 
     def updateBufferNodes(self, inputBuffer: Dict, treeCopies: List[Tree]):
         baseTree = self
-        if(baseTree.order == OrderType.LAZY_ORDERED):
+        if(baseTree.order == OrderType.NONTRIVIAL_ORDERED):
             currentLeaf = baseTree.getCurrentLeaf()
             if(currentLeaf.nodeBufferStorerIndex != None):
                 buffer = inputBuffer[currentLeaf.valueType.eventType]
@@ -207,7 +207,7 @@ class Tree:
         if (self.root.evaluation == False):
             return None
         events = []
-        if (self.order != OrderType.LAZY_ORDERED):
+        if (self.order != OrderType.NONTRIVIAL_ORDERED):
             for node in self.leafList:
                 events.append(node.value)
             return PatternMatch(events)
@@ -239,8 +239,9 @@ class Tree:
 
     # Update the nodes so that they will support input buffers
     @staticmethod
-    def sortNodesByFrequency(pattern: Pattern, nodeList: List[TreeNode]):
-        if pattern.frequency:
+    def sortNodesByNonTrivialOrder(pattern: Pattern, nodeList: List[TreeNode]):
+        if pattern.newOrder:
+            newOrder = {nodeList[i]:pattern.newOrder[i] for i in range(len(pattern.newOrder))}
             # Save neighbors(Will update to indexes at end)
             for i in range(len(nodeList)):
                 if i != 0: # If not first
@@ -250,7 +251,7 @@ class Tree:
             # Rearange nodes and add buffers to nodes
             for _ in nodeList:
                 for i in range(len(nodeList) - 1):
-                    if pattern.frequency[nodeList[i].valueType.eventType] > pattern.frequency[nodeList[i + 1].valueType.eventType]:
+                    if newOrder[nodeList[i]] > newOrder[nodeList[i + 1]]:
                         swap(nodeList, i, i + 1)
                         # Update buffers
                         if nodeList[i + 1].nodeBufferStorerIndex == None:
@@ -271,11 +272,11 @@ class Tree:
 
     @staticmethod
     def createLeftDeepTree(pattern: Pattern) -> Tree:
-        order = OrderType.ORDERED 
+        order = OrderType.TRIVIAL_ORDERED 
         if pattern.patternStructure.getTopOperator() == AndOperator:
             order = OrderType.NOT_ORDERED
-        elif pattern.frequency:
-            order = OrderType.LAZY_ORDERED
+        elif pattern.newOrder:
+            order = OrderType.NONTRIVIAL_ORDERED
         #Adding the sequences to the tree
         nodeList = []
         nodeCounter = 0
@@ -286,8 +287,8 @@ class Tree:
                 eventTypeToLeafDict[qItem.eventType] = []
             eventTypeToLeafDict[qItem.eventType].append(nodeCounter)
             nodeCounter += 1
-        if pattern.frequency:
-            Tree.sortNodesByFrequency(pattern, nodeList)
+        if pattern.newOrder:
+            Tree.sortNodesByNonTrivialOrder(pattern, nodeList)
         root = nodeList[0]
         if len(nodeList) > 1:
             root = TreeNode(None, None)
@@ -388,12 +389,16 @@ class TreeAlgorithm(Algorithm):
                                         self.treeDict[eventType].append(copiedTrees[0])
         matches.close()
 
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, treeConstructionFunc = lambda pattern: Tree.createLeftDeepTree(pattern)):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None, treeConstructionFunc = lambda pattern: Tree.createLeftDeepTree(pattern)):
+        if elapsed:
+            start = datetime.now()        
         # Sequence Order
         if (pattern.patternStructure.getTopOperator() == SeqOperator):
             self.__sequenceEval(pattern, events, matches, treeConstructionFunc)    
         # Conjunction
         elif (pattern.patternStructure.getTopOperator() == AndOperator):
             self.__conjunctionEval(pattern, events, matches, treeConstructionFunc)
+        if elapsed:
+            elapsed[0] = ((datetime.now() - start).total_seconds())
 
    

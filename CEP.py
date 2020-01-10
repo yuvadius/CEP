@@ -23,6 +23,7 @@ class CEP:
         self.eventStreams = []
         self.patternMatches = output if output else Stream()
         self.algorithm = algorithm
+        self.elapsed = [None]
         if saveReplica and events:
             self.baseStream = events
         elif saveReplica:
@@ -37,8 +38,11 @@ class CEP:
                     worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
                     worker.start()
                 else:
-                    self.algorithm.eval(pattern, eventStream, self.patternMatches)
+                    self.algorithm.eval(pattern, eventStream, self.patternMatches, self.elapsed)
                 self.eventStreams.append(eventStream)
+
+    def getElapsed(self):
+        return self.elapsed[0]
 
     def addEvent(self, event: Event):
         for eventStream in self.eventStreams: 

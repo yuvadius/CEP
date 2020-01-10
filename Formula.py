@@ -146,3 +146,10 @@ class BinaryLogicOpFormula(Formula):
 class AndFormula(BinaryLogicOpFormula):
     def __init__(self, leftFormula, rightFormula):
         super().__init__(leftFormula, rightFormula, lambda x, y: x and y)
+
+class TrueFormula(Formula):
+    def __init__(self):
+        pass
+
+    def eval(self, binding: dict = {}):
+        return True

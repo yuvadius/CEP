@@ -42,3 +42,15 @@ class Stream(Container):
     
     def getItem(self):
         return self.__next__()
+    
+    def count(self):
+        return self.stream.qsize()
+    
+    def first(self):
+        return self.stream.queue[0]
+    
+    def last(self):
+        x = self.stream.queue[-1]  
+        if not x: # if stream is closed last is None. We need the one before None.
+            x = self.stream.queue[-2]
+        return x   
