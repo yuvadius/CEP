@@ -230,6 +230,24 @@ class Tree:
         return Tree(root, self.order, leafList, deepcopy(self.eventTypeToLeafDict), self.maxTimeDelta, self.minTime, self.maxTime, deepcopy(self.evaluationDictionary), self.leafIndex, self.isEmpty, list(self.evaluatedLeaves))
 
     @staticmethod
+    def insertFormula(node: TreeNode, formula: Formula, identifiers: set):
+        if node == None:
+            return set()
+        leftIdentifiers = Tree.insertFormula(node.left, formula, identifiers)
+        if leftIdentifiers == True:
+            return True
+        rightIdentifiers = Tree.insertFormula(node.right, formula, identifiers)
+        if rightIdentifiers == True:
+            return True
+        mergedIdentifiers = leftIdentifiers.union(rightIdentifiers)
+        if node.valueType:
+            mergedIdentifiers.add(node.valueType.name)
+        if identifiers.issubset(mergedIdentifiers):
+            node.formula = formula
+            return True
+        return mergedIdentifiers
+   
+    @staticmethod
     def createInputBuffer(tree: Tree) -> Dict:
         inputBuffer = {}
         for node in tree.leafList:
@@ -271,6 +289,19 @@ class Tree:
                         node.nodeAfterIndex = i
 
     @staticmethod
+    def buildTreeStructure(pattern: Pattern, nodeList: List[TreeNode]) -> TreeNode:
+        root = nodeList[0]
+        if len(nodeList) > 1:
+            root = TreeNode(None, None)
+            root.addNodes(nodeList[0], nodeList[1])
+            if len(nodeList) > 2:
+                for node in nodeList[2:]:
+                    prevRoot = root
+                    root = TreeNode(None, None)
+                    root.addNodes(prevRoot, node)
+        return root
+
+    @staticmethod
     def createLeftDeepTree(pattern: Pattern) -> Tree:
         order = OrderType.TRIVIAL_ORDERED 
         if pattern.patternStructure.getTopOperator() == AndOperator:
@@ -289,35 +320,12 @@ class Tree:
             nodeCounter += 1
         if pattern.newOrder:
             Tree.sortNodesByNonTrivialOrder(pattern, nodeList)
-        root = nodeList[0]
-        if len(nodeList) > 1:
-            root = TreeNode(None, None)
-            root.addNodes(nodeList[0], nodeList[1])
-            if len(nodeList) > 2:
-                for node in nodeList[2:]:
-                    prevRoot = root
-                    root = TreeNode(None, None)
-                    root.addNodes(prevRoot, node)
+        #Building the tree structure
+        root = Tree.buildTreeStructure(pattern, nodeList)
         #Adding the formulas to the tree
-        if len(nodeList) == 1:
-            nodeList[0].formula = pattern.patternMatchingCondition
-        else:
-            formulas = Formula.splitAndFormulas(pattern.patternMatchingCondition)
-            for formula in formulas:
-                identifiers = Formula.getIdentifiers(formula)
-                if len(identifiers) == 1:
-                    for node in nodeList:
-                        if node.valueType.name == identifiers[0]:
-                            node.formula = formula
-                            break
-                elif len(identifiers) > 1:
-                    nodeIdentifiers = []
-                    for node in nodeList:
-                        if node.valueType.name in identifiers:
-                            nodeIdentifiers.append(node.valueType.name)
-                            if len(identifiers) == len(nodeIdentifiers):
-                                node.parent.formula = formula
-                                break
+        formulas = Formula.splitAndFormulas(pattern.patternMatchingCondition)
+        for formula in formulas:
+            Tree.insertFormula(root, formula, set(Formula.getIdentifiers(formula)))
         return Tree(root, order, nodeList, eventTypeToLeafDict, pattern.slidingWindow)
 
 class TreeAlgorithm(Algorithm):
