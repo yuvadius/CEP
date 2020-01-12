@@ -4,6 +4,7 @@ from Utils import *
 from OrderBasedAlgorithms import *
 from time import time
 from datetime import timedelta
+from Statistics import *
 
 nasdaqEventStream = fileInput("NASDAQ_20080201_1_sorted.txt", 
         [
@@ -359,9 +360,9 @@ def greedyPatternSearch():
         ),
         timedelta(minutes=3)
     )
-    selectivtyMatrix = [[1.0, 0.9458241432977189, 1.0, 1.0], [0.9458241432977189, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9990885787524921], [1.0, 1.0, 0.9990885787524921, 1.0]]
+    selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
-    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivtyMatrix, arrivalRates))
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
     runTest('greedy1', [pattern], GreedyAlgorithm())
 
 
@@ -377,9 +378,9 @@ def iiRandomPatternSearch():
         ),
         timedelta(minutes=3)
     )
-    selectivtyMatrix = [[1.0, 0.9458241432977189, 1.0, 1.0], [0.9458241432977189, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9990885787524921], [1.0, 1.0, 0.9990885787524921, 1.0]]
+    selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
-    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivtyMatrix, arrivalRates))
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
     print("Might fail: order is non-deterministic")
     runTest('iiRandom1', [pattern], IIRandomAlgorithm(IterativeImprovementType.SWAP_BASED))
 
@@ -395,9 +396,9 @@ def iiRandom2PatternSearch():
         ),
         timedelta(minutes=3)
     )
-    selectivtyMatrix = [[1.0, 0.9458241432977189, 1.0, 1.0], [0.9458241432977189, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9990885787524921], [1.0, 1.0, 0.9990885787524921, 1.0]]
+    selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
-    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivtyMatrix, arrivalRates))
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
     print("Might fail: order is non-deterministic")
     runTest('iiRandom2', [pattern], IIRandomAlgorithm(IterativeImprovementType.CIRCLE_BASED))
 
@@ -413,10 +414,11 @@ def iiGreedyPatternSearch():
         ),
         timedelta(minutes=3)
     )
-    selectivtyMatrix = [[1.0, 0.9458241432977189, 1.0, 1.0], [0.9458241432977189, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9990885787524921], [1.0, 1.0, 0.9990885787524921, 1.0]]
+    selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
-    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivtyMatrix, arrivalRates))
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
     runTest('iiGreedy1', [pattern], IIGreedyAlgorithm(IterativeImprovementType.SWAP_BASED))
+    print(pattern.newOrder, calculateCostFunction(pattern.newOrder, selectivityMatrix, arrivalRates, 180))
 
 def iiGreedy2PatternSearch():
     pattern = Pattern(
@@ -430,10 +432,29 @@ def iiGreedy2PatternSearch():
         ),
         timedelta(minutes=3)
     )
-    selectivtyMatrix = [[1.0, 0.9458241432977189, 1.0, 1.0], [0.9458241432977189, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9990885787524921], [1.0, 1.0, 0.9990885787524921, 1.0]]
+    selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
-    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivtyMatrix, arrivalRates))
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
     runTest('iiGreedy2', [pattern], IIGreedyAlgorithm(IterativeImprovementType.CIRCLE_BASED))
+
+def dpLdPatternSearch():
+    pattern = Pattern(
+        SeqOperator([QItem("MSFT", "a"), QItem("DRIV", "b"), QItem("ORLY", "c"), QItem("CBRL", "d")]),
+        AndFormula(
+            AndFormula(
+                SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
+                SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
+            ),
+            SmallerThanFormula(IdentifierTerm("c", lambda x: x["Peak Price"]), IdentifierTerm("d", lambda x: x["Peak Price"]))
+        ),
+        timedelta(minutes=3)
+    )
+    selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
+    arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
+    pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
+    runTest('dpLd1', [pattern], DynamicProgrammingLeftDeepAlgorithm())
+    print(pattern.newOrder, calculateCostFunction(pattern.newOrder, selectivityMatrix, arrivalRates, 180))
+
 
 '''
 simplePatternSearch()
@@ -458,7 +479,8 @@ frequencyPatternSearch5()
 greedyPatternSearch()
 iiRandomPatternSearch()
 iiRandom2PatternSearch()
+iiGreedy2PatternSearch()
+iiGreedyPatternSearch()
 '''
 
-iiGreedyPatternSearch()
-iiGreedy2PatternSearch()
+dpLdPatternSearch()

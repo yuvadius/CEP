@@ -123,3 +123,49 @@ class IIRandomAlgorithm(IterativeImprovement, TreeAlgorithm):
         pattern.newOrder = getRandomOrder(len(arrivalRates))
         pattern.newOrder = self.iterativeImprovement(pattern.newOrder, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
         super().eval(pattern, events, matches, elapsed)
+
+class DynamicProgrammingLeftDeepAlgorithm(TreeAlgorithm):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+        selectivityMatrix = None
+        if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
+            (selectivityMatrix, arrivalRates) = pattern.statistics
+        else:
+            selectivityMatrix = getSelectivityMatrix(pattern, events)
+            arrivalRates = getArrivalRates(pattern, events)
+        pattern.newOrder = DynamicProgrammingLeftDeepAlgorithm.findOrder(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
+        super().eval(pattern, events, matches, elapsed)
+    
+    @staticmethod
+    def findOrder(selectivityMatrix, arrivalRates, window):
+        # Save subsets' optimal orders, the cost and the left to add items.
+        argsNum = len(selectivityMatrix)
+        if argsNum == 1:  # boring extreme case
+            return [0]
+        
+        items = set(range(argsNum))
+        subOrders = {frozenset({i}):([i], 
+                        calculateCostFunction([i], selectivityMatrix, arrivalRates, window), 
+                        items.difference({i})) 
+                        for i in items}
+        
+        for i in range(2, argsNum + 1):
+            # for each subset of size i, we will find the best order for each subset
+            nextOrders = {}
+            for subset in subOrders.keys():
+                order, _, leftToAdd = subOrders[subset]
+                for item in leftToAdd:
+                    # calculate for optional order for set of size i
+                    newSubset = frozenset(subset.union({item}))
+                    newCost = calculateCostFunction(order, selectivityMatrix, arrivalRates, window)
+                    # check if it is the current best order for that set
+                    if newSubset in nextOrders.keys():
+                        _, tCost, tLeft = nextOrders[newSubset]
+                        if newCost < tCost:
+                            newOrder = order + [item]
+                            nextOrders[newSubset] = newOrder, newCost, tLeft
+                    else:
+                        newOrder = order + [item]
+                        nextOrders[newSubset] = newOrder, newCost, leftToAdd.difference({item})
+            # update subsets for next iteration    
+            subOrders = nextOrders
+        return list(subOrders.values())[0][0]
