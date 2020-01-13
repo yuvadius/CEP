@@ -79,13 +79,13 @@ class IterativeImprovement:
             reverseMove = reverseCircle
         
         newOrder = order.copy()
-        currCost = calculateCostFunction(newOrder, selectivityMatrix, arrivalRates, windowInSecs)
+        currCost = calculateOrderCostFunction(newOrder, selectivityMatrix, arrivalRates, windowInSecs)
         didSwap = True
         while didSwap:
             didSwap = False  # speculative
             for move in movementGenerator(len(newOrder)):
                 movementFunction(newOrder, move)
-                speculativeCost = calculateCostFunction(newOrder, selectivityMatrix, arrivalRates, windowInSecs)
+                speculativeCost = calculateOrderCostFunction(newOrder, selectivityMatrix, arrivalRates, windowInSecs)
                 if speculativeCost < currCost:
                     currCost = speculativeCost
                     didSwap = True
@@ -142,9 +142,9 @@ class DynamicProgrammingLeftDeepAlgorithm(TreeAlgorithm):
         if argsNum == 1:  # boring extreme case
             return [0]
         
-        items = set(range(argsNum))
+        items = frozenset(range(argsNum))
         subOrders = {frozenset({i}):([i], 
-                        calculateCostFunction([i], selectivityMatrix, arrivalRates, window), 
+                        calculateOrderCostFunction([i], selectivityMatrix, arrivalRates, window), 
                         items.difference({i})) 
                         for i in items}
         
@@ -156,7 +156,7 @@ class DynamicProgrammingLeftDeepAlgorithm(TreeAlgorithm):
                 for item in leftToAdd:
                     # calculate for optional order for set of size i
                     newSubset = frozenset(subset.union({item}))
-                    newCost = calculateCostFunction(order, selectivityMatrix, arrivalRates, window)
+                    newCost = calculateOrderCostFunction(order, selectivityMatrix, arrivalRates, window)
                     # check if it is the current best order for that set
                     if newSubset in nextOrders.keys():
                         _, tCost, tLeft = nextOrders[newSubset]

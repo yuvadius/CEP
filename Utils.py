@@ -5,6 +5,7 @@ from enum import Enum
 from typing import List, Dict
 from PatternStructure import QItem
 from random import randint
+from itertools import combinations
 
 # Return index of the closest event
 def binarySearchClosestEvent(lst: List[Event], dateSearch: datetime):
@@ -57,6 +58,33 @@ def getOrderByOccurences(qitems: List[QItem], occurences):
             if occurences[qitems[i].eventType] > occurences[qitems[i + 1].eventType]:
                 swap(ret, i, i + 1)
     return ret
+
+def getAllDisjointSets(s : frozenset):
+    if len(s) == 2:
+        yield (frozenset({t}) for t in s)
+        return
+    
+    first = next(iter(s))
+    for i in range(len(s) - 1):
+        for c in combinations(s.difference({first}), i):
+            set1 = frozenset(c).union({first})
+            set2 = s.difference(set1)
+            yield (set1, set2)
+
+
+def findAllTreeTopologies(s : frozenset):
+    if len(s) == 1:
+        yield tuple(s)[0]
+        return
+    if len(s) == 2:
+        yield tuple(s)
+        return
+    
+    for set1, set2 in getAllDisjointSets(s):
+        for topology1 in findAllTreeTopologies(set1):
+            for topology2 in findAllTreeTopologies(set2):
+                yield (topology1, topology2)
+
 
 class StatisticsTypes(Enum):
     NO_STATISTICS = 0

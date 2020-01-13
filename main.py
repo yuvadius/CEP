@@ -418,7 +418,7 @@ def iiGreedyPatternSearch():
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
     runTest('iiGreedy1', [pattern], IIGreedyAlgorithm(IterativeImprovementType.SWAP_BASED))
-    print(pattern.newOrder, calculateCostFunction(pattern.newOrder, selectivityMatrix, arrivalRates, 180))
+    print(pattern.newOrder, calculateOrderCostFunction(pattern.newOrder, selectivityMatrix, arrivalRates, 180))
 
 def iiGreedy2PatternSearch():
     pattern = Pattern(
@@ -453,7 +453,7 @@ def dpLdPatternSearch():
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
     runTest('dpLd1', [pattern], DynamicProgrammingLeftDeepAlgorithm())
-    print(pattern.newOrder, calculateCostFunction(pattern.newOrder, selectivityMatrix, arrivalRates, 180))
+    print(pattern.newOrder, calculateOrderCostFunction(pattern.newOrder, selectivityMatrix, arrivalRates, 180))
 
 
 '''

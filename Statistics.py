@@ -75,7 +75,7 @@ def getArrivalRates(pattern : Pattern, stream : Stream):
     return [typesCount[i.eventType] / timeIval for i in args]
 
 
-def calculateCostFunction(order, selectivityMatrix, arrivalRates, windowInSecs):
+def calculateOrderCostFunction(order, selectivityMatrix, arrivalRates, windowInSecs):
     cost = 0
     toAdd = 1
     for i in range(len(order)):
@@ -84,3 +84,21 @@ def calculateCostFunction(order, selectivityMatrix, arrivalRates, windowInSecs):
             toAdd *= selectivityMatrix[order[i]][order[j]]
         cost += toAdd
     return cost
+
+def calculateTreeCostFunction(tree, selectivityMatrix, arrivalRates, windowInSecs):
+    _, _, cost = calculateTreeCostFunctionHelper(tree, selectivityMatrix, arrivalRates, windowInSecs)
+    return cost
+
+def calculateTreeCostFunctionHelper(tree, selectivityMatrix, arrivalRates, windowInSecs):
+    if type(tree) == int:
+        cost = pm = windowInSecs * arrivalRates[tree] * selectivityMatrix[tree][tree]
+        return [tree], pm, cost
+    
+    leftArgs, leftPM, leftCost = calculateTreeCostFunctionHelper(tree[0], selectivityMatrix, arrivalRates, windowInSecs)
+    rightArgs, rightPM, rightCost = calculateTreeCostFunctionHelper(tree[1], selectivityMatrix, arrivalRates, windowInSecs)
+    pm = leftPM * rightPM
+    for l in leftArgs:
+        for r in rightArgs:
+            pm *= selectivityMatrix[l][r]
+    cost = leftCost + rightCost + pm
+    return leftArgs + rightArgs, pm, cost
