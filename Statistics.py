@@ -3,8 +3,6 @@ from Pattern import Pattern
 from PatternStructure import SeqOperator, AndOperator, QItem
 from IODataStructures import Stream
 from IOUtils import *
-from CEP import CEP
-from Algorithms import TreeAlgorithm
 
 def eventTypesCount(stream: Stream):
     ret = {}

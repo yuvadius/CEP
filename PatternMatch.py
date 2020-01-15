@@ -1,5 +1,5 @@
 '''
-This class is the returned result of an Algorithms eval function
+This class is the returned result of an evaluation eval function
 "time": The amount of time it took to callculate the pattern match in milliseconds.
 If the time is "-1" then it can be considered as undefined
 '''

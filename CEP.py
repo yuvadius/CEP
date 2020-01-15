@@ -8,7 +8,9 @@ Can be set only once by the constructor
 import threading
 from Event import *
 from PatternMatch import *
-from Algorithms import *
+from TreeBasedEvaluation import *
+from TreeBasedAlgorithms import *
+from OrderBasedAlgorithms import *
 from Pattern import *
 from Utils import *
 

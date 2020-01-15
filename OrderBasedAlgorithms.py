@@ -1,24 +1,34 @@
-from Algorithms import TreeAlgorithm
+from __future__ import annotations
+from typing import List
+from TreeBasedEvaluation import TreeAlgorithm
 from IODataStructures import Stream, Container
 from Pattern import *
 from Utils import *
 from Statistics import *
 
-class TrivialAlgorithm(TreeAlgorithm):
-    pass
+class OrderBasedAlgorithm(TreeAlgorithm):
+    def eval(self, order: List[int], pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+        tree = buildTreeFromOrder(order)
+        super().eval(tree, pattern, events, matches, elapsed)
 
-class AscendingFrequencyAlgorithm(TreeAlgorithm):
+class TrivialAlgorithm(OrderBasedAlgorithm):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+        argsNum = len(pattern.patternStructure.args)
+        order = range(argsNum)
+        super().eval(order, pattern, events, matches, elapsed)
+
+class AscendingFrequencyAlgorithm(OrderBasedAlgorithm):
     def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
         frequencyDict = None
         if pattern.statisticsType == StatisticsTypes.FREQUENCY_DICT:
             frequencyDict = pattern.statistics
         else:
             frequencyDict = getOccurencesDict(pattern, events.duplicate())
-        pattern.newOrder = getOrderByOccurences(pattern.patternStructure.args, frequencyDict)
-        super().eval(pattern, events, matches, elapsed)
+        order = getOrderByOccurences(pattern.patternStructure.args, frequencyDict)
+        super().eval(order, pattern, events, matches, elapsed)
     
 
-class GreedyAlgorithm(TreeAlgorithm):
+class GreedyAlgorithm(OrderBasedAlgorithm):
     def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
         selectivityMatrix = None
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
@@ -26,8 +36,8 @@ class GreedyAlgorithm(TreeAlgorithm):
         else:
             selectivityMatrix = getSelectivityMatrix(pattern, events)
             arrivalRates = getArrivalRates(pattern, events)
-        pattern.newOrder = GreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
-        super().eval(pattern, events, matches, elapsed)
+        order = GreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
+        super().eval(order, pattern, events, matches, elapsed)
 
     @staticmethod
     def performGreedyOrder(selectivityMatrix, arrivalRates):
@@ -94,7 +104,7 @@ class IterativeImprovement:
                     movementFunction(newOrder, reverseMove(move))
         return newOrder
 
-class IIGreedyAlgorithm(IterativeImprovement, GreedyAlgorithm):
+class IIGreedyAlgorithm(IterativeImprovement, OrderBasedAlgorithm):
     def __init__(self, iiType : IterativeImprovementType = IterativeImprovementType.SWAP_BASED):
         super().__init__(iiType)
     
@@ -105,11 +115,11 @@ class IIGreedyAlgorithm(IterativeImprovement, GreedyAlgorithm):
         else:
             selectivityMatrix = getSelectivityMatrix(pattern, events)
             arrivalRates = getArrivalRates(pattern, events)
-        pattern.newOrder = IIGreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
-        pattern.newOrder = self.iterativeImprovement(pattern.newOrder, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(pattern, events, matches, elapsed)
+        order = GreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
+        order = self.iterativeImprovement(order, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
+        super().eval(order, pattern, events, matches, elapsed)
 
-class IIRandomAlgorithm(IterativeImprovement, TreeAlgorithm):
+class IIRandomAlgorithm(IterativeImprovement, OrderBasedAlgorithm):
     def __init__(self, iiType : IterativeImprovementType = IterativeImprovementType.SWAP_BASED):
         super().__init__(iiType)
 
@@ -120,11 +130,11 @@ class IIRandomAlgorithm(IterativeImprovement, TreeAlgorithm):
         else:
             selectivityMatrix = getSelectivityMatrix(pattern, events)
             arrivalRates = getArrivalRates(pattern, events)
-        pattern.newOrder = getRandomOrder(len(arrivalRates))
-        pattern.newOrder = self.iterativeImprovement(pattern.newOrder, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(pattern, events, matches, elapsed)
+        order = getRandomOrder(len(arrivalRates))
+        order = self.iterativeImprovement(order, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
+        super().eval(order, pattern, events, matches, elapsed)
 
-class DynamicProgrammingLeftDeepAlgorithm(TreeAlgorithm):
+class DynamicProgrammingLeftDeepAlgorithm(OrderBasedAlgorithm):
     def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
         selectivityMatrix = None
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
@@ -132,8 +142,8 @@ class DynamicProgrammingLeftDeepAlgorithm(TreeAlgorithm):
         else:
             selectivityMatrix = getSelectivityMatrix(pattern, events)
             arrivalRates = getArrivalRates(pattern, events)
-        pattern.newOrder = DynamicProgrammingLeftDeepAlgorithm.findOrder(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(pattern, events, matches, elapsed)
+        order = DynamicProgrammingLeftDeepAlgorithm.findOrder(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
+        super().eval(order, pattern, events, matches, elapsed)
     
     @staticmethod
     def findOrder(selectivityMatrix, arrivalRates, window):

@@ -30,7 +30,9 @@ class AtomicTerm(Term):
     
     def eval(self, binding: dict = {}):
         return self.value
-
+    
+    def getTermOf(self, names : set):
+        return self
         
 class IdentifierTerm(Term):
     def __init__(self, name: str, getAttrFunc):
@@ -41,7 +43,12 @@ class IdentifierTerm(Term):
         if not type(binding) == dict or not self.name in binding:
             raise NameError("Name %s is not bound to a value" % self.name)
         return self.getAttrFunc(binding[self.name])
-
+    
+    def getTermOf(self, names : set):
+        if self.name in names:
+            return self
+        else:
+            return None
         
 class BinaryOperationTerm(Term):
     def __init__(self, lhs, rhs, binOp):
@@ -51,25 +58,54 @@ class BinaryOperationTerm(Term):
     
     def eval(self, binding: dict = {}):
         return self.binOp(self.lhs.eval(binding), self.rhs.eval(binding))
-
         
 class PlusTerm(BinaryOperationTerm):
     def __init__(self, lhs, rhs):
         super().__init__(lhs, rhs, lambda x, y: x + y)
+    
+    def getTermOf(self, names : set):
+        lhs = self.lhs.getTermOf(names)
+        rhs = self.rhs.getTermOf(names)
+        if lhs and rhs:
+            return PlusTerm(lhs, rhs)
+        else:
+            return None
         
 class MinusTerm(BinaryOperationTerm):
     def __init__(self, lhs, rhs):
         super().__init__(lhs, rhs, lambda x, y: x - y)
+    
+    def getTermOf(self, names : set):
+        lhs = self.lhs.getTermOf(names)
+        rhs = self.rhs.getTermOf(names)
+        if lhs and rhs:
+            return MinusTerm(lhs, rhs)
+        else:
+            return None
         
 class MulTerm(BinaryOperationTerm):
     def __init__(self, lhs, rhs):
         super().__init__(lhs, rhs, lambda x, y: x * y)
-
+    
+    def getTermOf(self, names : set):
+        lhs = self.lhs.getTermOf(names)
+        rhs = self.rhs.getTermOf(names)
+        if lhs and rhs:
+            return MulTerm(lhs, rhs)
+        else:
+            return None
         
 class DivTerm(BinaryOperationTerm):
     def __init__(self, lhs, rhs):
         super().__init__(lhs, rhs, lambda x, y: x / y)
-
+    
+    def getTermOf(self, names : set):
+        lhs = self.lhs.getTermOf(names)
+        rhs = self.rhs.getTermOf(names)
+        if lhs and rhs:
+            return DivTerm(lhs, rhs)
+        else:
+            return None
         
 class Formula(ABC):
     '''
@@ -88,6 +124,9 @@ class Formula(ABC):
             elif (issubclass(type(getattr(formulaOrTerm,attribute)), Formula) or issubclass(type(getattr(formulaOrTerm,attribute)), Term)):
                 identifiers = identifiers + Formula.getIdentifiers(getattr(formulaOrTerm,attribute))
         return list(dict.fromkeys(identifiers)) # Remove duplicates
+    
+    def getFormulaOf(self, names : set):
+        pass
 
     @staticmethod
     def splitAndFormulas(formula):
@@ -102,37 +141,80 @@ class AtomicFormula(Formula):
         self.relBinOp = relBinOp
     
     def eval(self, binding: dict = {}):
-        try:
-            return self.relBinOp(self.leftTerm.eval(binding), self.rightTerm.eval(binding))
-        except NameError:
-            return True  # Name wasn't found, then it is a partial evaluation
-        
+        return self.relBinOp(self.leftTerm.eval(binding), self.rightTerm.eval(binding))
         
 class EqFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
         super().__init__(leftTerm, rightTerm, lambda x, y: x == y)
-        
+    
+    
+    def getFormulaOf(self, names : set):
+        rightTerm = self.rightTerm.getTermOf(names)
+        leftTerm = self.leftTerm.getTermOf(names)
+        if leftTerm and rightTerm:
+            return EqFormula(leftTerm, rightTerm)
+        else:
+            return None
         
 class NotEqFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
         super().__init__(leftTerm, rightTerm, lambda x, y: x != y)
-        
+    
+    def getFormulaOf(self, names : set):
+        rightTerm = self.rightTerm.getTermOf(names)
+        leftTerm = self.leftTerm.getTermOf(names)
+        if leftTerm and rightTerm:
+            return NotEqFormula(leftTerm, rightTerm)
+        else:
+            return None
         
 class GreaterThanFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
         super().__init__(leftTerm, rightTerm, lambda x, y: x > y)    
-        
+    
+    def getFormulaOf(self, names : set):
+        rightTerm = self.rightTerm.getTermOf(names)
+        leftTerm = self.leftTerm.getTermOf(names)
+        if leftTerm and rightTerm:
+            return GreaterThanFormula(leftTerm, rightTerm)
+        else:
+            return None
+
 class SmallerThanFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
         super().__init__(leftTerm, rightTerm, lambda x, y: x < y)        
-        
+    
+    def getFormulaOf(self, names : set):
+        rightTerm = self.rightTerm.getTermOf(names)
+        leftTerm = self.leftTerm.getTermOf(names)
+        if leftTerm and rightTerm:
+            return SmallerThanFormula(leftTerm, rightTerm)
+        else:
+            return None
+    
 class GreaterThanEqFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
-        super().__init__(leftTerm, rightTerm, lambda x, y: x >= y)    
+        super().__init__(leftTerm, rightTerm, lambda x, y: x >= y)
+
+    def getFormulaOf(self, names : set):
+        rightTerm = self.rightTerm.getTermOf(names)
+        leftTerm = self.leftTerm.getTermOf(names)
+        if leftTerm and rightTerm:
+            return GreaterThanEqFormula(leftTerm, rightTerm)
+        else:
+            return None 
         
 class SmallerThanEqFormula(AtomicFormula):
     def __init__(self, leftTerm, rightTerm):
         super().__init__(leftTerm, rightTerm, lambda x, y: x <= y)
+    
+    def getFormulaOf(self, names : set):
+        rightTerm = self.rightTerm.getTermOf(names)
+        leftTerm = self.leftTerm.getTermOf(names)
+        if leftTerm and rightTerm:
+            return SmallerThanEqFormula(leftTerm, rightTerm)
+        else:
+            return None
 
 class BinaryLogicOpFormula(Formula):
     def __init__(self, leftFormula, rightFormula, binaryLogicOp):
@@ -146,6 +228,18 @@ class BinaryLogicOpFormula(Formula):
 class AndFormula(BinaryLogicOpFormula):
     def __init__(self, leftFormula, rightFormula):
         super().__init__(leftFormula, rightFormula, lambda x, y: x and y)
+
+    def getFormulaOf(self, names : set):
+        rightFormula = self.rightFormula.getFormulaOf(names)
+        leftFormula = self.leftFormula.getFormulaOf(names)
+        if leftFormula and rightFormula:
+            return AndFormula(leftFormula, rightFormula)
+        elif leftFormula:
+            return leftFormula
+        elif rightFormula:
+            return rightFormula
+        else:
+            return None
 
 class TrueFormula(Formula):
     def __init__(self):

@@ -1,4 +1,4 @@
-from Algorithms import TreeAlgorithm
+from TreeBasedEvaluation import TreeAlgorithm
 from IODataStructures import Stream, Container
 from Pattern import *
 from Utils import *
@@ -14,8 +14,8 @@ class DynamicProgrammingBushyAlgorithm(TreeAlgorithm):
         else:
             selectivityMatrix = getSelectivityMatrix(pattern, events)
             arrivalRates = getArrivalRates(pattern, events)
-        pattern.newTree = DynamicProgrammingBushyAlgorithm.findTree(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(pattern, events, matches, elapsed)
+        tree = DynamicProgrammingBushyAlgorithm.findTree(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
+        super().eval(tree, pattern, events, matches, elapsed)
     
     @staticmethod
     def findTree(selectivityMatrix, arrivalRates, window):
@@ -59,8 +59,8 @@ class ZStreamAlgorithm(TreeAlgorithm):
         else:
             selectivityMatrix = getSelectivityMatrix(pattern, events)
             arrivalRates = getArrivalRates(pattern, events)
-        pattern.newTree = ZStreamAlgorithm.findTree(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(pattern, events, matches, elapsed)
+        tree = ZStreamAlgorithm.findTree(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
+        super().eval(tree, pattern, events, matches, elapsed)
     
     @staticmethod
     def findTree(selectivityMatrix, arrivalRates, window):
@@ -107,5 +107,5 @@ class ZStreamOrdAlgorithm(TreeAlgorithm):
             selectivityMatrix = getSelectivityMatrix(pattern, events)
             arrivalRates = getArrivalRates(pattern, events)
         order = GreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
-        pattern.newTree = ZStreamAlgorithm.findTreeForOrder(order, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(pattern, events, matches, elapsed)
+        tree = ZStreamAlgorithm.findTreeForOrder(order, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
+        super().eval(tree, pattern, events, matches, elapsed)

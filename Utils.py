@@ -52,11 +52,12 @@ def swap(list: List, index1: int, index2: int):
     list[index2] = temp
 
 def getOrderByOccurences(qitems: List[QItem], occurences):
-    ret = list(range(len(qitems)))
-    for j in range(len(qitems) - 1, -1, -1):
-        for i in range(j):
-            if occurences[qitems[i].eventType] > occurences[qitems[i + 1].eventType]:
-                swap(ret, i, i + 1)
+    for qitem in qitems:
+        print(qitem.eventType, qitem.name)
+    
+    tempList = [(i, occurences[qitems[i].eventType]) for i in range(len(qitems))]
+    tempList = sorted(tempList, key=lambda x: x[1])
+    ret = [i[0] for i in tempList]
     return ret
 
 def getAllDisjointSets(s : frozenset):
@@ -149,3 +150,68 @@ def circler(order, move):
 def reverseCircle(move):
     i, j, k = move
     return (k, j, i)
+
+def merge(arr1, arr2, key=lambda x: x):
+    newLen = len(arr1) + len(arr2)
+    ret = []
+    i = i1 = i2 = 0
+    while i < newLen and i1 < len(arr1) and i2 < len(arr2):
+        if key(arr1[i1]) < key(arr2[i2]):
+            ret.append(arr1[i1])
+            i1 += 1
+        else:
+            ret.append(arr2[i2])
+            i2 += 1
+        i += 1
+    
+    while i1 < len(arr1):
+        ret.append(arr1[i1])
+        i1 += 1
+    
+    while i2 < len(arr2):
+        ret.append(arr2[i2])
+        i2 += 1
+    
+    return ret
+
+def mergeAccordingTo(arr1, arr2, actual1, actual2, key=lambda x: x):
+    if len(arr1) != len(actual1) or len(arr2) != len(actual2):
+        raise Exception()
+
+    newLen = len(arr1) + len(arr2)
+    ret = []
+    i = i1 = i2 = 0
+    while i < newLen and i1 < len(arr1) and i2 < len(arr2):
+        if key(arr1[i1]) < key(arr2[i2]):
+            ret.append(actual1[i1])
+            i1 += 1
+        else:
+            ret.append(actual2[i2])
+            i2 += 1
+        i += 1
+    
+    while i1 < len(arr1):
+        ret.append(actual1[i1])
+        i1 += 1
+    
+    while i2 < len(arr2):
+        ret.append(actual2[i2])
+        i2 += 1
+    
+    return ret
+
+def isSorted(arr, key=lambda x: x):
+    if len(arr) == 0:
+        return True
+    
+    for i in range(len(arr) - 1):
+        if key(arr[i]) > key(arr[i + 1]):
+            return False
+    
+    return True
+
+def buildTreeFromOrder(order):
+    ret = order[0]
+    for i in range(1, len(order)):
+        ret = (ret, order[i])
+    return ret
