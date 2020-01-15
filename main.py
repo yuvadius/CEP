@@ -255,7 +255,7 @@ def nonFrequencyPatternSearch():
             GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
         timedelta(minutes=5)
     )
-    runTest("nonFrequency", [pattern])
+    createTest("nonFrequency", [pattern])
 
 def frequencyPatternSearch():
     pattern = Pattern(
@@ -266,7 +266,7 @@ def frequencyPatternSearch():
         timedelta(minutes=5)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AAPL": 460, "AMZN": 442, "LOCM": 219})
-    runTest("frequency", [pattern], AscendingFrequencyAlgorithm())
+    createTest("frequency", [pattern], AscendingFrequencyAlgorithm())
 
 def nonFrequencyPatternSearch2():
     pattern = Pattern(
@@ -276,7 +276,7 @@ def nonFrequencyPatternSearch2():
             SmallerThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
         timedelta(minutes=5)
     )
-    runTest("nonFrequency2", [pattern])
+    createTest("nonFrequency2", [pattern])
 
 def frequencyPatternSearch2():
     pattern = Pattern(
@@ -287,7 +287,7 @@ def frequencyPatternSearch2():
         timedelta(minutes=5)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AAPL": 2, "AMZN": 3, "LOCM": 1})
-    runTest("frequency2", [pattern], AscendingFrequencyAlgorithm())
+    createTest("frequency2", [pattern], AscendingFrequencyAlgorithm())
 
 def nonFrequencyPatternSearch3():
     pattern = Pattern(
@@ -295,7 +295,7 @@ def nonFrequencyPatternSearch3():
         TrueFormula(),
         timedelta(minutes=5)
     )
-    runTest("nonFrequency3", [pattern])
+    createTest("nonFrequency3", [pattern])
 
 def frequencyPatternSearch3():
     pattern = Pattern(
@@ -304,7 +304,7 @@ def frequencyPatternSearch3():
         timedelta(minutes=5)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AAPL": 460, "LOCM": 219})
-    runTest("frequency3", [pattern], AscendingFrequencyAlgorithm())
+    createTest("frequency3", [pattern], AscendingFrequencyAlgorithm())
 
 def nonFrequencyPatternSearch4():
     pattern = Pattern(
@@ -312,7 +312,7 @@ def nonFrequencyPatternSearch4():
         TrueFormula(),
         timedelta(minutes=7)
     )
-    runTest("nonFrequency4", [pattern])
+    createTest("nonFrequency4", [pattern])
 
 def frequencyPatternSearch4():
     pattern = Pattern(
@@ -321,12 +321,24 @@ def frequencyPatternSearch4():
         timedelta(minutes=7)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AVID": 1, "LOCM": 2, "AAPL": 3, "AMZN": 4})
-    runTest("frequency4", [pattern], AscendingFrequencyAlgorithm())
+    createTest("frequency4", [pattern], AscendingFrequencyAlgorithm())
 
 def nonFrequencyPatternSearch5():
     pattern = Pattern(
         SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
-        TrueFormula(),
+        AndFormula(
+            AndFormula(
+                AndFormula(
+                    SmallerThanFormula(IdentifierTerm("a1", lambda x: x["Peak Price"]), IdentifierTerm("b1", lambda x: x["Peak Price"])),
+                    SmallerThanFormula(IdentifierTerm("b1", lambda x: x["Peak Price"]), IdentifierTerm("a2", lambda x: x["Peak Price"]))
+                ),
+                AndFormula(
+                    SmallerThanFormula(IdentifierTerm("a2", lambda x: x["Peak Price"]), IdentifierTerm("b2", lambda x: x["Peak Price"])),
+                    SmallerThanFormula(IdentifierTerm("b2", lambda x: x["Peak Price"]), IdentifierTerm("a3", lambda x: x["Peak Price"]))
+                )
+            ),
+            SmallerThanFormula(IdentifierTerm("a3", lambda x: x["Peak Price"]), IdentifierTerm("b3", lambda x: x["Peak Price"])),
+        ),
         timedelta(minutes=7)
     )
     createTest("nonFrequency5", [pattern])
@@ -334,11 +346,23 @@ def nonFrequencyPatternSearch5():
 def frequencyPatternSearch5():
     pattern = Pattern(
         SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
-        TrueFormula(),
+        AndFormula(
+            AndFormula(
+                AndFormula(
+                    SmallerThanFormula(IdentifierTerm("a1", lambda x: x["Peak Price"]), IdentifierTerm("b1", lambda x: x["Peak Price"])),
+                    SmallerThanFormula(IdentifierTerm("b1", lambda x: x["Peak Price"]), IdentifierTerm("a2", lambda x: x["Peak Price"]))
+                ),
+                AndFormula(
+                    SmallerThanFormula(IdentifierTerm("a2", lambda x: x["Peak Price"]), IdentifierTerm("b2", lambda x: x["Peak Price"])),
+                    SmallerThanFormula(IdentifierTerm("b2", lambda x: x["Peak Price"]), IdentifierTerm("a3", lambda x: x["Peak Price"]))
+                )
+            ),
+            SmallerThanFormula(IdentifierTerm("a3", lambda x: x["Peak Price"]), IdentifierTerm("b3", lambda x: x["Peak Price"])),
+        ),
         timedelta(minutes=7)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AAPL": 1, "LOCM": 2}) # {"AAPL": 460, "LOCM": 219}
-    runTest("frequency5", [pattern], AscendingFrequencyAlgorithm())
+    createTest("frequency5", [pattern], AscendingFrequencyAlgorithm())
 
 
 def greedyPatternSearch():
@@ -498,31 +522,31 @@ def zStreamPatternSearch():
     runTest('zstream1', [pattern], ZStreamAlgorithm())
 
 
-# simplePatternSearch()
-# googleAscendPatternSearch()
-# amazonInstablePatternSearch()
-# msftDrivRacePatternSearch()
-# googleIncreasePatternSearch()
-# amazonSpecificPatternSearch()
-# googleAmazonLowPatternSearch()
-# nonsensePatternSearch()
-# hierarchyPatternSearch()
-# nonFrequencyPatternSearch()
-# frequencyPatternSearch()
-# nonFrequencyPatternSearch2()
-# frequencyPatternSearch2()
-# nonFrequencyPatternSearch3()
-# frequencyPatternSearch3()
-# nonFrequencyPatternSearch4()
-# frequencyPatternSearch4()
+simplePatternSearch()
+googleAscendPatternSearch()
+amazonInstablePatternSearch()
+msftDrivRacePatternSearch()
+googleIncreasePatternSearch()
+amazonSpecificPatternSearch()
+googleAmazonLowPatternSearch()
+nonsensePatternSearch()
+hierarchyPatternSearch()
+nonFrequencyPatternSearch()
+frequencyPatternSearch()
+nonFrequencyPatternSearch2()
+frequencyPatternSearch2()
+nonFrequencyPatternSearch3()
+frequencyPatternSearch3()
+nonFrequencyPatternSearch4()
+frequencyPatternSearch4()
 nonFrequencyPatternSearch5()
-# frequencyPatternSearch5()
-# greedyPatternSearch()
-# iiRandomPatternSearch()
-# iiRandom2PatternSearch()
-# iiGreedy2PatternSearch()
-# iiGreedyPatternSearch()
-# dpLdPatternSearch()
-# dpBPatternSearch()
-# zStreamPatternSearch()
-# zStreamOrdPatternSearch()
+frequencyPatternSearch5()
+greedyPatternSearch()
+iiRandomPatternSearch()
+iiRandom2PatternSearch()
+iiGreedy2PatternSearch()
+iiGreedyPatternSearch()
+dpLdPatternSearch()
+dpBPatternSearch()
+zStreamPatternSearch()
+zStreamOrdPatternSearch()

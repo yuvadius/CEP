@@ -52,8 +52,6 @@ def swap(list: List, index1: int, index2: int):
     list[index2] = temp
 
 def getOrderByOccurences(qitems: List[QItem], occurences):
-    for qitem in qitems:
-        print(qitem.eventType, qitem.name)
     
     tempList = [(i, occurences[qitems[i].eventType]) for i in range(len(qitems))]
     tempList = sorted(tempList, key=lambda x: x[1])
