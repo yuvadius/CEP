@@ -255,7 +255,7 @@ def nonFrequencyPatternSearch():
             GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
         timedelta(minutes=5)
     )
-    createTest("nonFrequency", [pattern])
+    runTest("nonFrequency", [pattern])
 
 def frequencyPatternSearch():
     pattern = Pattern(
@@ -266,7 +266,7 @@ def frequencyPatternSearch():
         timedelta(minutes=5)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AAPL": 460, "AMZN": 442, "LOCM": 219})
-    createTest("frequency", [pattern], AscendingFrequencyAlgorithm())
+    runTest("frequency", [pattern], AscendingFrequencyAlgorithm())
 
 def nonFrequencyPatternSearch2():
     pattern = Pattern(
@@ -276,7 +276,7 @@ def nonFrequencyPatternSearch2():
             SmallerThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
         timedelta(minutes=5)
     )
-    createTest("nonFrequency2", [pattern])
+    runTest("nonFrequency2", [pattern])
 
 def frequencyPatternSearch2():
     pattern = Pattern(
@@ -287,7 +287,7 @@ def frequencyPatternSearch2():
         timedelta(minutes=5)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AAPL": 2, "AMZN": 3, "LOCM": 1})
-    createTest("frequency2", [pattern], AscendingFrequencyAlgorithm())
+    runTest("frequency2", [pattern], AscendingFrequencyAlgorithm())
 
 def nonFrequencyPatternSearch3():
     pattern = Pattern(
@@ -295,7 +295,7 @@ def nonFrequencyPatternSearch3():
         TrueFormula(),
         timedelta(minutes=5)
     )
-    createTest("nonFrequency3", [pattern])
+    runTest("nonFrequency3", [pattern])
 
 def frequencyPatternSearch3():
     pattern = Pattern(
@@ -304,7 +304,7 @@ def frequencyPatternSearch3():
         timedelta(minutes=5)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AAPL": 460, "LOCM": 219})
-    createTest("frequency3", [pattern], AscendingFrequencyAlgorithm())
+    runTest("frequency3", [pattern], AscendingFrequencyAlgorithm())
 
 def nonFrequencyPatternSearch4():
     pattern = Pattern(
@@ -312,7 +312,7 @@ def nonFrequencyPatternSearch4():
         TrueFormula(),
         timedelta(minutes=7)
     )
-    createTest("nonFrequency4", [pattern])
+    runTest("nonFrequency4", [pattern])
 
 def frequencyPatternSearch4():
     pattern = Pattern(
@@ -321,7 +321,7 @@ def frequencyPatternSearch4():
         timedelta(minutes=7)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AVID": 1, "LOCM": 2, "AAPL": 3, "AMZN": 4})
-    createTest("frequency4", [pattern], AscendingFrequencyAlgorithm())
+    runTest("frequency4", [pattern], AscendingFrequencyAlgorithm())
 
 def nonFrequencyPatternSearch5():
     pattern = Pattern(
@@ -341,7 +341,7 @@ def nonFrequencyPatternSearch5():
         ),
         timedelta(minutes=7)
     )
-    createTest("nonFrequency5", [pattern])
+    runTest("nonFrequency5", [pattern])
 
 def frequencyPatternSearch5():
     pattern = Pattern(
@@ -362,7 +362,7 @@ def frequencyPatternSearch5():
         timedelta(minutes=7)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AAPL": 1, "LOCM": 2}) # {"AAPL": 460, "LOCM": 219}
-    createTest("frequency5", [pattern], AscendingFrequencyAlgorithm())
+    runTest("frequency5", [pattern], AscendingFrequencyAlgorithm())
 
 
 def greedyPatternSearch():
