@@ -1,0 +1,1024 @@
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
+{'Stock Ticker': 'DRIV', 'Date': 200802010908, 'Opening Price': 33.59, 'Peak Price': 33.59, 'Lowest Price': 33.59, 'Close Price': 33.59, 'Volume': 2151}
+{'Stock Ticker': 'MSFT', 'Date': 200802010908, 'Opening Price': 32.2, 'Peak Price': 31.26, 'Lowest Price': 31.2, 'Close Price': 31.23, 'Volume': 131229}
+{'Stock Ticker': 'CBRL', 'Date': 200802011110, 'Opening Price': 31.33, 'Peak Price': 31.33, 'Lowest Price': 31.3, 'Close Price': 31.3, 'Volume': 200}
+
