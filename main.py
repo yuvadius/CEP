@@ -118,7 +118,6 @@ def runTest(testName, patterns, algorithm = TrivialAlgorithm(), events=None):
     print("Test %s result: %s, Time Passed: %s" % (testName, 
         "Succeeded" if fileCompare("Matches/%sMatches.txt" % testName, "TestsExpected/%sMatches.txt" % testName) else "Failed", timeTaken))
 
-
 def simplePatternSearch():
     """
     PATTERN SEQ(AppleStockPriceUpdate a, AmazonStockPriceUpdate b, AvidStockPriceUpdate c)
@@ -127,7 +126,7 @@ def simplePatternSearch():
     WITHIN 5 minutes
     """
     pattern = Pattern(
-        SeqOperator([QItem("GOOG", "a"), QItem("AAPL", "b"), QItem("AMZN", "c")]), 
+        SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("AVID", "c")]), 
         AndFormula(
             GreaterThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
             GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
@@ -270,6 +269,7 @@ def hierarchyPatternSearch():
         ),
         timedelta(minutes=1)
     )
+    createTest('hierarchy', [hierarchyPattern])
     runTest('hierarchy', [hierarchyPattern])
 
 def multiplePatternSearch():
@@ -374,19 +374,7 @@ def frequencyPatternSearch4():
 def nonFrequencyPatternSearch5():
     pattern = Pattern(
         SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
-        AndFormula(
-            AndFormula(
-                AndFormula(
-                    SmallerThanFormula(IdentifierTerm("a1", lambda x: x["Peak Price"]), IdentifierTerm("b1", lambda x: x["Peak Price"])),
-                    SmallerThanFormula(IdentifierTerm("b1", lambda x: x["Peak Price"]), IdentifierTerm("a2", lambda x: x["Peak Price"]))
-                ),
-                AndFormula(
-                    SmallerThanFormula(IdentifierTerm("a2", lambda x: x["Peak Price"]), IdentifierTerm("b2", lambda x: x["Peak Price"])),
-                    SmallerThanFormula(IdentifierTerm("b2", lambda x: x["Peak Price"]), IdentifierTerm("a3", lambda x: x["Peak Price"]))
-                )
-            ),
-            SmallerThanFormula(IdentifierTerm("a3", lambda x: x["Peak Price"]), IdentifierTerm("b3", lambda x: x["Peak Price"])),
-        ),
+        TrueFormula(),
         timedelta(minutes=7)
     )
     runTest("nonFrequency5", [pattern])
@@ -394,24 +382,18 @@ def nonFrequencyPatternSearch5():
 def frequencyPatternSearch5():
     pattern = Pattern(
         SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
-        AndFormula(
-            AndFormula(
-                AndFormula(
-                    SmallerThanFormula(IdentifierTerm("a1", lambda x: x["Peak Price"]), IdentifierTerm("b1", lambda x: x["Peak Price"])),
-                    SmallerThanFormula(IdentifierTerm("b1", lambda x: x["Peak Price"]), IdentifierTerm("a2", lambda x: x["Peak Price"]))
-                ),
-                AndFormula(
-                    SmallerThanFormula(IdentifierTerm("a2", lambda x: x["Peak Price"]), IdentifierTerm("b2", lambda x: x["Peak Price"])),
-                    SmallerThanFormula(IdentifierTerm("b2", lambda x: x["Peak Price"]), IdentifierTerm("a3", lambda x: x["Peak Price"]))
-                )
-            ),
-            SmallerThanFormula(IdentifierTerm("a3", lambda x: x["Peak Price"]), IdentifierTerm("b3", lambda x: x["Peak Price"])),
-        ),
+        TrueFormula(),
+        timedelta(minutes=7)
+    )
+    pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"LOCM": 1, "AAPL": 2}) # {"AAPL": 460, "LOCM": 219}
+    runTest("frequency5", [pattern], AscendingFrequencyAlgorithm())
+    pattern = Pattern(
+        SeqOperator([QItem("AAPL", "a1"), QItem("LOCM", "b1"), QItem("AAPL", "a2"), QItem("LOCM", "b2"), QItem("AAPL", "a3"), QItem("LOCM", "b3")]), 
+        TrueFormula(),
         timedelta(minutes=7)
     )
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AAPL": 1, "LOCM": 2}) # {"AAPL": 460, "LOCM": 219}
     runTest("frequency5", [pattern], AscendingFrequencyAlgorithm())
-
 
 def greedyPatternSearch():
     pattern = Pattern(
@@ -429,7 +411,6 @@ def greedyPatternSearch():
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
     runTest('greedy1', [pattern], GreedyAlgorithm(), nasdaqEventStream)
-
 
 def iiRandomPatternSearch():
     pattern = Pattern(

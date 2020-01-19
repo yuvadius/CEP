@@ -205,7 +205,7 @@ def isSorted(arr, key=lambda x: x):
         return True
     
     for i in range(len(arr) - 1):
-        if key(arr[i]) > key(arr[i + 1]):
+        if key(arr[i]) >= key(arr[i + 1]):
             return False
     
     return True
