@@ -296,7 +296,7 @@ def generateMatches4(pattern, stream):
                 for event4 in events[args[3].eventType]:
                     if event4.date < event1.date or event4.date - event1.date > pattern.slidingWindow:
                         continue
-                    if isSeq and not isSorted([event1, event2, event3, event4], key=lambda x: x.counter):
+                    if isSeq and not isSorted([event1, event2, event3, event4], key=lambda x: x.date):
                         continue
                     binding = {args[0].name:event1.event, args[1].name:event2.event, args[2].name:event3.event, args[3].name:event4.event}
                     if pattern.patternMatchingCondition.eval(binding):

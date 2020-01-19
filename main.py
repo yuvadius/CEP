@@ -28,6 +28,17 @@ nasdaqEventStreamMedium = fileInput("NASDAQ_MEDIUM.txt",
             "Volume"],
         "Stock Ticker",
         "Date")
+nasdaqEventStreamFrequencyTailored = fileInput("NASDAQ_FREQUENCY_TAILORED.txt", 
+        [
+            "Stock Ticker", 
+            "Date", 
+            "Opening Price", 
+            "Peak Price", 
+            "Lowest Price", 
+            "Close Price", 
+            "Volume"],
+        "Stock Ticker",
+        "Date") 
 nasdaqEventStream = fileInput("NASDAQ_20080201_1_sorted.txt", 
         [
             "Stock Ticker", 
@@ -556,6 +567,30 @@ def zStreamPatternSearch():
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
     runTest('zstream1', [pattern], ZStreamAlgorithm(), nasdaqEventStream)
 
+def frequencyTailoredPatternSearch():
+    pattern = Pattern(
+        SeqOperator([QItem("DRIV", "a"), QItem("MSFT", "b"), QItem("CBRL", "c")]),
+        AndFormula(
+            GreaterThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])),
+            GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))
+        ),
+        timedelta.max
+    )
+    frequencyDict = {"MSFT": 256, "DRIV": 256, "CBRL": 1}
+    pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, frequencyDict)
+    runTest('frequencyTailored1', [pattern], AscendingFrequencyAlgorithm(), nasdaqEventStreamFrequencyTailored)
+
+def nonFrequencyTailoredPatternSearch():
+    pattern = Pattern(
+        SeqOperator([QItem("DRIV", "a"), QItem("MSFT", "b"), QItem("CBRL", "c")]),
+        AndFormula(
+            GreaterThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])),
+            GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))
+        ),
+        timedelta.max
+    )
+    runTest('nonFrequencyTailored1', [pattern], TrivialAlgorithm(), nasdaqEventStreamFrequencyTailored)
+
 
 """
 simplePatternSearch()
@@ -576,8 +611,8 @@ frequencyPatternSearch3()
 nonFrequencyPatternSearch4()
 frequencyPatternSearch4()
 nonFrequencyPatternSearch5()
-frequencyPatternSearch5()
 """
+frequencyPatternSearch5()
 greedyPatternSearch()
 iiRandomPatternSearch()
 iiRandom2PatternSearch()
@@ -587,3 +622,5 @@ zStreamOrdPatternSearch()
 zStreamPatternSearch()
 dpBPatternSearch()
 dpLdPatternSearch()
+nonFrequencyTailoredPatternSearch()
+frequencyTailoredPatternSearch()

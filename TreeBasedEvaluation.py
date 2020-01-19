@@ -139,6 +139,8 @@ class Node:
         
     
     def updatePartialMatchesToDate(self, lastDate):
+        if self.slidingWindow == timedelta.max:
+            return
         count = 0
         for partialMatch in self.partialMatches:
             if partialMatch.getFirstDate() + self.slidingWindow < lastDate:
@@ -167,13 +169,14 @@ class Node:
         self.updatePartialMatchesToDate(newPartialMatch.getLastDate())
 
         for partialMatch in toCompare:
-            if partialMatch.getLastDate() - newPartialMatch.getFirstDate() > self.slidingWindow \
-            or newPartialMatch.getLastDate() - partialMatch.getFirstDate() > self.slidingWindow:
+            if self.slidingWindow != timedelta.max and \
+                (partialMatch.getLastDate() - newPartialMatch.getFirstDate() > self.slidingWindow \
+            or newPartialMatch.getLastDate() - partialMatch.getFirstDate() > self.slidingWindow):
                 continue
             speculativePM = mergeAccordingTo(firstReorder, secondReorder, 
             newPartialMatch.getPartialMatch(), partialMatch.getPartialMatch(), 
             lambda x: x[0])
-            if self.isSeq and not isSorted(speculativePM, key=lambda x: x.counter):
+            if self.isSeq and not isSorted(speculativePM, key=lambda x: x.date):
                 continue
 
             binding = {
