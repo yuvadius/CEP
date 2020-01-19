@@ -6,6 +6,28 @@ from time import time
 from datetime import timedelta
 from Statistics import *
 
+nasdaqEventStreamShort = fileInput("NASDAQ_SHORT.txt", 
+        [
+            "Stock Ticker", 
+            "Date", 
+            "Opening Price", 
+            "Peak Price", 
+            "Lowest Price", 
+            "Close Price", 
+            "Volume"],
+        "Stock Ticker",
+        "Date")
+nasdaqEventStreamMedium = fileInput("NASDAQ_MEDIUM.txt", 
+        [
+            "Stock Ticker", 
+            "Date", 
+            "Opening Price", 
+            "Peak Price", 
+            "Lowest Price", 
+            "Close Price", 
+            "Volume"],
+        "Stock Ticker",
+        "Date")
 nasdaqEventStream = fileInput("NASDAQ_20080201_1_sorted.txt", 
         [
             "Stock Ticker", 
@@ -55,18 +77,33 @@ def fileCompare(pathA, pathB):
     closeFiles(file1, file2)
     return True
 
-def createTest(testName, patterns, algorithm = TrivialAlgorithm()):
-    events = nasdaqEventStream.duplicate()
-    cep = CEP(algorithm, patterns, events)
-    fileOutput(cep.getPatternMatchContainer(), '../TestsExpected/%sMatches.txt' % testName)
+def createTest(testName, patterns, algorithm = TrivialAlgorithm(), events=None):
+    if events == None:
+        events = nasdaqEventStream.duplicate()
+    else:
+        events = events.duplicate()
+    pattern = patterns[0]
+    argsNum = len(pattern.patternStructure.args)
+    if argsNum == 2:
+        matches = generateMatches2(pattern, events)
+    elif argsNum == 3:
+        matches = generateMatches3(pattern, events)
+    elif argsNum == 4:
+        matches = generateMatches4(pattern, events)
+    else:
+        raise Exception
+    fileOutput(matches, '../TestsExpected/%sMatches.txt' % testName)
     print("Finished creating test %s" % testName)
 
-def runTest(testName, patterns, algorithm = TrivialAlgorithm()):
-    events = nasdaqEventStream.duplicate()
+def runTest(testName, patterns, algorithm = TrivialAlgorithm(), events=None):
+    if events == None:
+        events = nasdaqEventStream.duplicate()
+    else:
+        events = events.duplicate()
     cep = CEP(algorithm, patterns, events)
-    match = cep.getPatternMatchContainer()
+    matches = cep.getPatternMatchContainer()
     timeTaken = cep.getElapsed()
-    fileOutput(match, '%sMatches.txt' % testName)
+    fileOutput(matches, '%sMatches.txt' % testName)
     print("Test %s result: %s, Time Passed: %s" % (testName, 
         "Succeeded" if fileCompare("Matches/%sMatches.txt" % testName, "TestsExpected/%sMatches.txt" % testName) else "Failed", timeTaken))
 
@@ -79,7 +116,7 @@ def simplePatternSearch():
     WITHIN 5 minutes
     """
     pattern = Pattern(
-        SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("AVID", "c")]), 
+        SeqOperator([QItem("GOOG", "a"), QItem("AAPL", "b"), QItem("AMZN", "c")]), 
         AndFormula(
             GreaterThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
             GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
@@ -380,7 +417,7 @@ def greedyPatternSearch():
     selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
-    runTest('greedy1', [pattern], GreedyAlgorithm())
+    runTest('greedy1', [pattern], GreedyAlgorithm(), nasdaqEventStream)
 
 
 def iiRandomPatternSearch():
@@ -398,8 +435,7 @@ def iiRandomPatternSearch():
     selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
-    print("Might fail: order is non-deterministic")
-    runTest('iiRandom1', [pattern], IIRandomAlgorithm(IterativeImprovementType.SWAP_BASED))
+    runTest('iiRandom1', [pattern], IIRandomAlgorithm(IterativeImprovementType.SWAP_BASED), nasdaqEventStream)
 
 def iiRandom2PatternSearch():
     pattern = Pattern(
@@ -416,8 +452,7 @@ def iiRandom2PatternSearch():
     selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
-    print("Might fail: order is non-deterministic")
-    runTest('iiRandom2', [pattern], IIRandomAlgorithm(IterativeImprovementType.CIRCLE_BASED))
+    runTest('iiRandom2', [pattern], IIRandomAlgorithm(IterativeImprovementType.CIRCLE_BASED), nasdaqEventStream)
 
 def iiGreedyPatternSearch():
     pattern = Pattern(
@@ -434,7 +469,7 @@ def iiGreedyPatternSearch():
     selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
-    runTest('iiGreedy1', [pattern], IIGreedyAlgorithm(IterativeImprovementType.SWAP_BASED))
+    runTest('iiGreedy1', [pattern], IIGreedyAlgorithm(IterativeImprovementType.SWAP_BASED), nasdaqEventStream)
 
 def iiGreedy2PatternSearch():
     pattern = Pattern(
@@ -451,7 +486,7 @@ def iiGreedy2PatternSearch():
     selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
-    runTest('iiGreedy2', [pattern], IIGreedyAlgorithm(IterativeImprovementType.CIRCLE_BASED))
+    runTest('iiGreedy2', [pattern], IIGreedyAlgorithm(IterativeImprovementType.CIRCLE_BASED), nasdaqEventStream)
 
 def dpLdPatternSearch():
     pattern = Pattern(
@@ -468,7 +503,7 @@ def dpLdPatternSearch():
     selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
-    runTest('dpLd1', [pattern], DynamicProgrammingLeftDeepAlgorithm())
+    runTest('dpLd1', [pattern], DynamicProgrammingLeftDeepAlgorithm(), nasdaqEventStream)
 
 def dpBPatternSearch():
     pattern = Pattern(
@@ -485,7 +520,7 @@ def dpBPatternSearch():
     selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
-    runTest('dpB1', [pattern], DynamicProgrammingBushyAlgorithm())
+    runTest('dpB1', [pattern], DynamicProgrammingBushyAlgorithm(), nasdaqEventStream)
 
 def zStreamOrdPatternSearch():
     pattern = Pattern(
@@ -502,7 +537,7 @@ def zStreamOrdPatternSearch():
     selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
-    runTest('zstream-ord1', [pattern], ZStreamOrdAlgorithm())
+    runTest('zstream-ord1', [pattern], ZStreamOrdAlgorithm(), nasdaqEventStream)
 
 def zStreamPatternSearch():
     pattern = Pattern(
@@ -519,9 +554,10 @@ def zStreamPatternSearch():
     selectivityMatrix = [[1.0, 0.9457796098355941, 1.0, 1.0], [0.9457796098355941, 1.0, 0.15989723367389616, 1.0], [1.0, 0.15989723367389616, 1.0, 0.9992557393942864], [1.0, 1.0, 0.9992557393942864, 1.0]]
     arrivalRates = [0.016597077244258872, 0.01454418928322895, 0.013917884481558803, 0.012421711899791231]
     pattern.setAdditionalStatistics(StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))
-    runTest('zstream1', [pattern], ZStreamAlgorithm())
+    runTest('zstream1', [pattern], ZStreamAlgorithm(), nasdaqEventStream)
 
 
+"""
 simplePatternSearch()
 googleAscendPatternSearch()
 amazonInstablePatternSearch()
@@ -541,12 +577,13 @@ nonFrequencyPatternSearch4()
 frequencyPatternSearch4()
 nonFrequencyPatternSearch5()
 frequencyPatternSearch5()
+"""
 greedyPatternSearch()
 iiRandomPatternSearch()
 iiRandom2PatternSearch()
-iiGreedy2PatternSearch()
 iiGreedyPatternSearch()
-dpLdPatternSearch()
-dpBPatternSearch()
-zStreamPatternSearch()
+iiGreedy2PatternSearch()
 zStreamOrdPatternSearch()
+zStreamPatternSearch()
+dpBPatternSearch()
+dpLdPatternSearch()

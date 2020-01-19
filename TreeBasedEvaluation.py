@@ -10,6 +10,21 @@ from Event import Event
 from Utils import merge, mergeAccordingTo, isSorted
 from PatternMatch import PatternMatch
 
+class PartialMatch:
+    def __init__(self, pm):
+        self.pm = pm
+        self.lastDate = max(pm, key=lambda x: x.date).date
+        self.firstDate = min(pm, key=lambda x: x.date).date
+    
+    def getLastDate(self):
+        return self.lastDate
+    
+    def getFirstDate(self):
+        return self.firstDate
+    
+    def getPartialMatch(self):
+        return self.pm
+
 class Tree:
     def __init__(self, treeBluePrint, pattern : Pattern):
         self.isSeq = (pattern.patternStructure.getTopOperator() == SeqOperator)
@@ -28,9 +43,12 @@ class Tree:
 
     def getRootMatches(self):
         while self.root.partialMatches:
-            ret = self.root.partialMatches[0]
+            ret = self.root.partialMatches[0].getPartialMatch()
             del self.root.partialMatches[0]
             yield ret
+    
+    def printReorder(self):
+        self.root.printReorder()
 
 
 class Node:
@@ -44,6 +62,15 @@ class Node:
         self.condition = TrueFormula()
         self.isSeq = isSeq
     
+    def printReorder(self):
+        print(self.reorder)
+        if self.left:
+            print("left:")
+            self.left.printReorder()
+            print("right:")
+            self.right.printReorder()
+        
+
     def getLeaves(self):
         if self.isLeaf():
             return [self]
@@ -106,7 +133,7 @@ class Node:
         binding = {qitem.name:event.event}
         
         if self.condition.eval(binding):
-            self.partialMatches.append([event])
+            self.partialMatches.append(PartialMatch([event]))
             if self.parent != None:
                 self.parent.handleNewPartialMatch(self.isLeftSubtree())
         
@@ -114,7 +141,7 @@ class Node:
     def updatePartialMatchesToDate(self, lastDate):
         count = 0
         for partialMatch in self.partialMatches:
-            if partialMatch[0].date + self.slidingWindow < lastDate:
+            if partialMatch.getFirstDate() + self.slidingWindow < lastDate:
                 count += 1
             else:
                 break
@@ -127,20 +154,26 @@ class Node:
         if originatorIsLeftSubtree:
             newPartialMatch = self.left.partialMatches[-1]
             firstReorder = self.left.reorder
+            self.right.updatePartialMatchesToDate(newPartialMatch.getLastDate())
             toCompare = self.right.partialMatches
             secondReorder = self.right.reorder
         else:
             newPartialMatch = self.right.partialMatches[-1]
             firstReorder = self.right.reorder
+            self.left.updatePartialMatchesToDate(newPartialMatch.getLastDate())
             toCompare = self.left.partialMatches
             secondReorder = self.left.reorder
         
-        self.updatePartialMatchesToDate(newPartialMatch[0].date)
+        self.updatePartialMatchesToDate(newPartialMatch.getLastDate())
 
-        pmAdded = False
         for partialMatch in toCompare:
-            speculativePM = mergeAccordingTo(firstReorder, secondReorder, newPartialMatch, partialMatch, lambda x: x[0])
-            if self.isSeq and not isSorted(speculativePM, key=lambda x: x.date):
+            if partialMatch.getLastDate() - newPartialMatch.getFirstDate() > self.slidingWindow \
+            or newPartialMatch.getLastDate() - partialMatch.getFirstDate() > self.slidingWindow:
+                continue
+            speculativePM = mergeAccordingTo(firstReorder, secondReorder, 
+            newPartialMatch.getPartialMatch(), partialMatch.getPartialMatch(), 
+            lambda x: x[0])
+            if self.isSeq and not isSorted(speculativePM, key=lambda x: x.counter):
                 continue
 
             binding = {
@@ -148,11 +181,11 @@ class Node:
                 for i in range(len(self.reorder))
             }
             if self.condition.eval(binding):
-                pmAdded = True
-                self.partialMatches.append(speculativePM)
+                self.partialMatches.append(PartialMatch(speculativePM))
+                if self.parent:
+                    self.parent.handleNewPartialMatch(self.isLeftSubtree())
+        return
         
-        if pmAdded and self.parent:
-            self.parent.handleNewPartialMatch(self.isLeftSubtree())
 
 
 class TreeAlgorithm:
@@ -181,29 +214,3 @@ class TreeAlgorithm:
         
         if elapsed:
             elapsed[0] = ((datetime.now() - start).total_seconds())
-
-pattern = Pattern(
-    SeqOperator([QItem("MSFT", "a"), QItem("DRIV", "b"), QItem("ORLY", "c"), QItem("CBRL", "d")]),
-    AndFormula(
-        AndFormula(
-            SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
-            SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
-        ),
-        SmallerThanFormula(IdentifierTerm("c", lambda x: x["Peak Price"]), IdentifierTerm("d", lambda x: x["Peak Price"]))
-    ),
-    timedelta(minutes=3)
-)
-
-from IOUtils import fileInput, fileOutput
-from IODataStructures import Stream
-events = fileInput("NASDAQ_20080201_1_sorted.txt", 
-        [
-            "Stock Ticker", 
-            "Date", 
-            "Opening Price", 
-            "Peak Price", 
-            "Lowest Price", 
-            "Close Price", 
-            "Volume"],
-        "Stock Ticker",
-        "Date")
