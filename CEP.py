@@ -21,7 +21,7 @@ class CEP:
     "pattern": A class "Pattern" that defines what patterns to look for
     "algorithm": A class "Algorithm" that defines what algorithm to use for finding the pattern
     '''
-    def __init__(self, algorithm: type, patterns: List[Pattern] = None, events: Stream = None, output: Container = None, saveReplica: bool = True, isThread: bool = False):
+    def __init__(self, algorithm: type, patterns: List[Pattern] = None, events: Stream = None, output: Container = None, saveReplica: bool = True):
         self.eventStreams = []
         self.patternMatches = output if output else Stream()
         self.algorithm = algorithm
@@ -36,11 +36,8 @@ class CEP:
         if patterns:
             for pattern in patterns:
                 eventStream = self.baseStream.duplicate() if self.baseStream else Stream()
-                if isThread:
-                    worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
-                    worker.start()
-                else:
-                    self.algorithm.eval(pattern, eventStream, self.patternMatches, self.elapsed)
+                worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
+                worker.start()
                 self.eventStreams.append(eventStream)
 
     def getElapsed(self):
