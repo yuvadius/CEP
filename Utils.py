@@ -10,20 +10,6 @@ from PatternStructure import SeqOperator
 from PatternMatch import PatternMatch
 from copy import deepcopy
 
-# Return index of the closest event
-def binarySearchClosestEvent(lst: List[Event], dateSearch: datetime):
-    min = 0
-    max = len(lst)-1
-    avg = int((min+max)/2)
-    while (min < max):
-        if (lst[avg].date == dateSearch):
-            return avg
-        elif (lst[avg].date < dateSearch):
-            return avg + 1 + binarySearchClosestEvent(lst[avg+1:], dateSearch)
-        else:
-            return binarySearchClosestEvent(lst[:avg], dateSearch)
-    return avg
-
 def isfloat(x: str):
     try:
         a = float(x)
@@ -73,38 +59,10 @@ def getAllDisjointSets(s : frozenset):
             set2 = s.difference(set1)
             yield (set1, set2)
 
-
-def findAllTreeTopologies(s : frozenset):
-    if len(s) == 1:
-        yield tuple(s)[0]
-        return
-    if len(s) == 2:
-        yield tuple(s)
-        return
-    
-    for set1, set2 in getAllDisjointSets(s):
-        for topology1 in findAllTreeTopologies(set1):
-            for topology2 in findAllTreeTopologies(set2):
-                yield (topology1, topology2)
-
-
 class StatisticsTypes(Enum):
     NO_STATISTICS = 0
     FREQUENCY_DICT = 1
     SELECTIVITY_MATRIX_AND_ARRIVAL_RATES = 2
-
-class AddEventErrors(Enum):
-    SUCCESS = 0
-    WRONG_EVENT_TYPE_ERROR = 1
-    NOT_WITHIN_TIMESCALE_ERROR = 2
-    LAZY_BEFORE_LEFT_NODE = 3
-    LAZY_AFTER_RIGHT_NODE = 4
-    EVALUATION_ERROR = 5
-
-class OrderType(Enum):
-    TRIVIAL_ORDERED = 0
-    NOT_ORDERED = 1
-    NONTRIVIAL_ORDERED = 2
 
 class PolicyType(Enum):
     FIND_ALL = 0
