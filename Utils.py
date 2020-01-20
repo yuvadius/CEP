@@ -8,6 +8,7 @@ from random import randint
 from itertools import combinations
 from PatternStructure import SeqOperator
 from PatternMatch import PatternMatch
+from copy import deepcopy
 
 # Return index of the closest event
 def binarySearchClosestEvent(lst: List[Event], dateSearch: datetime):
@@ -205,7 +206,7 @@ def isSorted(arr, key=lambda x: x):
         return True
     
     for i in range(len(arr) - 1):
-        if key(arr[i]) >= key(arr[i + 1]):
+        if key(arr[i]) > key(arr[i + 1]):
             return False
     
     return True
@@ -214,10 +215,11 @@ def buildTreeFromOrder(order):
     ret = order[0]
     for i in range(1, len(order)):
         ret = (ret, order[i])
-    return ret
+    return ret                 
 
-
-def generateMatches2(pattern, stream):
+# Entire CEP algorithm in a couple lines of code(inefficient)
+# This will be used as our test creater
+def generateMatches(pattern, stream):
     args = pattern.patternStructure.args
     types = {qitem.eventType for qitem in args}
     isSeq = (pattern.patternStructure.getTopOperator() == SeqOperator)
@@ -229,77 +231,36 @@ def generateMatches2(pattern, stream):
                 events[event.eventType].append(event)
             else:
                 events[event.eventType] = [event]
-    
-    for event1 in events[args[0].eventType]:
-        for event2 in events[args[1].eventType]:
-            if event2.date - event1.date > pattern.slidingWindow:
-                continue
-            if isSeq and not isSorted([event1, event2], key=lambda x: x.counter):
-                continue
-            binding = {args[0].name:event1.event, args[1].name:event2.event}
-            if pattern.patternMatchingCondition.eval(binding):
-                matches.append(PatternMatch([event1, event2]))
-    
+    generateMatchesRecursive(pattern, events, isSeq, [], datetime.max, datetime.min, matches, {})
     return matches
 
+def generateMatchesRecursive(pattern, events, isSeq, match, minEventDate, maxEventDate, matches, binding, loop = 0):
+    patternLength = len(pattern.patternStructure.args)
+    if loop == patternLength:
+        if pattern.patternMatchingCondition.eval(binding):
+            if not doesMatchExist(matches, match):
+                matches.append(PatternMatch(deepcopy(match)))
+    else:
+        qitem = pattern.patternStructure.args[loop]
+        for event in events[qitem.eventType]:
+            minDate = min(minEventDate, event.date)
+            maxDate = max(maxEventDate, event.date)
+            binding[qitem.name] = event.event
+            if maxDate - minDate <= pattern.slidingWindow:
+                if not isSeq or len(match) == 0 or match[-1].date <= event.date:
+                    match.append(event)
+                    generateMatchesRecursive(pattern, events, isSeq, match, minDate, maxDate, matches, binding, loop + 1)
+                    del match[-1]
+        del binding[qitem.name]
 
-def generateMatches3(pattern, stream):
-    args = pattern.patternStructure.args
-    types = {qitem.eventType for qitem in args}
-    isSeq = (pattern.patternStructure.getTopOperator() == SeqOperator)
-    events = {}
-    matches = []
-    for event in stream:
-        if event.eventType in types:
-            if event.eventType in events.keys():
-                events[event.eventType].append(event)
-            else:
-                events[event.eventType] = [event]
-    
-    for event3 in events[args[2].eventType]:
-        for event2 in events[args[1].eventType]:
-            if event3.date - event2.date > pattern.slidingWindow:
-                continue
-            for event1 in events[args[0].eventType]:
-                if event3.date - event1.date > pattern.slidingWindow:
-                    continue
-                speculative = [event1, event2, event3]
-                if isSeq and not isSorted(speculative, key=lambda x: x.counter):
-                    continue
-                binding = {args[0].name:event1.event, args[1].name:event2.event, args[2].name:event3.event}
-                if pattern.patternMatchingCondition.eval(binding):
-                    matches.append(PatternMatch(speculative))
-    
-    return matches
-
-
-def generateMatches4(pattern, stream):
-    args = pattern.patternStructure.args
-    types = {qitem.eventType for qitem in args}
-    isSeq = (pattern.patternStructure.getTopOperator() == SeqOperator)
-    events = {}
-    matches = []
-    for event in stream:
-        if event.eventType in types:
-            if event.eventType in events.keys():
-                events[event.eventType].append(event)
-            else:
-                events[event.eventType] = [event]
-    
-    for event1 in events[args[0].eventType]:
-        for event2 in events[args[1].eventType]:
-            if event2.date - event1.date > pattern.slidingWindow:
-                continue
-            for event3 in events[args[2].eventType]:
-                if event3.date < event1.date or event3.date - event1.date > pattern.slidingWindow:
-                    continue
-                for event4 in events[args[3].eventType]:
-                    if event4.date < event1.date or event4.date - event1.date > pattern.slidingWindow:
-                        continue
-                    if isSeq and not isSorted([event1, event2, event3, event4], key=lambda x: x.date):
-                        continue
-                    binding = {args[0].name:event1.event, args[1].name:event2.event, args[2].name:event3.event, args[3].name:event4.event}
-                    if pattern.patternMatchingCondition.eval(binding):
-                        matches.append(PatternMatch([event1, event2, event3, event4]))
-    
-    return matches
+def doesMatchExist(matches, match):
+    for match2 in matches:
+        if len(match) == len(match2.events):
+            isEqual = True
+            for i in range(len(match)):
+                if match[i] != match2.events[i]:
+                    isEqual = False
+                    break
+            if isEqual:
+                return True
+    return False 
