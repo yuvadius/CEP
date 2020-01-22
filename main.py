@@ -39,6 +39,17 @@ nasdaqEventStreamFrequencyTailored = fileInput("NASDAQ_FREQUENCY_TAILORED.txt",
             "Volume"],
         "Stock Ticker",
         "Date") 
+nasdaqEventStream_AAPL_AMZN_GOOG = fileInput("NASDAQ_AAPL_AMZN_GOOG.txt", 
+        [
+            "Stock Ticker", 
+            "Date", 
+            "Opening Price", 
+            "Peak Price", 
+            "Lowest Price", 
+            "Close Price", 
+            "Volume"],
+        "Stock Ticker",
+        "Date")
 nasdaqEventStream = fileInput("NASDAQ_20080201_1_sorted.txt", 
         [
             "Stock Ticker", 
@@ -269,8 +280,7 @@ def hierarchyPatternSearch():
         ),
         timedelta(minutes=1)
     )
-    createTest('hierarchy', [hierarchyPattern])
-    runTest('hierarchy', [hierarchyPattern])
+    createTest('hierarchy', [hierarchyPattern], TrivialAlgorithm(), nasdaqEventStream_AAPL_AMZN_GOOG)
 
 def multiplePatternSearch():
     amazonInstablePattern = Pattern(
@@ -557,7 +567,7 @@ def frequencyTailoredPatternSearch():
         ),
         timedelta.max
     )
-    frequencyDict = {"MSFT": 256, "DRIV": 256, "CBRL": 1}
+    frequencyDict = {"MSFT": 256, "DRIV": 257, "CBRL": 1}
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, frequencyDict)
     runTest('frequencyTailored1', [pattern], AscendingFrequencyAlgorithm(), nasdaqEventStreamFrequencyTailored)
 
@@ -581,8 +591,8 @@ msftDrivRacePatternSearch()
 googleIncreasePatternSearch()
 amazonSpecificPatternSearch()
 googleAmazonLowPatternSearch()
-nonsensePatternSearch()
 hierarchyPatternSearch()
+nonsensePatternSearch()
 nonFrequencyPatternSearch()
 frequencyPatternSearch()
 nonFrequencyPatternSearch2()
@@ -592,7 +602,6 @@ frequencyPatternSearch3()
 nonFrequencyPatternSearch4()
 frequencyPatternSearch4()
 nonFrequencyPatternSearch5()
-"""
 frequencyPatternSearch5()
 greedyPatternSearch()
 iiRandomPatternSearch()
@@ -603,5 +612,6 @@ zStreamOrdPatternSearch()
 zStreamPatternSearch()
 dpBPatternSearch()
 dpLdPatternSearch()
+"""
 nonFrequencyTailoredPatternSearch()
 frequencyTailoredPatternSearch()

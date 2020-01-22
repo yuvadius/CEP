@@ -176,7 +176,7 @@ class Node:
             speculativePM = mergeAccordingTo(firstReorder, secondReorder, 
             newPartialMatch.getPartialMatch(), partialMatch.getPartialMatch(), 
             lambda x: x[0])
-            if self.isSeq and not isSorted(speculativePM, key=lambda x: x.date):
+            if self.isSeq and not isSorted(speculativePM, key=lambda x: x.counter):
                 continue
 
             binding = {
