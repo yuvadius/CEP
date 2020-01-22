@@ -1,246 +1,60 @@
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011558, 'Opening Price': 30.46, 'Peak Price': 30.48, 'Lowest Price': 30.44, 'Close Price': 30.44, 'Volume': 2083903}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011601, 'Opening Price': 30.44, 'Peak Price': 32.49, 'Lowest Price': 30.42, 'Close Price': 32.49, 'Volume': 149141}
+{'Stock Ticker': 'MSFT', 'Date': 200802010923, 'Opening Price': 31.1, 'Peak Price': 31.14, 'Lowest Price': 31.04, 'Close Price': 31.06, 'Volume': 150165}
+{'Stock Ticker': 'DRIV', 'Date': 200802010931, 'Opening Price': 30.7, 'Peak Price': 31.17, 'Lowest Price': 30.47, 'Close Price': 31.13, 'Volume': 141668}
+{'Stock Ticker': 'MSFT', 'Date': 200802010932, 'Opening Price': 31.04, 'Peak Price': 31.22, 'Lowest Price': 31.01, 'Close Price': 31.21, 'Volume': 1603271}
+{'Stock Ticker': 'DRIV', 'Date': 200802010932, 'Opening Price': 31.1, 'Peak Price': 31.4499, 'Lowest Price': 30.97, 'Close Price': 31.05, 'Volume': 152642}
+{'Stock Ticker': 'MSFT', 'Date': 200802010933, 'Opening Price': 31.22, 'Peak Price': 31.45, 'Lowest Price': 31.05, 'Close Price': 31.345, 'Volume': 1808536}
 
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011601, 'Opening Price': 30.44, 'Peak Price': 32.49, 'Lowest Price': 30.42, 'Close Price': 32.49, 'Volume': 149141}
+{'Stock Ticker': 'MSFT', 'Date': 200802010924, 'Opening Price': 31.06, 'Peak Price': 31.1, 'Lowest Price': 31.04, 'Close Price': 31.06, 'Volume': 251710}
+{'Stock Ticker': 'DRIV', 'Date': 200802010931, 'Opening Price': 30.7, 'Peak Price': 31.17, 'Lowest Price': 30.47, 'Close Price': 31.13, 'Volume': 141668}
+{'Stock Ticker': 'MSFT', 'Date': 200802010932, 'Opening Price': 31.04, 'Peak Price': 31.22, 'Lowest Price': 31.01, 'Close Price': 31.21, 'Volume': 1603271}
+{'Stock Ticker': 'DRIV', 'Date': 200802010932, 'Opening Price': 31.1, 'Peak Price': 31.4499, 'Lowest Price': 30.97, 'Close Price': 31.05, 'Volume': 152642}
+{'Stock Ticker': 'MSFT', 'Date': 200802010933, 'Opening Price': 31.22, 'Peak Price': 31.45, 'Lowest Price': 31.05, 'Close Price': 31.345, 'Volume': 1808536}
 
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011601, 'Opening Price': 30.44, 'Peak Price': 32.49, 'Lowest Price': 30.42, 'Close Price': 32.49, 'Volume': 149141}
+{'Stock Ticker': 'MSFT', 'Date': 200802010925, 'Opening Price': 31.06, 'Peak Price': 31.1, 'Lowest Price': 31.06, 'Close Price': 31.1, 'Volume': 40800}
+{'Stock Ticker': 'DRIV', 'Date': 200802010931, 'Opening Price': 30.7, 'Peak Price': 31.17, 'Lowest Price': 30.47, 'Close Price': 31.13, 'Volume': 141668}
+{'Stock Ticker': 'MSFT', 'Date': 200802010932, 'Opening Price': 31.04, 'Peak Price': 31.22, 'Lowest Price': 31.01, 'Close Price': 31.21, 'Volume': 1603271}
+{'Stock Ticker': 'DRIV', 'Date': 200802010932, 'Opening Price': 31.1, 'Peak Price': 31.4499, 'Lowest Price': 30.97, 'Close Price': 31.05, 'Volume': 152642}
+{'Stock Ticker': 'MSFT', 'Date': 200802010933, 'Opening Price': 31.22, 'Peak Price': 31.45, 'Lowest Price': 31.05, 'Close Price': 31.345, 'Volume': 1808536}
 
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011559, 'Opening Price': 30.44, 'Peak Price': 30.46, 'Lowest Price': 30.41, 'Close Price': 30.45, 'Volume': 1950287}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011601, 'Opening Price': 30.44, 'Peak Price': 32.49, 'Lowest Price': 30.42, 'Close Price': 32.49, 'Volume': 149141}
+{'Stock Ticker': 'MSFT', 'Date': 200802010926, 'Opening Price': 31.1, 'Peak Price': 31.1, 'Lowest Price': 31.05, 'Close Price': 31.05, 'Volume': 38500}
+{'Stock Ticker': 'DRIV', 'Date': 200802010931, 'Opening Price': 30.7, 'Peak Price': 31.17, 'Lowest Price': 30.47, 'Close Price': 31.13, 'Volume': 141668}
+{'Stock Ticker': 'MSFT', 'Date': 200802010932, 'Opening Price': 31.04, 'Peak Price': 31.22, 'Lowest Price': 31.01, 'Close Price': 31.21, 'Volume': 1603271}
+{'Stock Ticker': 'DRIV', 'Date': 200802010932, 'Opening Price': 31.1, 'Peak Price': 31.4499, 'Lowest Price': 30.97, 'Close Price': 31.05, 'Volume': 152642}
+{'Stock Ticker': 'MSFT', 'Date': 200802010933, 'Opening Price': 31.22, 'Peak Price': 31.45, 'Lowest Price': 31.05, 'Close Price': 31.345, 'Volume': 1808536}
 
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011559, 'Opening Price': 30.56, 'Peak Price': 30.67, 'Lowest Price': 30.5097, 'Close Price': 30.67, 'Volume': 54130}
-{'Stock Ticker': 'MSFT', 'Date': 200802011601, 'Opening Price': 30.44, 'Peak Price': 32.49, 'Lowest Price': 30.42, 'Close Price': 32.49, 'Volume': 149141}
+{'Stock Ticker': 'MSFT', 'Date': 200802010927, 'Opening Price': 31.06, 'Peak Price': 31.07, 'Lowest Price': 31.04, 'Close Price': 31.06, 'Volume': 88084}
+{'Stock Ticker': 'DRIV', 'Date': 200802010931, 'Opening Price': 30.7, 'Peak Price': 31.17, 'Lowest Price': 30.47, 'Close Price': 31.13, 'Volume': 141668}
+{'Stock Ticker': 'MSFT', 'Date': 200802010932, 'Opening Price': 31.04, 'Peak Price': 31.22, 'Lowest Price': 31.01, 'Close Price': 31.21, 'Volume': 1603271}
+{'Stock Ticker': 'DRIV', 'Date': 200802010932, 'Opening Price': 31.1, 'Peak Price': 31.4499, 'Lowest Price': 30.97, 'Close Price': 31.05, 'Volume': 152642}
+{'Stock Ticker': 'MSFT', 'Date': 200802010933, 'Opening Price': 31.22, 'Peak Price': 31.45, 'Lowest Price': 31.05, 'Close Price': 31.345, 'Volume': 1808536}
 
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011559, 'Opening Price': 30.56, 'Peak Price': 30.67, 'Lowest Price': 30.5097, 'Close Price': 30.67, 'Volume': 54130}
-{'Stock Ticker': 'MSFT', 'Date': 200802011601, 'Opening Price': 30.44, 'Peak Price': 32.49, 'Lowest Price': 30.42, 'Close Price': 32.49, 'Volume': 149141}
+{'Stock Ticker': 'MSFT', 'Date': 200802010928, 'Opening Price': 31.08, 'Peak Price': 31.11, 'Lowest Price': 31.04, 'Close Price': 31.08, 'Volume': 270571}
+{'Stock Ticker': 'DRIV', 'Date': 200802010931, 'Opening Price': 30.7, 'Peak Price': 31.17, 'Lowest Price': 30.47, 'Close Price': 31.13, 'Volume': 141668}
+{'Stock Ticker': 'MSFT', 'Date': 200802010932, 'Opening Price': 31.04, 'Peak Price': 31.22, 'Lowest Price': 31.01, 'Close Price': 31.21, 'Volume': 1603271}
+{'Stock Ticker': 'DRIV', 'Date': 200802010932, 'Opening Price': 31.1, 'Peak Price': 31.4499, 'Lowest Price': 30.97, 'Close Price': 31.05, 'Volume': 152642}
+{'Stock Ticker': 'MSFT', 'Date': 200802010933, 'Opening Price': 31.22, 'Peak Price': 31.45, 'Lowest Price': 31.05, 'Close Price': 31.345, 'Volume': 1808536}
 
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011558, 'Opening Price': 30.46, 'Peak Price': 30.48, 'Lowest Price': 30.44, 'Close Price': 30.44, 'Volume': 2083903}
-{'Stock Ticker': 'DRIV', 'Date': 200802011559, 'Opening Price': 30.56, 'Peak Price': 30.67, 'Lowest Price': 30.5097, 'Close Price': 30.67, 'Volume': 54130}
-{'Stock Ticker': 'MSFT', 'Date': 200802011601, 'Opening Price': 30.44, 'Peak Price': 32.49, 'Lowest Price': 30.42, 'Close Price': 32.49, 'Volume': 149141}
+{'Stock Ticker': 'MSFT', 'Date': 200802010929, 'Opening Price': 31.08, 'Peak Price': 31.1, 'Lowest Price': 31.04, 'Close Price': 31.06, 'Volume': 252641}
+{'Stock Ticker': 'DRIV', 'Date': 200802010931, 'Opening Price': 30.7, 'Peak Price': 31.17, 'Lowest Price': 30.47, 'Close Price': 31.13, 'Volume': 141668}
+{'Stock Ticker': 'MSFT', 'Date': 200802010932, 'Opening Price': 31.04, 'Peak Price': 31.22, 'Lowest Price': 31.01, 'Close Price': 31.21, 'Volume': 1603271}
+{'Stock Ticker': 'DRIV', 'Date': 200802010932, 'Opening Price': 31.1, 'Peak Price': 31.4499, 'Lowest Price': 30.97, 'Close Price': 31.05, 'Volume': 152642}
+{'Stock Ticker': 'MSFT', 'Date': 200802010933, 'Opening Price': 31.22, 'Peak Price': 31.45, 'Lowest Price': 31.05, 'Close Price': 31.345, 'Volume': 1808536}
 
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011558, 'Opening Price': 30.48, 'Peak Price': 30.57, 'Lowest Price': 30.47, 'Close Price': 30.55, 'Volume': 15378}
-{'Stock Ticker': 'MSFT', 'Date': 200802011601, 'Opening Price': 30.44, 'Peak Price': 32.49, 'Lowest Price': 30.42, 'Close Price': 32.49, 'Volume': 149141}
+{'Stock Ticker': 'MSFT', 'Date': 200802010929, 'Opening Price': 31.08, 'Peak Price': 31.1, 'Lowest Price': 31.04, 'Close Price': 31.06, 'Volume': 252641}
+{'Stock Ticker': 'DRIV', 'Date': 200802010931, 'Opening Price': 30.7, 'Peak Price': 31.17, 'Lowest Price': 30.47, 'Close Price': 31.13, 'Volume': 141668}
+{'Stock Ticker': 'MSFT', 'Date': 200802010932, 'Opening Price': 31.04, 'Peak Price': 31.22, 'Lowest Price': 31.01, 'Close Price': 31.21, 'Volume': 1603271}
+{'Stock Ticker': 'DRIV', 'Date': 200802010932, 'Opening Price': 31.1, 'Peak Price': 31.4499, 'Lowest Price': 30.97, 'Close Price': 31.05, 'Volume': 152642}
+{'Stock Ticker': 'MSFT', 'Date': 200802010939, 'Opening Price': 31, 'Peak Price': 31.45, 'Lowest Price': 30.97, 'Close Price': 30.97, 'Volume': 1599012}
 
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011558, 'Opening Price': 30.48, 'Peak Price': 30.57, 'Lowest Price': 30.47, 'Close Price': 30.55, 'Volume': 15378}
-{'Stock Ticker': 'MSFT', 'Date': 200802011601, 'Opening Price': 30.44, 'Peak Price': 32.49, 'Lowest Price': 30.42, 'Close Price': 32.49, 'Volume': 149141}
+{'Stock Ticker': 'MSFT', 'Date': 200802010931, 'Opening Price': 31.13, 'Peak Price': 31.15, 'Lowest Price': 31.03, 'Close Price': 31.05, 'Volume': 2000177}
+{'Stock Ticker': 'DRIV', 'Date': 200802010931, 'Opening Price': 30.7, 'Peak Price': 31.17, 'Lowest Price': 30.47, 'Close Price': 31.13, 'Volume': 141668}
+{'Stock Ticker': 'MSFT', 'Date': 200802010932, 'Opening Price': 31.04, 'Peak Price': 31.22, 'Lowest Price': 31.01, 'Close Price': 31.21, 'Volume': 1603271}
+{'Stock Ticker': 'DRIV', 'Date': 200802010932, 'Opening Price': 31.1, 'Peak Price': 31.4499, 'Lowest Price': 30.97, 'Close Price': 31.05, 'Volume': 152642}
+{'Stock Ticker': 'MSFT', 'Date': 200802010933, 'Opening Price': 31.22, 'Peak Price': 31.45, 'Lowest Price': 31.05, 'Close Price': 31.345, 'Volume': 1808536}
 
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011557, 'Opening Price': 30.42, 'Peak Price': 30.49, 'Lowest Price': 30.42, 'Close Price': 30.49, 'Volume': 22270}
-{'Stock Ticker': 'MSFT', 'Date': 200802011601, 'Opening Price': 30.44, 'Peak Price': 32.49, 'Lowest Price': 30.42, 'Close Price': 32.49, 'Volume': 149141}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011557, 'Opening Price': 30.42, 'Peak Price': 30.49, 'Lowest Price': 30.42, 'Close Price': 30.49, 'Volume': 22270}
-{'Stock Ticker': 'MSFT', 'Date': 200802011602, 'Opening Price': 30.45, 'Peak Price': 30.52, 'Lowest Price': 30.43, 'Close Price': 30.43, 'Volume': 61169}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011557, 'Opening Price': 30.42, 'Peak Price': 30.49, 'Lowest Price': 30.42, 'Close Price': 30.49, 'Volume': 22270}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011559, 'Opening Price': 30.44, 'Peak Price': 30.46, 'Lowest Price': 30.41, 'Close Price': 30.45, 'Volume': 1950287}
-{'Stock Ticker': 'DRIV', 'Date': 200802011602, 'Opening Price': 30.69, 'Peak Price': 30.69, 'Lowest Price': 30.69, 'Close Price': 30.69, 'Volume': 10000}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011602, 'Opening Price': 30.69, 'Peak Price': 30.69, 'Lowest Price': 30.69, 'Close Price': 30.69, 'Volume': 10000}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011602, 'Opening Price': 30.69, 'Peak Price': 30.69, 'Lowest Price': 30.69, 'Close Price': 30.69, 'Volume': 10000}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011558, 'Opening Price': 30.46, 'Peak Price': 30.48, 'Lowest Price': 30.44, 'Close Price': 30.44, 'Volume': 2083903}
-{'Stock Ticker': 'DRIV', 'Date': 200802011602, 'Opening Price': 30.69, 'Peak Price': 30.69, 'Lowest Price': 30.69, 'Close Price': 30.69, 'Volume': 10000}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011600, 'Opening Price': 30.45, 'Peak Price': 30.49, 'Lowest Price': 30.4399, 'Close Price': 30.45, 'Volume': 6394893}
-{'Stock Ticker': 'DRIV', 'Date': 200802011602, 'Opening Price': 30.69, 'Peak Price': 30.69, 'Lowest Price': 30.69, 'Close Price': 30.69, 'Volume': 10000}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011558, 'Opening Price': 30.48, 'Peak Price': 30.57, 'Lowest Price': 30.47, 'Close Price': 30.55, 'Volume': 15378}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011558, 'Opening Price': 30.48, 'Peak Price': 30.57, 'Lowest Price': 30.47, 'Close Price': 30.55, 'Volume': 15378}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011558, 'Opening Price': 30.46, 'Peak Price': 30.48, 'Lowest Price': 30.44, 'Close Price': 30.44, 'Volume': 2083903}
-{'Stock Ticker': 'DRIV', 'Date': 200802011559, 'Opening Price': 30.56, 'Peak Price': 30.67, 'Lowest Price': 30.5097, 'Close Price': 30.67, 'Volume': 54130}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011559, 'Opening Price': 30.56, 'Peak Price': 30.67, 'Lowest Price': 30.5097, 'Close Price': 30.67, 'Volume': 54130}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011559, 'Opening Price': 30.56, 'Peak Price': 30.67, 'Lowest Price': 30.5097, 'Close Price': 30.67, 'Volume': 54130}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011559, 'Opening Price': 30.44, 'Peak Price': 30.46, 'Lowest Price': 30.41, 'Close Price': 30.45, 'Volume': 1950287}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011558, 'Opening Price': 30.46, 'Peak Price': 30.48, 'Lowest Price': 30.44, 'Close Price': 30.44, 'Volume': 2083903}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011603, 'Opening Price': 30.44, 'Peak Price': 31.3, 'Lowest Price': 30.42, 'Close Price': 30.43, 'Volume': 135880}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011558, 'Opening Price': 30.46, 'Peak Price': 30.48, 'Lowest Price': 30.44, 'Close Price': 30.44, 'Volume': 2083903}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011559, 'Opening Price': 30.44, 'Peak Price': 30.46, 'Lowest Price': 30.41, 'Close Price': 30.45, 'Volume': 1950287}
-{'Stock Ticker': 'DRIV', 'Date': 200802011600, 'Opening Price': 30.61, 'Peak Price': 30.78, 'Lowest Price': 30.57, 'Close Price': 30.76, 'Volume': 50131}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011559, 'Opening Price': 30.56, 'Peak Price': 30.67, 'Lowest Price': 30.5097, 'Close Price': 30.67, 'Volume': 54130}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011559, 'Opening Price': 30.56, 'Peak Price': 30.67, 'Lowest Price': 30.5097, 'Close Price': 30.67, 'Volume': 54130}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011558, 'Opening Price': 30.46, 'Peak Price': 30.48, 'Lowest Price': 30.44, 'Close Price': 30.44, 'Volume': 2083903}
-{'Stock Ticker': 'DRIV', 'Date': 200802011559, 'Opening Price': 30.56, 'Peak Price': 30.67, 'Lowest Price': 30.5097, 'Close Price': 30.67, 'Volume': 54130}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011558, 'Opening Price': 30.48, 'Peak Price': 30.57, 'Lowest Price': 30.47, 'Close Price': 30.55, 'Volume': 15378}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011558, 'Opening Price': 30.48, 'Peak Price': 30.57, 'Lowest Price': 30.47, 'Close Price': 30.55, 'Volume': 15378}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011600, 'Opening Price': 30.45, 'Peak Price': 30.49, 'Lowest Price': 30.4399, 'Close Price': 30.45, 'Volume': 6394893}
-{'Stock Ticker': 'DRIV', 'Date': 200802011602, 'Opening Price': 30.69, 'Peak Price': 30.69, 'Lowest Price': 30.69, 'Close Price': 30.69, 'Volume': 10000}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011558, 'Opening Price': 30.46, 'Peak Price': 30.48, 'Lowest Price': 30.44, 'Close Price': 30.44, 'Volume': 2083903}
-{'Stock Ticker': 'DRIV', 'Date': 200802011602, 'Opening Price': 30.69, 'Peak Price': 30.69, 'Lowest Price': 30.69, 'Close Price': 30.69, 'Volume': 10000}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011602, 'Opening Price': 30.69, 'Peak Price': 30.69, 'Lowest Price': 30.69, 'Close Price': 30.69, 'Volume': 10000}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011557, 'Opening Price': 30.46, 'Peak Price': 30.47, 'Lowest Price': 30.4489, 'Close Price': 30.46, 'Volume': 1329241}
-{'Stock Ticker': 'DRIV', 'Date': 200802011602, 'Opening Price': 30.69, 'Peak Price': 30.69, 'Lowest Price': 30.69, 'Close Price': 30.69, 'Volume': 10000}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011559, 'Opening Price': 30.44, 'Peak Price': 30.46, 'Lowest Price': 30.41, 'Close Price': 30.45, 'Volume': 1950287}
-{'Stock Ticker': 'DRIV', 'Date': 200802011602, 'Opening Price': 30.69, 'Peak Price': 30.69, 'Lowest Price': 30.69, 'Close Price': 30.69, 'Volume': 10000}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
-
-{'Stock Ticker': 'MSFT', 'Date': 200802011555, 'Opening Price': 30.42, 'Peak Price': 30.43, 'Lowest Price': 30.39, 'Close Price': 30.4, 'Volume': 1798697}
-{'Stock Ticker': 'DRIV', 'Date': 200802011556, 'Opening Price': 30.42, 'Peak Price': 30.45, 'Lowest Price': 30.37, 'Close Price': 30.45, 'Volume': 40923}
-{'Stock Ticker': 'MSFT', 'Date': 200802011556, 'Opening Price': 30.4, 'Peak Price': 30.46, 'Lowest Price': 30.39, 'Close Price': 30.45, 'Volume': 1717920}
-{'Stock Ticker': 'DRIV', 'Date': 200802011557, 'Opening Price': 30.42, 'Peak Price': 30.49, 'Lowest Price': 30.42, 'Close Price': 30.49, 'Volume': 22270}
-{'Stock Ticker': 'MSFT', 'Date': 200802011604, 'Opening Price': 30.43, 'Peak Price': 32.49, 'Lowest Price': 30.43, 'Close Price': 30.49, 'Volume': 511425}
+{'Stock Ticker': 'MSFT', 'Date': 200802010931, 'Opening Price': 31.13, 'Peak Price': 31.15, 'Lowest Price': 31.03, 'Close Price': 31.05, 'Volume': 2000177}
+{'Stock Ticker': 'DRIV', 'Date': 200802010931, 'Opening Price': 30.7, 'Peak Price': 31.17, 'Lowest Price': 30.47, 'Close Price': 31.13, 'Volume': 141668}
+{'Stock Ticker': 'MSFT', 'Date': 200802010932, 'Opening Price': 31.04, 'Peak Price': 31.22, 'Lowest Price': 31.01, 'Close Price': 31.21, 'Volume': 1603271}
+{'Stock Ticker': 'DRIV', 'Date': 200802010932, 'Opening Price': 31.1, 'Peak Price': 31.4499, 'Lowest Price': 30.97, 'Close Price': 31.05, 'Volume': 152642}
+{'Stock Ticker': 'MSFT', 'Date': 200802010939, 'Opening Price': 31, 'Peak Price': 31.45, 'Lowest Price': 30.97, 'Close Price': 30.97, 'Volume': 1599012}
 
