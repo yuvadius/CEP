@@ -1,12 +1,15 @@
-from CEP import *
-from IOUtils import *
-from Utils import *
-from OrderBasedAlgorithms import *
+from CEP import CEP
+from IOUtils import fileInput, fileOutput
+from Utils import generateMatches, StatisticsTypes, IterativeImprovementType
+from OrderBasedAlgorithms import TrivialAlgorithm, AscendingFrequencyAlgorithm, GreedyAlgorithm, IIGreedyAlgorithm, IIRandomAlgorithm, DynamicProgrammingLeftDeepAlgorithm
+from TreeBasedAlgorithms import DynamicProgrammingBushyAlgorithm, ZStreamAlgorithm, ZStreamOrdAlgorithm
 from time import time
 from datetime import timedelta
-from Statistics import *
+from Formula import GreaterThanFormula, SmallerThanFormula, SmallerThanEqFormula, GreaterThanEqFormula, MulTerm, EqFormula, IdentifierTerm, AtomicTerm, AndFormula, TrueFormula
+from PatternStructure import AndOperator, SeqOperator, QItem
+from Pattern import Pattern
 
-nasdaqEventStreamShort = fileInput("NASDAQ_SHORT.txt", 
+nasdaqEventStreamShort = fileInput("EventFiles/NASDAQ_SHORT.txt", 
         [
             "Stock Ticker", 
             "Date", 
@@ -17,7 +20,7 @@ nasdaqEventStreamShort = fileInput("NASDAQ_SHORT.txt",
             "Volume"],
         "Stock Ticker",
         "Date")
-nasdaqEventStreamMedium = fileInput("NASDAQ_MEDIUM.txt", 
+nasdaqEventStreamMedium = fileInput("EventFiles/NASDAQ_MEDIUM.txt", 
         [
             "Stock Ticker", 
             "Date", 
@@ -28,7 +31,7 @@ nasdaqEventStreamMedium = fileInput("NASDAQ_MEDIUM.txt",
             "Volume"],
         "Stock Ticker",
         "Date")
-nasdaqEventStreamFrequencyTailored = fileInput("NASDAQ_FREQUENCY_TAILORED.txt", 
+nasdaqEventStreamFrequencyTailored = fileInput("EventFiles/NASDAQ_FREQUENCY_TAILORED.txt", 
         [
             "Stock Ticker", 
             "Date", 
@@ -39,7 +42,7 @@ nasdaqEventStreamFrequencyTailored = fileInput("NASDAQ_FREQUENCY_TAILORED.txt",
             "Volume"],
         "Stock Ticker",
         "Date") 
-nasdaqEventStream_AAPL_AMZN_GOOG = fileInput("NASDAQ_AAPL_AMZN_GOOG.txt", 
+nasdaqEventStream_AAPL_AMZN_GOOG = fileInput("EventFiles/NASDAQ_AAPL_AMZN_GOOG.txt", 
         [
             "Stock Ticker", 
             "Date", 
@@ -106,7 +109,6 @@ def createTest(testName, patterns, algorithm = TrivialAlgorithm(), events=None):
     else:
         events = events.duplicate()
     pattern = patterns[0]
-    argsNum = len(pattern.patternStructure.args)
     matches = generateMatches(pattern, events)
     fileOutput(matches, '../TestsExpected/%sMatches.txt' % testName)
     print("Finished creating test %s" % testName)
@@ -605,9 +607,9 @@ nonFrequencyPatternSearch3Test()
 frequencyPatternSearch3Test()
 nonFrequencyPatternSearch4Test()
 frequencyPatternSearch4Test()
-nonFrequencyPatternSearch5Test()
-frequencyPatternSearch5Test()
-frequencyPatternSearch6Test()
+#nonFrequencyPatternSearch5Test(True)
+#frequencyPatternSearch5Test(True)
+#frequencyPatternSearch6Test(True)
 greedyPatternSearchTest()
 iiRandomPatternSearchTest()
 iiRandom2PatternSearchTest()

@@ -1,13 +1,15 @@
 from __future__ import annotations
 from datetime import datetime, timedelta
 from Pattern import Pattern
-from PatternStructure import *
-from Formula import *
+from PatternStructure import PatternStructure, SeqOperator, QItem
+from Formula import Formula, TrueFormula
 from IODataStructures import Container, Stream
 from typing import List, Tuple
 from Event import Event
-from Utils import merge, mergeAccordingTo, isSorted
+from Utils import merge, mergeAccordingTo, isSorted, binarySearchDateThreshold
 from PatternMatch import PatternMatch
+from EvaluationMechanism import EvaluationMechanism
+from queue import Queue
 
 class PartialMatch:
     def __init__(self, pm):
@@ -41,13 +43,8 @@ class Tree:
         return self.leaves
 
     def getRootMatches(self):
-        while self.root.partialMatches:
-            ret = self.root.partialMatches[0].getPartialMatch()
-            del self.root.partialMatches[0]
-            yield ret
-    
-    def printReorder(self):
-        self.root.printReorder()
+        while self.root.hasPartialMatches():
+            yield self.root.consumeFirstPartialMatch().getPartialMatch()
 
 
 class Node:
@@ -60,15 +57,18 @@ class Node:
         self.slidingWindow = slidingWindow
         self.condition = TrueFormula()
         self.isSeq = isSeq
+        self.unhandledPartialMatches = Queue()
     
-    def printReorder(self):
-        print(self.reorder)
-        if self.left:
-            print("left:")
-            self.left.printReorder()
-            print("right:")
-            self.right.printReorder()
-        
+    def consumeFirstPartialMatch(self):
+        ret = self.partialMatches[0]
+        del self.partialMatches[0]
+        return ret
+    
+    def hasPartialMatches(self):
+        return bool(self.partialMatches)
+    
+    def getLastUnhandledPartialMatch(self):
+        return self.unhandledPartialMatches.get()
 
     def getLeaves(self):
         if self.isLeaf():
@@ -91,13 +91,13 @@ class Node:
     def getEventType(self):
         if not self.isLeaf():
             raise Exception()
-
+        
         return self.reorder[0][1].eventType
     
     def setSubtrees(self, left, right):
         self.left = left
         self.right = right
-        self.reorder = merge(self.left.reorder, self.right.reorder, lambda x: x[0])
+        self.reorder = merge(self.left.reorder, self.right.reorder, key=lambda x: x[0])
     
     def setParent(self, parent):
         self.parent = parent
@@ -132,7 +132,7 @@ class Node:
         binding = {qitem.name:event.event}
         
         if self.condition.eval(binding):
-            self.partialMatches.append(PartialMatch([event]))
+            self.addPartialMatch(PartialMatch([event]))
             if self.parent != None:
                 self.parent.handleNewPartialMatch(self.isLeftSubtree())
         
@@ -140,26 +140,26 @@ class Node:
     def updatePartialMatchesToDate(self, lastDate):
         if self.slidingWindow == timedelta.max:
             return
-        count = 0
-        for partialMatch in self.partialMatches:
-            if partialMatch.getFirstDate() + self.slidingWindow < lastDate:
-                count += 1
-            else:
-                break
+        count = binarySearchDateThreshold(self.partialMatches, lastDate - self.slidingWindow)
         self.partialMatches = self.partialMatches[count:]
+    
+    def addPartialMatch(self, pm : PartialMatch):
+        index = binarySearchDateThreshold(self.partialMatches, pm.getFirstDate())
+        self.partialMatches.insert(index, pm)
+        self.unhandledPartialMatches.put(pm)
 
     def handleNewPartialMatch(self, originatorIsLeftSubtree):
         if self.isLeaf():
             raise Exception()
         
         if originatorIsLeftSubtree:
-            newPartialMatch = self.left.partialMatches[-1]
+            newPartialMatch = self.left.getLastUnhandledPartialMatch()
             firstReorder = self.left.reorder
             self.right.updatePartialMatchesToDate(newPartialMatch.getLastDate())
             toCompare = self.right.partialMatches
             secondReorder = self.right.reorder
         else:
-            newPartialMatch = self.right.partialMatches[-1]
+            newPartialMatch = self.right.getLastUnhandledPartialMatch()
             firstReorder = self.right.reorder
             self.left.updatePartialMatchesToDate(newPartialMatch.getLastDate())
             toCompare = self.left.partialMatches
@@ -174,8 +174,8 @@ class Node:
                 continue
             speculativePM = mergeAccordingTo(firstReorder, secondReorder, 
             newPartialMatch.getPartialMatch(), partialMatch.getPartialMatch(), 
-            lambda x: x[0])
-            if self.isSeq and not isSorted(speculativePM, key=lambda x: x.counter):
+            key=lambda x: x[0])
+            if self.isSeq and not isSorted(speculativePM, key=lambda x: x.date):
                 continue
 
             binding = {
@@ -183,15 +183,18 @@ class Node:
                 for i in range(len(self.reorder))
             }
             if self.condition.eval(binding):
-                self.partialMatches.append(PartialMatch(speculativePM))
+                self.addPartialMatch(PartialMatch(speculativePM))
                 if self.parent:
                     self.parent.handleNewPartialMatch(self.isLeftSubtree())
         return
         
 
 
-class TreeAlgorithm:
-    def eval(self, treeBluePrint, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+class TreeAlgorithm(EvaluationMechanism):
+    def isMultiplePatternCompatible(self):
+        return False
+
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, treeBluePrint, elapsed = None):
         if elapsed:
             start = datetime.now()
         

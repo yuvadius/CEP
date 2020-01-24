@@ -1,19 +1,5 @@
 from abc import ABC  # Abstract Base Class
 
-'''
-This file contains many object definitions which aren't very informative as much as formal.
-The mechanism is described easily with examples.
-
-*** usage examples: ***
-x = AndFormula(EqFormula(AtomicTerm(5), IdentifierTerm("Moti", lambda x: x["age"])), 
-        SmallerThanEqFormula(AtomicTerm(13), MulTerm(AtomicTerm(5), AtomicTerm(3))))  # 5 == Moti["age"] and 13 <= 5 * 3
-x.eval({ "Moti" : { "age": 5 } })  # True
-x.eval({ "Moti" : { "age": 31 } })  # False
-x.eval()
-
-To do: Insert more examples
-
-'''
 
 class Term(ABC):
     '''

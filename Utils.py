@@ -1,5 +1,5 @@
 from __future__ import annotations
-from Event import *
+from Event import Event
 from datetime import date, datetime, timedelta
 from enum import Enum
 from typing import List, Dict
@@ -10,9 +10,35 @@ from PatternStructure import SeqOperator
 from PatternMatch import PatternMatch
 from copy import deepcopy
 
+def binarySearchDateThreshold(partialMatches, lastDate):
+    # should count how many PMs are before last date.
+    length = len(partialMatches)
+    if length == 0 or partialMatches[0].getFirstDate() >= lastDate:
+        return 0
+    if length == 1: # here we already know that first item's date < lastDate
+        return 1
+    if partialMatches[-1].getFirstDate() < lastDate:
+        return length
+    
+    start = 0
+    end = length - 1
+    while start <= end:
+        mid = (start + end) // 2
+        midDate = partialMatches[mid].getFirstDate()
+        if partialMatches[mid - 1].getFirstDate() < lastDate <= midDate:
+            return mid
+        elif lastDate > midDate:
+            start = mid + 1
+        else:
+            end = mid - 1
+    
+    # shouldn't get here, because we know not all partial matches are up to date (nor expired),
+    # which means an index should be found.
+    raise Exception()
+
 def isfloat(x: str):
     try:
-        a = float(x)
+        _ = float(x)
     except ValueError:
         return False
     else:
@@ -58,19 +84,6 @@ def getAllDisjointSets(s : frozenset):
             set1 = frozenset(c).union({first})
             set2 = s.difference(set1)
             yield (set1, set2)
-
-class StatisticsTypes(Enum):
-    NO_STATISTICS = 0
-    FREQUENCY_DICT = 1
-    SELECTIVITY_MATRIX_AND_ARRIVAL_RATES = 2
-
-class PolicyType(Enum):
-    FIND_ALL = 0
-    FIND_FAST = 1
-
-class IterativeImprovementType(Enum):
-    SWAP_BASED = 0
-    CIRCLE_BASED = 1
 
 def swapGenerator(n : int):
     for i in range(n - 1):
@@ -175,8 +188,20 @@ def buildTreeFromOrder(order):
         ret = (ret, order[i])
     return ret                 
 
-# Entire CEP algorithm in a couple lines of code(inefficient)
-# This will be used as our test creater
+class MissingStatisticsException(Exception):
+    pass
+
+class StatisticsTypes(Enum):
+    NO_STATISTICS = 0
+    FREQUENCY_DICT = 1
+    SELECTIVITY_MATRIX_AND_ARRIVAL_RATES = 2
+
+class IterativeImprovementType(Enum):
+    SWAP_BASED = 0
+    CIRCLE_BASED = 1
+
+# A recursive, very inefficient pattern match finder.
+# It is used as our test creator.
 def generateMatches(pattern, stream):
     args = pattern.patternStructure.args
     types = {qitem.eventType for qitem in args}

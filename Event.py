@@ -11,8 +11,7 @@ from typing import Dict
 from datetime import datetime
 
 class Event:
-    def __init__(self, event: Dict, eventType: str, date: datetime, counter: int):
+    def __init__(self, event: Dict, eventType: str, date: datetime):
         self.event = event
         self.eventType = eventType
         self.date = date
-        self.counter = counter # Must be unique, If 2 dates are equal than the smaller counter is the event that came first

@@ -12,7 +12,7 @@ class Container(ABC):
     def getItem(self):
         pass
 
-    # somehow has to note that the item
+    # somehow has to note that the item is last
     def close(self):
         pass
 

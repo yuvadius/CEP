@@ -4,7 +4,7 @@ This class is the returned result of an evaluation eval function
 If the time is "-1" then it can be considered as undefined
 '''
 
-from Event import *
+from Event import Event
 from typing import List
 
 class PatternMatch:

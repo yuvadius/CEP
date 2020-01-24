@@ -1,8 +1,8 @@
 from TreeBasedEvaluation import TreeAlgorithm
 from IODataStructures import Stream, Container
-from Pattern import *
-from Utils import *
-from Statistics import *
+from Pattern import Pattern
+from Utils import StatisticsTypes, getAllDisjointSets, MissingStatisticsException
+from Statistics import calculateTreeCostFunction
 from OrderBasedAlgorithms import GreedyAlgorithm
 from itertools import combinations
 
@@ -12,10 +12,9 @@ class DynamicProgrammingBushyAlgorithm(TreeAlgorithm):
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
-            selectivityMatrix = getSelectivityMatrix(pattern, events)
-            arrivalRates = getArrivalRates(pattern, events)
+            raise MissingStatisticsException()
         tree = DynamicProgrammingBushyAlgorithm.findTree(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(tree, pattern, events, matches, elapsed)
+        super().eval(pattern, events, matches, tree, elapsed)
     
     @staticmethod
     def findTree(selectivityMatrix, arrivalRates, window):
@@ -57,10 +56,9 @@ class ZStreamAlgorithm(TreeAlgorithm):
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
-            selectivityMatrix = getSelectivityMatrix(pattern, events)
-            arrivalRates = getArrivalRates(pattern, events)
+            raise MissingStatisticsException()
         tree = ZStreamAlgorithm.findTree(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(tree, pattern, events, matches, elapsed)
+        super().eval(pattern, events, matches, tree, elapsed)
     
     @staticmethod
     def findTree(selectivityMatrix, arrivalRates, window):
@@ -104,8 +102,7 @@ class ZStreamOrdAlgorithm(TreeAlgorithm):
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
-            selectivityMatrix = getSelectivityMatrix(pattern, events)
-            arrivalRates = getArrivalRates(pattern, events)
+            raise MissingStatisticsException()
         order = GreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
         tree = ZStreamAlgorithm.findTreeForOrder(order, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(tree, pattern, events, matches, elapsed)
+        super().eval(pattern, events, matches, tree, elapsed)

@@ -4,8 +4,8 @@ Pattern Matching Condition is a formula
 Sliding Window's format is a timedelta object.
 '''
 
-from Formula import *
-from PatternStructure import *
+from Formula import Formula
+from PatternStructure import PatternStructure
 from typing import List
 from datetime import timedelta
 from typing import List, Dict

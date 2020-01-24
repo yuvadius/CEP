@@ -2,14 +2,15 @@ from __future__ import annotations
 from typing import List
 from TreeBasedEvaluation import TreeAlgorithm
 from IODataStructures import Stream, Container
-from Pattern import *
-from Utils import *
-from Statistics import *
+from Pattern import Pattern
+from Utils import MissingStatisticsException, buildTreeFromOrder, getOrderByOccurences, IterativeImprovementType, \
+    swapGenerator, swapper, circleGenerator, circler, reverseCircle, getRandomOrder, StatisticsTypes
+from Statistics import calculateOrderCostFunction
 
 class OrderBasedAlgorithm(TreeAlgorithm):
     def eval(self, order: List[int], pattern: Pattern, events: Stream, matches: Container, elapsed = None):
         tree = buildTreeFromOrder(order)
-        super().eval(tree, pattern, events, matches, elapsed)
+        super().eval(pattern, events, matches, tree, elapsed)
 
 class TrivialAlgorithm(OrderBasedAlgorithm):
     def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
@@ -23,7 +24,7 @@ class AscendingFrequencyAlgorithm(OrderBasedAlgorithm):
         if pattern.statisticsType == StatisticsTypes.FREQUENCY_DICT:
             frequencyDict = pattern.statistics
         else:
-            frequencyDict = getOccurencesDict(pattern, events.duplicate())
+            raise MissingStatisticsException()
         order = getOrderByOccurences(pattern.patternStructure.args, frequencyDict)
         super().eval(order, pattern, events, matches, elapsed)
     
@@ -34,8 +35,7 @@ class GreedyAlgorithm(OrderBasedAlgorithm):
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
-            selectivityMatrix = getSelectivityMatrix(pattern, events)
-            arrivalRates = getArrivalRates(pattern, events)
+            raise MissingStatisticsException()
         order = GreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
         super().eval(order, pattern, events, matches, elapsed)
 
@@ -113,8 +113,7 @@ class IIGreedyAlgorithm(IterativeImprovement, OrderBasedAlgorithm):
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
-            selectivityMatrix = getSelectivityMatrix(pattern, events)
-            arrivalRates = getArrivalRates(pattern, events)
+            raise MissingStatisticsException()
         order = GreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
         order = self.iterativeImprovement(order, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
         super().eval(order, pattern, events, matches, elapsed)
@@ -128,8 +127,7 @@ class IIRandomAlgorithm(IterativeImprovement, OrderBasedAlgorithm):
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
-            selectivityMatrix = getSelectivityMatrix(pattern, events)
-            arrivalRates = getArrivalRates(pattern, events)
+            raise MissingStatisticsException()
         order = getRandomOrder(len(arrivalRates))
         order = self.iterativeImprovement(order, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
         super().eval(order, pattern, events, matches, elapsed)
@@ -140,8 +138,7 @@ class DynamicProgrammingLeftDeepAlgorithm(OrderBasedAlgorithm):
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
-            selectivityMatrix = getSelectivityMatrix(pattern, events)
-            arrivalRates = getArrivalRates(pattern, events)
+            raise MissingStatisticsException()
         order = DynamicProgrammingLeftDeepAlgorithm.findOrder(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
         super().eval(order, pattern, events, matches, elapsed)
     
