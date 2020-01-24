@@ -98,6 +98,7 @@ def googleAmazonLowPatternSearchTest(createTestFile = False):
 
 googleAscendPatternSearchTest(True) # Use True to create a test
 googleAmazonLowPatternSearchTest() # If the test exists then don't send arguments
+# Check tests.py for more examples
 ```
 
 # API
@@ -105,17 +106,18 @@ googleAmazonLowPatternSearchTest() # If the test exists then don't send argument
 * #### CEP ####
 This class is the main Complex Event Processing Unit.
 
-A CEP object is constructed with an algorithm, optional patterns an optional event stream, optional output container, and a config parameter to whether save a copy with the history of the event stream and replay it on new patterns - saveReplica.
+A CEP object is constructed with an algorithm, optional patterns an optional event stream, optional output container, and a config parameter to whether save a copy with the history of the event stream and replay it on new patterns - saveReplica and also
+performanceSpecs of type PerformanceSpecifications that will help in building the tree.
 ```
-__init__(self, algorithm: Algorithm, patterns: List[Pattern] = None, events: Stream = None, output: Container = None, saveReplica: bool = True)
+def __init__(self, algorithm: EvaluationMechanism, patterns: List[Pattern] = None, events: Stream = None, output: Container = None, saveReplica: bool = True, performanceSpecs : PerformanceSpecifications = None):
 ```
 
 The CEP Object has the following functions:
 
 ```
-addPattern(self, pattern: Pattern, priority: int = 0, policy : PolicyType = PolicyType.FIND_ALL)
+addPattern(self, pattern: Pattern, priority: int = 0)
 ```
-Adds a pattern to search matches for in the event stream. You can attach to the pattern an optional priority value to the pattern to prioritize that pattern when processing is heavy, and a policy of how to search for matches.
+Adds a pattern to search matches for in the event stream. You can attach to the pattern an optional priority value to the pattern to prioritize that pattern when processing is heavy.
 
 ```
 addEvent(self, event: Event)
