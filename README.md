@@ -205,8 +205,7 @@ __init__(self,
 ```
 The PatternStructure, Formula and timedelta classes are described below.
 
-*
-  * #### PatternStructure ####
+* #### PatternStructure ####
 This class is an abstract class used to represent a pattern structure, i.e. a PATTERN clause's argument.
 The pattern can be nested, and can be composed of operators like SEQ, AND, ~ (negation) and ()* (kleene plus).
 
@@ -228,8 +227,7 @@ The following classes inherit from PatternStructure:
   * KleenePlusOperator
   * StrictSeqOperator
   
-*
-  * #### Formula ####
+* #### Formula ####
 This class is an abstract class which represents a logic formula with identifiers and values (a SASE+ formula) and can be               implemented by many formula classes which all shall implement the following function:
 ```
 eval(self, binding: dict = {})
@@ -272,9 +270,7 @@ Represents the formula `leftFormula AND rightFormula`.
 
 Every one of these classes represent a concrete formula, given their constructor parameters.
 
-*
-  *
-    * Term
+* #### Term ####
 
 The Term abstract class is used to represent an expression. Every instantiable class of it represents a concrete expression which can be evaluated given a proper name-binding. It has the following function:
 ```
@@ -311,7 +307,7 @@ Represents the term `lhs / rhs`.
 
 All classes above represent a concrete term and can, given a proper name binding, evaluate the term they represent.
 
-  * #### datetime.timedelta ####
+* #### datetime.timedelta ####
 This class is used to represent a sliding window of a query (a WITHIN clause's argument).
 It is an object used to represent a peroid of time and is described extensively in Python's documentation.
 
