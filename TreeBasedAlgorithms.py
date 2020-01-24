@@ -7,14 +7,14 @@ from OrderBasedAlgorithms import GreedyAlgorithm
 from itertools import combinations
 
 class DynamicProgrammingBushyAlgorithm(TreeAlgorithm):
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         selectivityMatrix = None
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
             raise MissingStatisticsException()
         tree = DynamicProgrammingBushyAlgorithm.findTree(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(pattern, events, matches, tree, elapsed)
+        super().eval(pattern, events, matches, tree, measureTime)
     
     @staticmethod
     def findTree(selectivityMatrix, arrivalRates, window):
@@ -51,14 +51,14 @@ class DynamicProgrammingBushyAlgorithm(TreeAlgorithm):
 
 
 class ZStreamAlgorithm(TreeAlgorithm):
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         selectivityMatrix = None
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
             raise MissingStatisticsException()
         tree = ZStreamAlgorithm.findTree(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(pattern, events, matches, tree, elapsed)
+        super().eval(pattern, events, matches, tree, measureTime)
     
     @staticmethod
     def findTree(selectivityMatrix, arrivalRates, window):
@@ -97,7 +97,7 @@ class ZStreamAlgorithm(TreeAlgorithm):
         return suborders[items][0]
 
 class ZStreamOrdAlgorithm(TreeAlgorithm):
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         selectivityMatrix = None
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
@@ -105,4 +105,4 @@ class ZStreamOrdAlgorithm(TreeAlgorithm):
             raise MissingStatisticsException()
         order = GreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
         tree = ZStreamAlgorithm.findTreeForOrder(order, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(pattern, events, matches, tree, elapsed)
+        super().eval(pattern, events, matches, tree, measureTime)

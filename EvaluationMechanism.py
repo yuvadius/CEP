@@ -15,3 +15,6 @@ class EvaluationMechanism(ABC):
 
     def isMultiplePatternCompatible(self):
         pass
+
+    def copy(self):
+        pass

@@ -8,36 +8,36 @@ from Utils import MissingStatisticsException, buildTreeFromOrder, getOrderByOccu
 from Statistics import calculateOrderCostFunction
 
 class OrderBasedAlgorithm(TreeAlgorithm):
-    def eval(self, order: List[int], pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+    def eval(self, order: List[int], pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         tree = buildTreeFromOrder(order)
-        super().eval(pattern, events, matches, tree, elapsed)
+        super().eval(pattern, events, matches, tree, measureTime)
 
 class TrivialAlgorithm(OrderBasedAlgorithm):
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         argsNum = len(pattern.patternStructure.args)
         order = range(argsNum)
-        super().eval(order, pattern, events, matches, elapsed)
+        super().eval(order, pattern, events, matches, measureTime)
 
 class AscendingFrequencyAlgorithm(OrderBasedAlgorithm):
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         frequencyDict = None
         if pattern.statisticsType == StatisticsTypes.FREQUENCY_DICT:
             frequencyDict = pattern.statistics
         else:
             raise MissingStatisticsException()
         order = getOrderByOccurences(pattern.patternStructure.args, frequencyDict)
-        super().eval(order, pattern, events, matches, elapsed)
+        super().eval(order, pattern, events, matches, measureTime)
     
 
 class GreedyAlgorithm(OrderBasedAlgorithm):
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         selectivityMatrix = None
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
             raise MissingStatisticsException()
         order = GreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
-        super().eval(order, pattern, events, matches, elapsed)
+        super().eval(order, pattern, events, matches, measureTime)
 
     @staticmethod
     def performGreedyOrder(selectivityMatrix, arrivalRates):
@@ -78,6 +78,9 @@ class IterativeImprovement:
     def __init__(self, iiType : IterativeImprovementType = IterativeImprovementType.SWAP_BASED):
         self.iiType = iiType
     
+    def copy(self):
+        return self.__class__(self.iiType)
+    
     def iterativeImprovement(self, order, selectivityMatrix, arrivalRates, windowInSecs):
         if self.iiType == IterativeImprovementType.SWAP_BASED:
             movementGenerator = swapGenerator
@@ -107,8 +110,12 @@ class IterativeImprovement:
 class IIGreedyAlgorithm(IterativeImprovement, OrderBasedAlgorithm):
     def __init__(self, iiType : IterativeImprovementType = IterativeImprovementType.SWAP_BASED):
         super().__init__(iiType)
+        OrderBasedAlgorithm.__init__(self)
     
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+    def copy(self):
+        return self.__class__(self.iiType)
+    
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         selectivityMatrix = None
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
@@ -116,13 +123,17 @@ class IIGreedyAlgorithm(IterativeImprovement, OrderBasedAlgorithm):
             raise MissingStatisticsException()
         order = GreedyAlgorithm.performGreedyOrder(selectivityMatrix, arrivalRates)
         order = self.iterativeImprovement(order, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(order, pattern, events, matches, elapsed)
+        super().eval(order, pattern, events, matches, measureTime)
 
 class IIRandomAlgorithm(IterativeImprovement, OrderBasedAlgorithm):
     def __init__(self, iiType : IterativeImprovementType = IterativeImprovementType.SWAP_BASED):
         super().__init__(iiType)
+        OrderBasedAlgorithm.__init__(self)
+    
+    def copy(self):
+        return self.__class__(self.iiType)
 
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         selectivityMatrix = None
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
@@ -130,17 +141,17 @@ class IIRandomAlgorithm(IterativeImprovement, OrderBasedAlgorithm):
             raise MissingStatisticsException()
         order = getRandomOrder(len(arrivalRates))
         order = self.iterativeImprovement(order, selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(order, pattern, events, matches, elapsed)
+        super().eval(order, pattern, events, matches, measureTime)
 
 class DynamicProgrammingLeftDeepAlgorithm(OrderBasedAlgorithm):
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, elapsed = None):
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         selectivityMatrix = None
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
             raise MissingStatisticsException()
         order = DynamicProgrammingLeftDeepAlgorithm.findOrder(selectivityMatrix, arrivalRates, pattern.slidingWindow.total_seconds())
-        super().eval(order, pattern, events, matches, elapsed)
+        super().eval(order, pattern, events, matches, measureTime)
     
     @staticmethod
     def findOrder(selectivityMatrix, arrivalRates, window):

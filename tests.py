@@ -122,7 +122,9 @@ def runTest(testName, patterns, createTestFile = False, algorithm = TrivialAlgor
         events = events.duplicate()
     cep = CEP(algorithm, patterns, events)
     matches = cep.getPatternMatchContainer()
-    timeTaken = cep.getElapsed()
+    timeTaken = 0
+    for pattern in patterns:
+        timeTaken += cep.getElapsed(pattern)
     fileOutput(matches, '%sMatches.txt' % testName)
     print("Test %s result: %s, Time Passed: %s" % (testName, 
         "Succeeded" if fileCompare("Matches/%sMatches.txt" % testName, "TestsExpected/%sMatches.txt" % testName) else "Failed", timeTaken))

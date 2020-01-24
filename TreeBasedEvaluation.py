@@ -10,6 +10,7 @@ from Utils import merge, mergeAccordingTo, isSorted, binarySearchDateThreshold
 from PatternMatch import PatternMatch
 from EvaluationMechanism import EvaluationMechanism
 from queue import Queue
+from threading import Lock
 
 class PartialMatch:
     def __init__(self, pm):
@@ -191,11 +192,18 @@ class Node:
 
 
 class TreeAlgorithm(EvaluationMechanism):
+    def __init__(self):
+        self.lock = Lock()
+    
+    def copy(self):
+        return self.__class__()
+
     def isMultiplePatternCompatible(self):
         return False
 
-    def eval(self, pattern: Pattern, events: Stream, matches: Container, treeBluePrint, elapsed = None):
-        if elapsed:
+    def eval(self, pattern: Pattern, events: Stream, matches: Container, treeBluePrint, measureTime=False):
+        if measureTime:
+            self.lock.acquire()
             start = datetime.now()
         
         tree = Tree(treeBluePrint, pattern)
@@ -217,5 +225,12 @@ class TreeAlgorithm(EvaluationMechanism):
         
         matches.close()
         
-        if elapsed:
-            elapsed[0] = ((datetime.now() - start).total_seconds())
+        if measureTime:
+            self.elapsed = ((datetime.now() - start).total_seconds())
+            self.lock.release()
+    
+    def getElapsed(self):
+        self.lock.acquire()
+        elapsed = self.elapsed
+        self.lock.release()
+        return elapsed

@@ -31,8 +31,8 @@ class CEP:
         # Otherwise, every pattern is handled separately.
         self.eventStreams = []
         self.patternMatches = output if output else Stream()
+        self.algorithmObjects = {}
         self.algorithm = algorithm
-        self.elapsed = [None]
         if saveReplica and events:
             self.baseStream = events
         elif saveReplica:
@@ -43,12 +43,13 @@ class CEP:
         if patterns:
             for pattern in patterns:
                 eventStream = self.baseStream.duplicate() if self.baseStream else Stream()
-                worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
+                self.algorithmObjects[pattern] = algorithm.copy()
+                worker = threading.Thread(target = self.algorithmObjects[pattern].eval, args = (pattern, eventStream, self.patternMatches, True))
                 worker.start()
                 self.eventStreams.append(eventStream)
 
-    def getElapsed(self):
-        return self.elapsed[0]
+    def getElapsed(self, pattern):
+        return self.algorithmObjects[pattern].getElapsed()
 
     def addEvent(self, event: Event):
         for eventStream in self.eventStreams: 
@@ -57,8 +58,11 @@ class CEP:
             self.baseStream.addItem(event)
     
     def addPattern(self, pattern: Pattern, priority: int = 0):
+        if pattern in self.algorithmObjects.keys():
+            return # pattern is already evaluated.
         eventStream = self.baseStream.duplicate() if self.baseStream else Stream()
-        worker = threading.Thread(target = self.algorithm.eval, args = (pattern, eventStream, self.patternMatches))
+        self.algorithmObjects[pattern] = self.algorithm.copy()
+        worker = threading.Thread(target = self.algorithmObjects[pattern].eval, args = (pattern, eventStream, self.patternMatches))
         worker.start()
         self.eventStreams.append(eventStream)
     
