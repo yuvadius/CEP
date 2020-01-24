@@ -12,18 +12,27 @@ This short documentation will be updated regularly.
 # Features
 * [X] A mechanism for CEP pattern evaluation based on the acyclic graph model
 * [X] Instance-based memory model (i.e., all partial results are explicitly stored in memory)
-* [X] Trivial algorithm for graph construction (converting a list of events into a left-deep tree)
 * [X] The pattern is provided as a Python class
-* [X] Built-in dataset scheme
-* [X] File-based input/output
+* [X] Arbitrary evaluation mechanisms
+* [X] Arbitrary operators in the pattern, including operator nesting (supported by design)
+* [X] Arbitrary condition types (more than two operands, not only numerical attributes, etc.)
+* [X] Arbitrary memory models for storing partial results
+* [X] Arbitrary algorithms for constructing the CEP graph
+* [X] Generic dataset schema
+* [X] Generic input/output interface (With support for File-based input/output)
+* [X] Multiple patterns with optional priorities / QoS specifications (supported by design)
+* [X] On-the-fly modification of the graph structure and the pattern workload
+* [X] Intra-node and inter-node parallel processing
+* [X] Distributed operation (e.g., an arbitrary protocol for inter-operator data transfer)
+* [X] Arbitrary UI for specifying the patterns/schemas/other configuration parameters
 
 # How to Use
 * The root of this library is the CEP object. The CEP object is used to perform complex event processing on an event stream.
 * The CEP object consists of a processing algorithm, event stream, patterns, and matches container. It runs its algorithm on separate threads to find matches for the given patterns. The matches are found in the event stream. The event stream can be given on construction, and you may add events on the fly - either through the given event stream or with the CEP object.
 * To create an event stream you can manually create an empty stream and add events to it, and you can also provide a csv file to the fileInput function.
 * To handle the CEP output you can manually read the events from the CEP object or from the matches container, or use the fileOutput function to print the matches into a file.
-* To create a pattern, you shall construct a pattern structure - SEQ(A, B, C) or AND(X, Y).
-    * You can attach a formula that the atomic items in the pattern structure shall suffice.
+* To create a pattern, you can construct a pattern structure - SEQ(A, B, C) or AND(X, Y).
+    * You can attach a formula that the atomic items in the pattern structure can suffice.
     * You can attach a time delta in which the atomic items in the pattern structure should appear in the stream.
 
 # Program Flow
@@ -53,37 +62,42 @@ events = fileInput("NASDAQ_20080201_1_sorted.txt",
     "Date")
 
 # Searching for pattern matches in the created input stream
-"""
-This pattern is looking for a short ascend in the Google peak prices.
-PATTERN SEQ(GoogleStockPriceUpdate a, GoogleStockPriceUpdate b, GoogleStockPriceUpdate c)
-WHERE a.PeakPrice < b.PeakPrice AND b.PeakPrice < c.PeakPrice
-WITHIN 3 minutes
-"""
-googleAscendPattern = Pattern(
-    SeqOperator([QItem("GOOG", "a"), QItem("GOOG", "b"), QItem("GOOG", "c")]),
-    AndFormula(
-        SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
-        SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
-    ),
-    timedelta(minutes=3)
-)
-cep = CEP(Tree, [googleAscendPattern], events)
-fileOutput(cep.getPatternMatchStream(), 'googleAscendMatches.txt')
-
-# now let's search for multiple patterns
-amazonInstablePattern = Pattern(
-    SeqOperator([QItem("AMZN", "x1"), QItem("AMZN", "x2"), QItem("AMZN", "x3")]),
-    AndFormula(
-        SmallerThanEqFormula(IdentifierTerm("x1", lambda x: x["Lowest Price"]), AtomicTerm(75)),
+def googleAscendPatternSearchTest(createTestFile = False):
+    """
+    This pattern is looking for a short ascend in the Google peak prices.
+    PATTERN SEQ(GoogleStockPriceUpdate a, GoogleStockPriceUpdate b, GoogleStockPriceUpdate c)
+    WHERE a.PeakPrice < b.PeakPrice AND b.PeakPrice < c.PeakPrice
+    WITHIN 3 minutes
+    """
+    googleAscendPattern = Pattern(
+        SeqOperator([QItem("GOOG", "a"), QItem("GOOG", "b"), QItem("GOOG", "c")]),
         AndFormula(
-            GreaterThanEqFormula(IdentifierTerm("x2", lambda x: x["Peak Price"]), AtomicTerm(78)),
-            SmallerThanEqFormula(IdentifierTerm("x3", lambda x: x["Lowest Price"]), IdentifierTerm("x1", lambda x: x["Lowest Price"]))
-        )
-    ),
-    timedelta(days=1)
-)
-cep = CEP(Tree, [googleAscendPattern, amazonInstablePattern], events)
-fileOutput(cep.getPatternMatchStream(), 'multiplePatternsMatches.txt')
+            SmallerThanFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), IdentifierTerm("b", lambda x: x["Peak Price"])),
+            SmallerThanFormula(IdentifierTerm("b", lambda x: x["Peak Price"]), IdentifierTerm("c", lambda x: x["Peak Price"]))
+        ),
+        timedelta(minutes=3)
+    )
+    runTest('googleAscend', [googleAscendPattern], createTestFile)
+
+def googleAmazonLowPatternSearchTest(createTestFile = False):
+    """
+    This pattern is looking for low prices of Amazon and Google at the same minute.
+    PATTERN AND(AmazonStockPriceUpdate a, GoogleStockPriceUpdate g)
+    WHERE a.PeakPrice <= 73 AND g.PeakPrice <= 525
+    WITHIN 1 minute
+    """
+    googleAmazonLowPattern = Pattern(
+        AndOperator([QItem("AMZN", "a"), QItem("GOOG", "g")]),
+        AndFormula(
+            SmallerThanEqFormula(IdentifierTerm("a", lambda x: x["Peak Price"]), AtomicTerm(73)),
+            SmallerThanEqFormula(IdentifierTerm("g", lambda x: x["Peak Price"]), AtomicTerm(525))
+        ),
+        timedelta(minutes=1)
+    )
+    runTest('googleAmazonLow', [googleAmazonLowPattern], createTestFile)
+
+googleAscendPatternSearchTest(True) # Use True to create a test
+googleAmazonLowPatternSearchTest() # If the test exists then don't send arguments
 ```
 
 # API
