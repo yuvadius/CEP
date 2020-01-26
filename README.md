@@ -13,18 +13,9 @@ This short documentation will be updated regularly.
 * [X] A mechanism for CEP pattern evaluation based on the acyclic graph model
 * [X] Instance-based memory model (i.e., all partial results are explicitly stored in memory)
 * [X] The pattern is provided as a Python class
-* [X] Arbitrary evaluation mechanisms
-* [X] Arbitrary operators in the pattern, including operator nesting (supported by design)
-* [X] Arbitrary condition types (more than two operands, not only numerical attributes, etc.)
-* [X] Arbitrary memory models for storing partial results
-* [X] Arbitrary algorithms for constructing the CEP graph
+* [X] Several algorithms for constructing the CEP graph
 * [X] Generic dataset schema
 * [X] Generic input/output interface (With support for File-based input/output)
-* [X] Multiple patterns with optional priorities / QoS specifications (supported by design)
-* [X] On-the-fly modification of the graph structure and the pattern workload
-* [X] Intra-node and inter-node parallel processing
-* [X] Distributed operation (e.g., an arbitrary protocol for inter-operator data transfer)
-* [X] Arbitrary UI for specifying the patterns/schemas/other configuration parameters
 
 # How to Use
 * The root of this library is the CEP object. The CEP object is used to perform complex event processing on an event stream.
@@ -142,9 +133,10 @@ Closes the input event stream.
 * #### Container ####
 A class describing a container of objects.
 Has the following abstract functions:
-    * ```addItem(self, item)```
-    * ```getItem(self)```
-    * ```close(self)```
+*
+  * ```addItem(self, item)```
+  * ```getItem(self)```
+  * ```close(self)```
 
 * #### Stream ####
 A class describing stream objects which its functionality is similar to a queue. It is used to represent an event stream and a match stream. It is thread-safe.
@@ -315,16 +307,47 @@ It is an object used to represent a peroid of time and is described extensively 
 A class to represent a pattern match. Has the following constructor. It is used in pattern match streams.
 ```__init__(self, events: List[Event])```
 
-* #### Algorithm ####
-This class is an abstract class used to represent a CEP algorithm.
+* #### TreeAlgorithm ####
+This class is an abstract class used to represent a CEP acyclic graph algorithm.
 Every subclass of it which represents a concrete algorithm shall not be instantiated either, but to be sent to CEP objects as the algorithm parameter.
 
-Every concrete algorithm subclass shall implement the following static function:
+Every concrete tree based algorithm subclass shall implement the following function:
 ```
-eval(pattern: Pattern, events: Stream, matches : Container)
+eval(pattern: Pattern, events: Stream, matches : Container, treeBluePrint)
 ```
 Receives a pattern and an event stream and performs the CEP with the algorithm it represents. It also receives a pattern matches container to write the output to.
 
-The algorithms given in this API are:
-* Tree - the acyclic graph model.
-    * Its evaluation function receives a tree construction function (Pattern -> Tree). Default is left depth tree.
+The tree construction algorithms supported in this API:
+* Trivial Algorithm
+Requires no statistics.
+* Ascending Frequency Algorithm
+
+Requires a frequency dictionary or arrival rates.
+All following algorithms require selectivity matrix and arrival rates.
+* Greedy Algorithm
+* IIGreedy Algorithm (Iterative improvement based on greedy order).
+* IIRandom Algorithm (Iterative improvement based on a random order).
+* Utilization of Dynamic Programming for constructing an optimal left deep tree.
+* Utilization of Dynamic Programming for constructing an optimal tree, not limited to a left deep topolgy.
+* ZStream based construction Algorithm.
+* Zstream-ord - Zstream such that the base order is a greedy order, and not a trivial one.
+
+Some of the above algorithms require configuration and statistics.
+The following statistics can be added to a pattern using pattern.setAdditionalStatistics:
+
+*`pattern.setAdditionalStatistics(AdditionalStatisticsType.FREQUENCY_DICT, frequencyDict)`
+*`pattern.setAdditionalStatistics(AdditionalStatisticsType.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES, (selectivityMatrix, arrivalRates))`
+*`pattern.setAdditionalStatistics(AdditionalStatisticsType.ARRIVAL_RATES, arrivalRates)`
+
+The next chapter explains how statistics can be calculated.
+
+* ### Statistics ###
+
+In the file Statistics.py, there are several functions in order to calculate statistics.
+All receive a pattern and a stream and return the required statistics.
+
+`getOccurencesDict(pattern : Pattern, stream : Stream) -> frequencyDict`
+
+`getSelectivityMatrix(pattern : Pattern, stream : Stream) -> selectivityMatrix`
+
+`getArrivalRates(pattern : Pattern, stream : Stream) -> arrivalRates`
