@@ -1,5 +1,9 @@
 '''
 These classes are used to represent a "parameter" to the PATTERN clause.
+These classes represent a SEQ/AND/OR/KL operator and the atomic argument QItem.
+The classes support nesting. Every operator class has its list of arguments.
+The QItem class has an event type and its name. The name is referred to in
+a pattern matching condition, represented as formula.
 '''
 
 from __future__ import annotations

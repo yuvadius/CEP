@@ -15,7 +15,7 @@ class OrderBasedAlgorithm(TreeAlgorithm):
 class TrivialAlgorithm(OrderBasedAlgorithm):
     def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
         argsNum = len(pattern.patternStructure.args)
-        order = range(argsNum)
+        order = list(range(argsNum)) # Trivial order.
         super().eval(order, pattern, events, matches, measureTime)
 
 class AscendingFrequencyAlgorithm(OrderBasedAlgorithm):
@@ -23,15 +23,19 @@ class AscendingFrequencyAlgorithm(OrderBasedAlgorithm):
         frequencyDict = None
         if pattern.statisticsType == StatisticsTypes.FREQUENCY_DICT:
             frequencyDict = pattern.statistics
+            order = getOrderByOccurences(pattern.patternStructure.args, frequencyDict)
+        elif pattern.statisticsType == StatisticsTypes.ARRIVAL_RATES:
+            arrivalRates = pattern.statistics
+            # create an index-arrival rate binding and sort according to arrival rate.
+            sortedOrder = sorted([(i, arrivalRates[i]) for i in range(len(arrivalRates))], key=lambda x:x[1])
+            order = [x for x,y in sortedOrder] # create order from sorted binding.
         else:
             raise MissingStatisticsException()
-        order = getOrderByOccurences(pattern.patternStructure.args, frequencyDict)
         super().eval(order, pattern, events, matches, measureTime)
     
 
 class GreedyAlgorithm(OrderBasedAlgorithm):
     def eval(self, pattern: Pattern, events: Stream, matches: Container, measureTime=False):
-        selectivityMatrix = None
         if pattern.statisticsType == StatisticsTypes.SELECTIVITY_MATRIX_AND_ARRIVAL_RATES:
             (selectivityMatrix, arrivalRates) = pattern.statistics
         else:
@@ -43,9 +47,10 @@ class GreedyAlgorithm(OrderBasedAlgorithm):
     def performGreedyOrder(selectivityMatrix, arrivalRates):
         """
         At any step we will only consider the intermediate partial matches size,
-        even without considering the sliding window.
+        even without considering the sliding window, because the result is independent of it.
         For each unselected item, we will calculate the speculated
         effect to the partial matches, and choose the one with minimal increase.
+        We don't even need to calculate the cost function. 
         """
         size = len(selectivityMatrix)
         if size == 1:
@@ -54,11 +59,13 @@ class GreedyAlgorithm(OrderBasedAlgorithm):
         newOrder = []
         leftToAdd = set(range(len(selectivityMatrix)))
         while len(leftToAdd) > 0:
+            # create first nominee to add.
             toAdd = toAddStart = leftToAdd.pop()
             minChangeFactor = selectivityMatrix[toAdd][toAdd]
             for j in newOrder:
                 minChangeFactor *= selectivityMatrix[toAdd][j]
             
+            # find minimum change factor and its acorrding index.
             for i in leftToAdd:
                 changeFactor = selectivityMatrix[i][i] * arrivalRates[i]
                 for j in newOrder:
@@ -68,6 +75,7 @@ class GreedyAlgorithm(OrderBasedAlgorithm):
                     toAdd = i
             newOrder.append(toAdd)
             
+            # if it wasn't the first nominee, then we need to fix the starting speculation we did.
             if toAdd != toAddStart:
                 leftToAdd.remove(toAdd)
                 leftToAdd.add(toAddStart)
@@ -82,6 +90,7 @@ class IterativeImprovement:
         return self.__class__(self.iiType)
     
     def iterativeImprovement(self, order, selectivityMatrix, arrivalRates, windowInSecs):
+        # Choose the iteration functions according to iteration type.
         if self.iiType == IterativeImprovementType.SWAP_BASED:
             movementGenerator = swapGenerator
             movementFunction = swapper
@@ -155,12 +164,12 @@ class DynamicProgrammingLeftDeepAlgorithm(OrderBasedAlgorithm):
     
     @staticmethod
     def findOrder(selectivityMatrix, arrivalRates, window):
-        # Save subsets' optimal orders, the cost and the left to add items.
         argsNum = len(selectivityMatrix)
         if argsNum == 1:  # boring extreme case
             return [0]
         
         items = frozenset(range(argsNum))
+        # Save subsets' optimal orders, the cost and the left to add items.
         subOrders = {frozenset({i}):([i], 
                         calculateOrderCostFunction([i], selectivityMatrix, arrivalRates, window), 
                         items.difference({i})) 
@@ -175,15 +184,15 @@ class DynamicProgrammingLeftDeepAlgorithm(OrderBasedAlgorithm):
                     # calculate for optional order for set of size i
                     newSubset = frozenset(subset.union({item}))
                     newCost = calculateOrderCostFunction(order, selectivityMatrix, arrivalRates, window)
-                    # check if it is the current best order for that set
+                    # check if it is not the first order for that set
                     if newSubset in nextOrders.keys():
                         _, tCost, tLeft = nextOrders[newSubset]
-                        if newCost < tCost:
+                        if newCost < tCost:  # check if it is the current best order for that set
                             newOrder = order + [item]
                             nextOrders[newSubset] = newOrder, newCost, tLeft
-                    else:
+                    else: # if it is the first order for that set
                         newOrder = order + [item]
                         nextOrders[newSubset] = newOrder, newCost, leftToAdd.difference({item})
-            # update subsets for next iteration    
+            # update subsets for next iteration
             subOrders = nextOrders
-        return list(subOrders.values())[0][0]
+        return list(subOrders.values())[0][0]  # return the order (at index 0 in the tuple) of item 0, the only item in subsets of size n.

@@ -11,7 +11,9 @@ from PatternMatch import PatternMatch
 from EvaluationMechanism import EvaluationMechanism
 from queue import Queue
 from threading import Lock
+from time import sleep
 
+# A class to represent an explicit partial match.
 class PartialMatch:
     def __init__(self, pm):
         self.pm = pm
@@ -47,7 +49,14 @@ class Tree:
         while self.root.hasPartialMatches():
             yield self.root.consumeFirstPartialMatch().getPartialMatch()
 
-
+'''
+A class to represent a node.
+Every node has several fields, most of them are trivial.
+One important field is the reorder, which is the order of the items in the node's subtree,
+to reorder from non-trivial orders. It is a list of tuples (index in order, qitem of index).
+Another important field is unhandled partial matches, which can be used also in order to parallelise
+the nodes' evaluation. Every node puts its partial matches in this field s.t. they are handled once as new.
+'''
 class Node:
     def __init__(self, isSeq, slidingWindow, reorder : List[Tuple[int, QItem]] = None, parent = None, left = None, right = None):
         self.reorder = reorder
@@ -60,13 +69,14 @@ class Node:
         self.isSeq = isSeq
         self.unhandledPartialMatches = Queue()
     
+    # Used in the root node.
     def consumeFirstPartialMatch(self):
         ret = self.partialMatches[0]
         del self.partialMatches[0]
         return ret
     
     def hasPartialMatches(self):
-        return bool(self.partialMatches)
+        return bool(self.partialMatches) # if partial matches container is empty, evaluates to false.
     
     def getLastUnhandledPartialMatch(self):
         return self.unhandledPartialMatches.get()
@@ -88,7 +98,8 @@ class Node:
 
     def isLeaf(self):
         return self.left == self.right == None
-    
+
+    # Used only in leaves. Returns the event type, which is stored in the first (and only) qitem in the reorder.    
     def getEventType(self):
         if not self.isLeaf():
             raise Exception()
@@ -123,12 +134,14 @@ class Node:
 
         return (self.parent.left is self)
     
+    # Insert an event to a leaf.
     def handleEvent(self, event : Event):
         if not self.isLeaf():
             raise Exception()
-
+        
         self.updatePartialMatchesToDate(event.date)
 
+        # get event's qitem and make a binding to evaluate formula for the new event.
         qitem = self.reorder[0][1]
         binding = {qitem.name:event.event}
         
@@ -149,6 +162,7 @@ class Node:
         self.partialMatches.insert(index, pm)
         self.unhandledPartialMatches.put(pm)
 
+    # Internal node's update for a new partial match in one of the subtrees.
     def handleNewPartialMatch(self, originatorIsLeftSubtree):
         if self.isLeaf():
             raise Exception()
@@ -168,6 +182,8 @@ class Node:
         
         self.updatePartialMatchesToDate(newPartialMatch.getLastDate())
 
+        # given a partial match from one subtree, for each partial match 
+        # in the other subtree we check for new partial matches in this node.
         for partialMatch in toCompare:
             if self.slidingWindow != timedelta.max and \
                 (partialMatch.getLastDate() - newPartialMatch.getFirstDate() > self.slidingWindow \
@@ -190,10 +206,18 @@ class Node:
         return
         
 
-
+'''
+An implementation of the evaluation mechanism. It is still not a concrete class, but a more concrete abstration
+for tree based evaluation mechanisms. Typically a concrete implementation will implement an eval function
+which constructs a tree and then calls to this class's implementation.
+This class also supports thread-safe time measurements. It is used in the CEP engine, in order to calculate
+the cumulative time of evaluating the patterns. It is useful for non-realtime streams, i.e. streams that
+are closed before they are sent to the CEP engine.
+'''
 class TreeAlgorithm(EvaluationMechanism):
     def __init__(self):
         self.lock = Lock()
+        self.started = False
     
     def copy(self):
         return self.__class__()
@@ -204,10 +228,12 @@ class TreeAlgorithm(EvaluationMechanism):
     def eval(self, pattern: Pattern, events: Stream, matches: Container, treeBluePrint, measureTime=False):
         if measureTime:
             self.lock.acquire()
+            self.started = True
             start = datetime.now()
         
-        tree = Tree(treeBluePrint, pattern)
+        tree = Tree(treeBluePrint, pattern) # Construct an evaluation tree.
         eventTypesListeners = {}
+        # register leaf listeners for event types.
         for leaf in tree.getLeaves():
             eventType = leaf.getEventType()
             if eventType in eventTypesListeners.keys():
@@ -215,7 +241,7 @@ class TreeAlgorithm(EvaluationMechanism):
             else:
                 eventTypesListeners[eventType] = [leaf]
         
-
+        # Send events to listening leaves.
         for event in events:
             if event.eventType in eventTypesListeners.keys():
                 for leaf in eventTypesListeners[event.eventType]:
@@ -229,8 +255,14 @@ class TreeAlgorithm(EvaluationMechanism):
             self.elapsed = ((datetime.now() - start).total_seconds())
             self.lock.release()
     
+    # Thread safe "get elapsed time". It is possible to replace it with a condition variable, 
+    # but we did not concentrate on parallelism synchronization.
     def getElapsed(self):
         self.lock.acquire()
+        while not self.started:
+            self.lock.release()
+            sleep(0)
+            self.lock.acquire()
         elapsed = self.elapsed
         self.lock.release()
         return elapsed

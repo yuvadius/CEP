@@ -333,6 +333,17 @@ def frequencyPatternSearchTest(createTestFile = False):
     pattern.setAdditionalStatistics(StatisticsTypes.FREQUENCY_DICT, {"AAPL": 460, "AMZN": 442, "LOCM": 219})
     runTest("frequency", [pattern], createTestFile, AscendingFrequencyAlgorithm())
 
+def arrivalRatesPatternSearchTest(createTestFile = False):
+    pattern = Pattern(
+    SeqOperator([QItem("AAPL", "a"), QItem("AMZN", "b"), QItem("LOCM", "c")]), 
+    AndFormula(
+        GreaterThanFormula(IdentifierTerm("a", lambda x: x["Opening Price"]), IdentifierTerm("b", lambda x: x["Opening Price"])), 
+        GreaterThanFormula(IdentifierTerm("b", lambda x: x["Opening Price"]), IdentifierTerm("c", lambda x: x["Opening Price"]))),
+    timedelta(minutes=5)
+    )
+    pattern.setAdditionalStatistics(StatisticsTypes.ARRIVAL_RATES, [0.0159, 0.0153, 0.0076])
+    runTest("arrivalRates", [pattern], createTestFile, AscendingFrequencyAlgorithm())
+
 def nonFrequencyPatternSearch2Test(createTestFile = False):
     pattern = Pattern(
         SeqOperator([QItem("LOCM", "a"), QItem("AMZN", "b"), QItem("AAPL", "c")]), 
@@ -602,6 +613,7 @@ googleAmazonLowPatternSearchTest()
 nonsensePatternSearchTest()
 hierarchyPatternSearchTest()
 nonFrequencyPatternSearchTest()
+arrivalRatesPatternSearchTest()
 frequencyPatternSearchTest()
 nonFrequencyPatternSearch2Test()
 frequencyPatternSearch2Test()

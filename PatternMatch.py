@@ -1,7 +1,6 @@
 '''
-This class is the returned result of an evaluation eval function
-"time": The amount of time it took to callculate the pattern match in milliseconds.
-If the time is "-1" then it can be considered as undefined
+This class's instances are the output results of an evaluation mechanism's eval function.
+It has one field which is the list of events in the pattern match.
 '''
 
 from Event import Event
